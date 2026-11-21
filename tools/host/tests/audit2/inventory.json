@@ -1,0 +1,1627 @@
+[
+ {
+  "file": "firmware/src/ravefm.c",
+  "lines": 77,
+  "units": [
+   "ravefm.c"
+  ],
+  "functions": [],
+  "globals": 0
+ },
+ {
+  "file": "firmware/hal/fm1_time.h",
+  "lines": 49,
+  "units": [
+   "ravefm.c"
+  ],
+  "functions": [
+   "fm1_time_init",
+   "fm1_delay_us",
+   "fm1_delay_ms"
+  ],
+  "globals": 0
+ },
+ {
+  "file": "firmware/hal/fm1_sys.h",
+  "lines": 247,
+  "units": [
+   "ravefm.c"
+  ],
+  "functions": [
+   "fm1__p33_xfer",
+   "fm1__p33_cs",
+   "fm1_p33_read",
+   "fm1_vdc14_raise",
+   "fm1_sysvdd_raise",
+   "fm1_rails_boot",
+   "fm1_wdt_arm",
+   "fm1_reset_reason",
+   "fm1_reboot",
+   "fm1_enter_uboot",
+   "fm1_core_reset",
+   "fm1_enter_update",
+   "fm1_updata_parm_clear",
+   "fm1_mem_readable"
+  ],
+  "globals": 2
+ },
+ {
+  "file": "firmware/hal/fm1_cc.h",
+  "lines": 16,
+  "units": [
+   "ravefm.c"
+  ],
+  "functions": [],
+  "globals": 0
+ },
+ {
+  "file": "firmware/hal/fm1_core1_stop.h",
+  "lines": 36,
+  "units": [
+   "ravefm.c"
+  ],
+  "functions": [
+   "fm1_core1_stop"
+  ],
+  "globals": 0
+ },
+ {
+  "file": "firmware/hal/fm1_power.h",
+  "lines": 72,
+  "units": [
+   "ravefm.c"
+  ],
+  "functions": [
+   "fm1_power_settle",
+   "fm1_power_field",
+   "fm1_power_init"
+  ],
+  "globals": 1
+ },
+ {
+  "file": "firmware/hal/fm1_irq.h",
+  "lines": 219,
+  "units": [
+   "ravefm.c"
+  ],
+  "functions": [
+   "fm1_irq_init",
+   "fm1_irq_enable_all",
+   "fm1_fault_c"
+  ],
+  "globals": 1
+ },
+ {
+  "file": "firmware/hal/fm1_guard.h",
+  "lines": 141,
+  "units": [
+   "ravefm.c"
+  ],
+  "functions": [
+   "fm1__dbg_unlock",
+   "fm1__dbg_lock",
+   "fm1_guard_enable",
+   "fm1_guard_pc_open",
+   "fm1_guard_lock_top",
+   "fm1_guard_unlock_top"
+  ],
+  "globals": 0
+ },
+ {
+  "file": "firmware/hal/fm1_multicore.h",
+  "lines": 211,
+  "units": [
+   "ravefm.c"
+  ],
+  "functions": [
+   "__attribute__",
+   "fm1_mc_hold",
+   "fm1_mc_start",
+   "fm1_mc_park",
+   "fm1_mc_run",
+   "fm1_mc_wait"
+  ],
+  "globals": 3
+ },
+ {
+  "file": "firmware/hal/fm1_input.h",
+  "lines": 697,
+  "units": [
+   "ravefm.c"
+  ],
+  "functions": [
+   "fm1__sr_bits",
+   "fm1__sr_latch",
+   "fm1__sr_word",
+   "fm1__rows",
+   "fm1__wait",
+   "fm1_input_init",
+   "fm1__key",
+   "fm1_input_scan",
+   "fm1__frame",
+   "fm1_led_dim_level",
+   "fm1__mid_q",
+   "fm1__anim_frame",
+   "fm1_led_anim_start",
+   "fm1_input_tick",
+   "fm1__lock",
+   "fm1__unlock",
+   "fm1_enc_take",
+   "fm1_input_edges",
+   "fm1_input_note_edges",
+   "fm1_led_key"
+  ],
+  "globals": 14
+ },
+ {
+  "file": "firmware/hal/fm1_gpio.h",
+  "lines": 14,
+  "units": [
+   "ravefm.c"
+  ],
+  "functions": [],
+  "globals": 0
+ },
+ {
+  "file": "firmware/hal/fm1_led_anim.h",
+  "lines": 74,
+  "units": [
+   "ravefm.c"
+  ],
+  "functions": [
+   "fm1_anim_bright",
+   "fm1_anim_q",
+   "fm1_anim_level"
+  ],
+  "globals": 2
+ },
+ {
+  "file": "firmware/hal/fm1_adc.h",
+  "lines": 163,
+  "units": [
+   "ravefm.c"
+  ],
+  "functions": [
+   "fm1_adc_init",
+   "fm1_adc_read",
+   "fm1_adc_start",
+   "fm1_adc_take",
+   "fm1_adc_abort",
+   "fm1__row_drive",
+   "fm1__row_release",
+   "fm1__an_take",
+   "fm1__an_start"
+  ],
+  "globals": 0
+ },
+ {
+  "file": "firmware/hal/fm1_timer.h",
+  "lines": 29,
+  "units": [
+   "ravefm.c"
+  ],
+  "functions": [],
+  "globals": 0
+ },
+ {
+  "file": "firmware/hal/fm1_audio.h",
+  "lines": 90,
+  "units": [
+   "ravefm.c"
+  ],
+  "functions": [
+   "fm1_audio_init"
+  ],
+  "globals": 0
+ },
+ {
+  "file": "firmware/hal/fm1_lcd_hw.h",
+  "lines": 88,
+  "units": [
+   "ravefm.c"
+  ],
+  "functions": [
+   "fm1_lcd_hw_init",
+   "fm1_lcd_backlight",
+   "fm1_lcd_wait",
+   "fm1_lcd_send_cmd",
+   "fm1_lcd_send_data"
+  ],
+  "globals": 1
+ },
+ {
+  "file": "firmware/src/libc.c",
+  "lines": 90,
+  "units": [
+   "ravefm.c"
+  ],
+  "functions": [
+   "memset",
+   "memcpy",
+   "memcmp",
+   "str_eq",
+   "str_len",
+   "str_cpy",
+   "fmt_fix",
+   "rng"
+  ],
+  "globals": 1
+ },
+ {
+  "file": "firmware/src/lcd.c",
+  "lines": 172,
+  "units": [
+   "ravefm.c"
+  ],
+  "functions": [
+   "lcd_spin",
+   "lcd_cmd",
+   "lcd_data",
+   "lcd_window",
+   "lcd_fill",
+   "lcd_blit",
+   "lcd_blit_stride",
+   "lcd_init",
+   "lcd_power",
+   "lcd_wake_now"
+  ],
+  "globals": 4
+ },
+ {
+  "file": "firmware/src/usb.c",
+  "lines": 2032,
+  "units": [
+   "ravefm.c"
+  ],
+  "functions": [
+   "midi_enqueue",
+   "get_desc",
+   "sie_wr",
+   "sie_rd",
+   "uin_ep_config",
+   "uac_rate_set",
+   "ep1_config",
+   "e0_chunk",
+   "e0_send",
+   "ep0_service",
+   "sysex_byte",
+   "ep1_take",
+   "ota_frame_get",
+   "ota_frame_done",
+   "ep1_tx",
+   "uac_s16",
+   "uac_rs_run",
+   "uac_collect",
+   "uac_tap48",
+   "uac_render_end",
+   "uac_tap8",
+   "uac_squeeze",
+   "uac_packet",
+   "ep4_tx",
+   "uin_rx",
+   "uac_in_fill",
+   "usb_retry",
+   "usb_detach",
+   "usb_replug",
+   "usb_cdc_switch",
+   "usb_stems_switch",
+   "usb_duplex_switch"
+  ],
+  "globals": 32
+ },
+ {
+  "file": "firmware/hal/fm1_usb.h",
+  "lines": 144,
+  "units": [
+   "ravefm.c"
+  ],
+  "functions": [
+   "fm1_usb_reset",
+   "fm1_usb_host_attach",
+   "fm1_usb_attach",
+   "fm1_usb_off",
+   "fm1_usb_sie_wr_start",
+   "fm1_usb_sie_rd_start",
+   "fm1_usb_ep0_send",
+   "fm1_usb_ep_send",
+   "fm1_usb_ep4_send",
+   "fm1_usb_sof_take"
+  ],
+  "globals": 0
+ },
+ {
+  "file": "firmware/src/uac_fir.h",
+  "lines": 46,
+  "units": [
+   "ravefm.c"
+  ],
+  "functions": [],
+  "globals": 3
+ },
+ {
+  "file": "firmware/bt/bt_midi.h",
+  "lines": 59,
+  "units": [
+   "ravefm.c"
+  ],
+  "functions": [
+   "bt_midi_accept",
+   "bt_oq_peek",
+   "bt_oq_pop"
+  ],
+  "globals": 0
+ },
+ {
+  "file": "firmware/src/usb_host.c",
+  "lines": 520,
+  "units": [
+   "ravefm.c"
+  ],
+  "functions": [
+   "uh_csr0",
+   "uh_ctl",
+   "uh_ctl_out",
+   "uh_probe",
+   "uh_hub_port_probe",
+   "uh_hub_status",
+   "uh_hub_probe",
+   "uh_start_ep",
+   "uh_task",
+   "uh_fail"
+  ],
+  "globals": 1
+ },
+ {
+  "file": "firmware/src/usb_host_desc.h",
+  "lines": 154,
+  "units": [
+   "ravefm.c"
+  ],
+  "functions": [
+   "uh_parse_midi",
+   "uh_midi_ok",
+   "uh_parse_uac"
+  ],
+  "globals": 0
+ },
+ {
+  "file": "firmware/src/midi_uart.c",
+  "lines": 91,
+  "units": [
+   "ravefm.c"
+  ],
+  "functions": [
+   "um_byte",
+   "uart_midi_take"
+  ],
+  "globals": 0
+ },
+ {
+  "file": "firmware/hal/fm1_uart.h",
+  "lines": 61,
+  "units": [
+   "ravefm.c"
+  ],
+  "functions": [
+   "fm1_uart1_midi_init",
+   "fm1_uart1_rx_take"
+  ],
+  "globals": 0
+ },
+ {
+  "file": "firmware/hal/fm1_flash.h",
+  "lines": 278,
+  "units": [
+   "ravefm.c"
+  ],
+  "functions": [
+   "fl_cs",
+   "fl_spi_wait",
+   "fl_tx",
+   "fl_rx",
+   "fl_enter",
+   "fl_exit",
+   "fl_inval",
+   "fl_wait_ready",
+   "fl_erase4k_ram",
+   "fl_prog_ram",
+   "fl_plain_window_init",
+   "fl_erase4k",
+   "fl_write",
+   "fl_verify_xip"
+  ],
+  "globals": 0
+ },
+ {
+  "file": "firmware/hal/fm1_xip.h",
+  "lines": 14,
+  "units": [
+   "ravefm.c"
+  ],
+  "functions": [],
+  "globals": 0
+ },
+ {
+  "file": "firmware/src/storage_hw.c",
+  "lines": 46,
+  "units": [
+   "ravefm.c"
+  ],
+  "functions": [
+   "st_erase",
+   "st_prog"
+  ],
+  "globals": 1
+ },
+ {
+  "file": "firmware/src/rfm_text.c",
+  "lines": 93,
+  "units": [
+   "ravefm.c"
+  ],
+  "functions": [
+   "rfm_char",
+   "draw_text_box"
+  ],
+  "globals": 2
+ },
+ {
+  "file": "firmware/src/ota.c",
+  "lines": 410,
+  "units": [
+   "ravefm.c"
+  ],
+  "functions": [
+   "ota_pack7",
+   "ota_unpack7",
+   "ota_reply_identity",
+   "ota_take",
+   "ota_service",
+   "ota_read",
+   "ota_memeq",
+   "ota_stage_head",
+   "ota_ufw",
+   "ota_unstage",
+   "ota_session",
+   "ota_boot_cleanup"
+  ],
+  "globals": 2
+ },
+ {
+  "file": "firmware/src/ota_hw.c",
+  "lines": 56,
+  "units": [
+   "ravefm.c"
+  ],
+  "functions": [
+   "ota_erase",
+   "ota_prog",
+   "ota_show",
+   "ota_commit"
+  ],
+  "globals": 0
+ },
+ {
+  "file": "firmware/src/rfm_board.c",
+  "lines": 392,
+  "units": [
+   "ravefm.c"
+  ],
+  "functions": [
+   "fm1_audio_stats_read",
+   "rfm_gain_of",
+   "rfm_knob_poll",
+   "fm1_controls_read",
+   "rfm_scr_valid",
+   "fm1_screen_fill",
+   "fm1_screen_blit",
+   "fm1_screen_pending",
+   "fm1_screen_blit_be",
+   "fm1_screen_sync",
+   "fm1_screen_submit",
+   "rfm_sysex_poll",
+   "rfm_midi_poll",
+   "fm1_flash_read",
+   "fm1_flash_write",
+   "fm1_flash_erase"
+  ],
+  "globals": 14
+ },
+ {
+  "file": "firmware/rfm/include/fm1.h",
+  "lines": 54,
+  "units": [
+   "ravefm.c",
+   "rfm_ui.c",
+   "tb_app.c",
+   "tb_store.c"
+  ],
+  "functions": [],
+  "globals": 0
+ },
+ {
+  "file": "firmware/src/rfm_main.c",
+  "lines": 265,
+  "units": [
+   "ravefm.c"
+  ],
+  "functions": [
+   "fm1_timer5_irq",
+   "hexs",
+   "fm1_fault",
+   "rfm_main",
+   "fm1_cstart"
+  ],
+  "globals": 1
+ },
+ {
+  "file": "firmware/src/boot_lz4.h",
+  "lines": 47,
+  "units": [
+   "ravefm.c"
+  ],
+  "functions": [
+   "boot_lz4"
+  ],
+  "globals": 0
+ },
+ {
+  "file": "firmware/rfm/engine/rfm_libc.c",
+  "lines": 242,
+  "units": [
+   "rfm_libc.c"
+  ],
+  "functions": [
+   "vsnprintf",
+   "snprintf",
+   "__udivmoddi4",
+   "__umoddi3",
+   "__divdi3",
+   "__moddi3",
+   "udivmod32",
+   "__divsi3",
+   "__modsi3",
+   "memmove",
+   "strlen",
+   "strcmp",
+   "strncmp",
+   "strchr",
+   "strncpy"
+  ],
+  "globals": 0
+ },
+ {
+  "file": "firmware/rfm/engine/rfm_ui.c",
+  "lines": 2625,
+  "units": [
+   "rfm_ui.c"
+  ],
+  "functions": [
+   "chip",
+   "title_row",
+   "fit",
+   "txt_fit",
+   "listen",
+   "any_solo",
+   "blend_px",
+   "beam",
+   "sprite",
+   "pal_of",
+   "tb_ui_icon",
+   "kick_now",
+   "place",
+   "warehouse",
+   "home_floor",
+   "tb_ui_home",
+   "instrument_of",
+   "ellipse",
+   "instrument_lines",
+   "art_lut",
+   "art_draw",
+   "art_blit",
+   "art_inks",
+   "stars",
+   "art_of",
+   "glow",
+   "instrument",
+   "melody_now",
+   "kick_plays",
+   "dn_go",
+   "home_skel",
+   "edit_picture",
+   "tb_ui_track",
+   "layout",
+   "cell",
+   "seq_pads",
+   "seq_grid",
+   "seq_notes",
+   "slice_len",
+   "seq_slices",
+   "brk_head",
+   "seq_window",
+   "tb_ui_seq",
+   "menu_frame",
+   "menu_env",
+   "lfo_shape",
+   "menu_lfo",
+   "menu_arp",
+   "menu_scale",
+   "menu_tiles",
+   "curve",
+   "eq_curve",
+   "fx_caption",
+   "fx_wave",
+   "menu_fx_j",
+   "menu_fx",
+   "menu_glo",
+   "menu_sys",
+   "menu_tools",
+   "tb_ui_menu",
+   "tb_ui_perform",
+   "tb_ui_kick",
+   "tb_ui_dance",
+   "boot_pic",
+   "tb_ui_splash"
+  ],
+  "globals": 13
+ },
+ {
+  "file": "firmware/rfm/engine/tb_ui.h",
+  "lines": 180,
+  "units": [
+   "rfm_ui.c",
+   "tb_app.c"
+  ],
+  "functions": [],
+  "globals": 0
+ },
+ {
+  "file": "firmware/rfm/engine/tb_features.h",
+  "lines": 175,
+  "units": [
+   "rfm_ui.c"
+  ],
+  "functions": [],
+  "globals": 0
+ },
+ {
+  "file": "firmware/rfm/engine/tb_engine.h",
+  "lines": 317,
+  "units": [
+   "rfm_ui.c",
+   "tb_app.c",
+   "tb_engine.c",
+   "tb_store.c",
+   "tb_synth.c"
+  ],
+  "functions": [],
+  "globals": 0
+ },
+ {
+  "file": "firmware/rfm/engine/tb_kick.h",
+  "lines": 79,
+  "units": [
+   "rfm_ui.c",
+   "tb_kick.c"
+  ],
+  "functions": [],
+  "globals": 0
+ },
+ {
+  "file": "firmware/rfm/engine/tb_akick.h",
+  "lines": 23,
+  "units": [
+   "rfm_ui.c",
+   "tb_akick.c"
+  ],
+  "functions": [],
+  "globals": 0
+ },
+ {
+  "file": "firmware/rfm/engine/tb_909.h",
+  "lines": 39,
+  "units": [
+   "rfm_ui.c",
+   "tb_909.c"
+  ],
+  "functions": [],
+  "globals": 0
+ },
+ {
+  "file": "firmware/rfm/engine/tb_env.h",
+  "lines": 73,
+  "units": [
+   "rfm_ui.c",
+   "tb_app.c",
+   "tb_engine.c"
+  ],
+  "functions": [
+   "tb_env_us",
+   "tb_env_k",
+   "tb_envk",
+   "tb_env_step"
+  ],
+  "globals": 0
+ },
+ {
+  "file": "firmware/rfm/engine/tb_dsp.h",
+  "lines": 88,
+  "units": [
+   "rfm_ui.c",
+   "tb_909.c",
+   "tb_acid.c",
+   "tb_break.c",
+   "tb_dsp.c",
+   "tb_engine.c",
+   "tb_fx.c",
+   "tb_hall.c",
+   "tb_ins.c",
+   "tb_kick.c",
+   "tb_rave.c",
+   "tb_synth.c"
+  ],
+  "functions": [
+   "tb_divq15",
+   "tb_sin",
+   "tb_tri",
+   "tb_tanh",
+   "tb_exp2",
+   "tb_noise",
+   "tb_mulu16",
+   "tb_knee"
+  ],
+  "globals": 0
+ },
+ {
+  "file": "firmware/rfm/engine/tb_drumx.h",
+  "lines": 31,
+  "units": [
+   "rfm_ui.c",
+   "tb_drumx.c"
+  ],
+  "functions": [],
+  "globals": 0
+ },
+ {
+  "file": "firmware/rfm/engine/tb_break.h",
+  "lines": 97,
+  "units": [
+   "rfm_ui.c",
+   "tb_break.c",
+   "tb_store.c"
+  ],
+  "functions": [],
+  "globals": 0
+ },
+ {
+  "file": "firmware/rfm/engine/tb_synth.h",
+  "lines": 106,
+  "units": [
+   "rfm_ui.c",
+   "tb_rave.c",
+   "tb_synth.c"
+  ],
+  "functions": [],
+  "globals": 0
+ },
+ {
+  "file": "firmware/rfm/engine/tb_rave.h",
+  "lines": 42,
+  "units": [
+   "rfm_ui.c",
+   "tb_rave.c"
+  ],
+  "functions": [],
+  "globals": 0
+ },
+ {
+  "file": "firmware/rfm/engine/tb_acid.h",
+  "lines": 42,
+  "units": [
+   "rfm_ui.c",
+   "tb_acid.c"
+  ],
+  "functions": [],
+  "globals": 0
+ },
+ {
+  "file": "firmware/rfm/engine/tb_fx.h",
+  "lines": 42,
+  "units": [
+   "rfm_ui.c",
+   "tb_fx.c"
+  ],
+  "functions": [],
+  "globals": 0
+ },
+ {
+  "file": "firmware/rfm/engine/tb_ins.h",
+  "lines": 33,
+  "units": [
+   "rfm_ui.c",
+   "tb_ins.c"
+  ],
+  "functions": [],
+  "globals": 0
+ },
+ {
+  "file": "firmware/rfm/engine/rfm_gfx.h",
+  "lines": 53,
+  "units": [
+   "rfm_ui.c",
+   "tb_app.c"
+  ],
+  "functions": [],
+  "globals": 0
+ },
+ {
+  "file": "firmware/rfm/engine/tb_store.h",
+  "lines": 32,
+  "units": [
+   "rfm_ui.c",
+   "tb_app.c",
+   "tb_break.c",
+   "tb_store.c"
+  ],
+  "functions": [],
+  "globals": 0
+ },
+ {
+  "file": "firmware/rfm/jui/rfm_screen.c",
+  "lines": 825,
+  "units": [
+   "rfm_ui.c"
+  ],
+  "functions": [
+   "str_hash",
+   "latin",
+   "gfx_palette",
+   "gfx_role",
+   "gfx_c",
+   "gfx_heat",
+   "face",
+   "circle",
+   "gfx_rect",
+   "gfx_rrect",
+   "gfx_vgrad",
+   "gfx_text",
+   "gfx_text_width",
+   "gfx_wave",
+   "arc_pt",
+   "gfx_arc",
+   "gfx_line",
+   "gfx_glow",
+   "gfx_poly",
+   "gfx_area",
+   "gfx_title_text",
+   "head",
+   "same_group",
+   "tab_name",
+   "tabs",
+   "split_unit",
+   "knob_arc",
+   "knob_drawn",
+   "roll_off",
+   "roll_text",
+   "card",
+   "foot",
+   "toast",
+   "frame_with",
+   "gfx_end"
+  ],
+  "globals": 7
+ },
+ {
+  "file": "firmware/rfm/jui/jgfx.c",
+  "lines": 1196,
+  "units": [
+   "rfm_ui.c"
+  ],
+  "functions": [
+   "lcd_blit_stride",
+   "ux_mix",
+   "palette_set",
+   "palette_from_stored",
+   "cv_begin",
+   "scr_holes",
+   "scr_out",
+   "scr_fill",
+   "scr_blit",
+   "scr_blit_stride",
+   "cv_blit",
+   "cv_blit_from",
+   "lcd_blit_stride",
+   "dc_touch",
+   "dc_send",
+   "cv_pset",
+   "cv_rect_add",
+   "cv_rect",
+   "cv_frame",
+   "cv_line",
+   "cv_line_t",
+   "rr_cov",
+   "cv_rrect",
+   "ramp",
+   "cv_alpha",
+   "hc_lut",
+   "cv_alpha_hc",
+   "glyph_at",
+   "glyph",
+   "ag",
+   "font_advance",
+   "text_w",
+   "text_run",
+   "cv_txt_note",
+   "cv_txt_in",
+   "cv_text_flags",
+   "cv_text_on",
+   "cv_text",
+   "cv_text_r",
+   "ink_in",
+   "cv_text_in",
+   "text_fit",
+   "cv_text_fit",
+   "cv_free_text",
+   "cv_clip_text",
+   "cv_text_up",
+   "kc_ramp",
+   "cv_keycap",
+   "kh_ink",
+   "cv_key_hint",
+   "cv_key_row",
+   "kc_tag",
+   "draw_text_line",
+   "draw_text_box"
+  ],
+  "globals": 10
+ },
+ {
+  "file": "firmware/rfm/gen/ui_fonts.h",
+  "lines": 541,
+  "units": [
+   "rfm_ui.c"
+  ],
+  "functions": [],
+  "globals": 0
+ },
+ {
+  "file": "firmware/rfm/gen/ui_palettes.h",
+  "lines": 36,
+  "units": [
+   "rfm_ui.c"
+  ],
+  "functions": [],
+  "globals": 0
+ },
+ {
+  "file": "firmware/rfm/gen/ui_keycaps.h",
+  "lines": 582,
+  "units": [
+   "rfm_ui.c"
+  ],
+  "functions": [],
+  "globals": 0
+ },
+ {
+  "file": "firmware/rfm/gen/rfm_chars.h",
+  "lines": 545,
+  "units": [
+   "rfm_ui.c"
+  ],
+  "functions": [],
+  "globals": 0
+ },
+ {
+  "file": "firmware/rfm/gen/rfm_art.h",
+  "lines": 1934,
+  "units": [
+   "rfm_ui.c"
+  ],
+  "functions": [],
+  "globals": 0
+ },
+ {
+  "file": "firmware/rfm/gen/rfm_skel.h",
+  "lines": 2126,
+  "units": [
+   "rfm_ui.c"
+  ],
+  "functions": [],
+  "globals": 0
+ },
+ {
+  "file": "firmware/rfm/gen/rfm_boot.h",
+  "lines": 483,
+  "units": [
+   "rfm_ui.c"
+  ],
+  "functions": [],
+  "globals": 0
+ },
+ {
+  "file": "firmware/rfm/engine/tb_909.c",
+  "lines": 178,
+  "units": [
+   "tb_909.c"
+  ],
+  "functions": [
+   "sample_at",
+   "tb909_hit",
+   "exp2q",
+   "blk_decay",
+   "tb909_off",
+   "tb909_render",
+   "tb909_render_x"
+  ],
+  "globals": 4
+ },
+ {
+  "file": "firmware/rfm/gen/tb_909_slim.h",
+  "lines": 1976,
+  "units": [
+   "tb_909.c"
+  ],
+  "functions": [],
+  "globals": 0
+ },
+ {
+  "file": "firmware/rfm/gen/tb_909_data.h",
+  "lines": 6328,
+  "units": [
+   "tb_909.c",
+   "tb_break.c"
+  ],
+  "functions": [],
+  "globals": 0
+ },
+ {
+  "file": "firmware/rfm/engine/tb_acid.c",
+  "lines": 141,
+  "units": [
+   "tb_acid.c"
+  ],
+  "functions": [
+   "tb_acid_sound",
+   "tb_acid_on",
+   "tb_acid_off",
+   "tb_acid_env",
+   "blep",
+   "tb_acid_render"
+  ],
+  "globals": 3
+ },
+ {
+  "file": "firmware/rfm/engine/tb_akick.c",
+  "lines": 471,
+  "units": [
+   "tb_akick.c"
+  ],
+  "functions": [
+   "mulq16",
+   "sine_i",
+   "osc_tri",
+   "softclip",
+   "noise32",
+   "kick_exp2",
+   "kick_pole",
+   "kick_blk_decay",
+   "kick_svf_f",
+   "kick_log2",
+   "kick_isqrt",
+   "kick_land",
+   "kick_scale",
+   "kick_setup",
+   "kick_trigger",
+   "kick_ceiling",
+   "kick_run",
+   "refresh",
+   "tb_akick_init",
+   "tb_akick_hit",
+   "tb_akick_render"
+  ],
+  "globals": 2
+ },
+ {
+  "file": "firmware/rfm/engine/tb_rave_tab.h",
+  "lines": 231,
+  "units": [
+   "tb_akick.c",
+   "tb_drumx.c",
+   "tb_rave.c"
+  ],
+  "functions": [
+   "rv_pitch_inc"
+  ],
+  "globals": 7
+ },
+ {
+  "file": "firmware/rfm/engine/tb_app.c",
+  "lines": 4134,
+  "units": [
+   "tb_app.c"
+  ],
+  "functions": [
+   "home_pages",
+   "edit_pages",
+   "key_index",
+   "white_key",
+   "emit",
+   "hud_say",
+   "cell_step",
+   "seq_step_knob",
+   "rec_grid",
+   "place_hit",
+   "seq_steps",
+   "stretch_track",
+   "held_step",
+   "step_add",
+   "ned_list",
+   "ned_index",
+   "ned_hear",
+   "ned_locks",
+   "ins_field",
+   "man_take",
+   "man_move",
+   "get",
+   "set",
+   "value_text",
+   "step_knob",
+   "step_set",
+   "menu_pages",
+   "mpage",
+   "strip",
+   "lock_pg",
+   "knob_fix",
+   "lock_val",
+   "knob",
+   "ned_turn",
+   "ned_erase",
+   "ned_key",
+   "turn",
+   "note_of_key",
+   "step_ms",
+   "rec_down",
+   "rec_up",
+   "seq_key_down",
+   "seq_clear_steps",
+   "seq_advance",
+   "seq_enter",
+   "seq_rest",
+   "do_tool",
+   "key_down",
+   "key_up",
+   "swap_bytes",
+   "touch",
+   "undo_swap",
+   "fam_rank",
+   "ord_sort",
+   "ord_n",
+   "ord_of",
+   "kick_preset_sync",
+   "after_load",
+   "save_button",
+   "sys_action",
+   "tap",
+   "fm1_app_midi_received",
+   "midi_tick",
+   "remote_send",
+   "fm1_app_sysex",
+   "remote_tick",
+   "preset_turn",
+   "sound_now",
+   "same_group",
+   "next_group",
+   "page_button",
+   "buttons",
+   "input",
+   "leds",
+   "fill_break_view",
+   "build_seq_view",
+   "kick_designer",
+   "build_menu_view",
+   "build_view",
+   "tb_app_init",
+   "tb_app_tick"
+  ],
+  "globals": 113
+ },
+ {
+  "file": "firmware/rfm/engine/tb_app.h",
+  "lines": 21,
+  "units": [
+   "tb_app.c"
+  ],
+  "functions": [],
+  "globals": 0
+ },
+ {
+  "file": "firmware/rfm/engine/tb_break.c",
+  "lines": 417,
+  "units": [
+   "tb_break.c"
+  ],
+  "functions": [
+   "tb_brk_bars",
+   "ulaw_dec",
+   "tb_brk_user_keep",
+   "tb_brk_user_begin",
+   "tb_brk_user_write",
+   "tb_brk_user_end",
+   "smp",
+   "tb_brk_peek",
+   "tb_brk_slices",
+   "blk_decay",
+   "prime",
+   "tb_brk_play",
+   "tb_brk_on",
+   "tb_brk_off",
+   "tb_brk_env",
+   "tb_brk_render"
+  ],
+  "globals": 5
+ },
+ {
+  "file": "firmware/rfm/gen/tb_break_data.h",
+  "lines": 7761,
+  "units": [
+   "tb_break.c"
+  ],
+  "functions": [],
+  "globals": 0
+ },
+ {
+  "file": "firmware/rfm/engine/tb_drumx.c",
+  "lines": 158,
+  "units": [
+   "tb_drumx.c"
+  ],
+  "functions": [
+   "mulq16",
+   "sine_i",
+   "softclip",
+   "noise32",
+   "tsvf_coef_k",
+   "tb_dx_defaults",
+   "tb_dx_hit",
+   "tb_dx_render"
+  ],
+  "globals": 2
+ },
+ {
+  "file": "firmware/rfm/engine/tb_drumx_voice.inc",
+  "lines": 686,
+  "units": [
+   "tb_drumx.c"
+  ],
+  "functions": [
+   "dx_pow2",
+   "dx_fm_env",
+   "dx_fm_lim",
+   "dx_fall",
+   "dx_tri",
+   "dx_layer",
+   "dx_hands_step",
+   "dx_scrape",
+   "dx_run_fx",
+   "dx_kit_ok",
+   "dx_run"
+  ],
+  "globals": 6
+ },
+ {
+  "file": "firmware/rfm/engine/tb_dsp.c",
+  "lines": 7,
+  "units": [
+   "tb_dsp.c"
+  ],
+  "functions": [],
+  "globals": 0
+ },
+ {
+  "file": "firmware/rfm/gen/tb_tables.h",
+  "lines": 6,
+  "units": [
+   "tb_dsp.c"
+  ],
+  "functions": [],
+  "globals": 0
+ },
+ {
+  "file": "firmware/rfm/engine/tb_engine.c",
+  "lines": 2396,
+  "units": [
+   "tb_engine.c"
+  ],
+  "functions": [
+   "cho_tap",
+   "tb_engine_note",
+   "tb_engine_preview",
+   "tb_engine_perform",
+   "drop_own",
+   "tb_drop_get",
+   "tb_drop_set",
+   "tb_engine_drop_state",
+   "tb_engine_riser_state",
+   "tb_lock_find",
+   "tb_lock_count",
+   "tb_lock_set",
+   "tb_lock_clear",
+   "apply_locks",
+   "prm",
+   "chv",
+   "tb_engine_skip",
+   "tb_scale_snap",
+   "scale_up",
+   "tb_chord_notes",
+   "lfo_run",
+   "sample_region",
+   "voice",
+   "arp_beat",
+   "arp_hold",
+   "arp_order",
+   "rec_arp",
+   "arp_tick",
+   "schedule_f",
+   "note",
+   "fire_due",
+   "play_step_as",
+   "mutate",
+   "play_track_step",
+   "first_of",
+   "fx_hit",
+   "crash_tail_env",
+   "fx_kick",
+   "drop_tick",
+   "rolling",
+   "tb_engine_song_pos",
+   "do_tick",
+   "render_tracks",
+   "muted",
+   "take_keys",
+   "repeat_tick",
+   "extras",
+   "tb_engine_clock24",
+   "rave_chorus",
+   "rz15",
+   "dc_block",
+   "tb_engine_render",
+   "tb_engine_step",
+   "tb_engine_view",
+   "tb_engine_init",
+   "name",
+   "tb_engine_break_loop",
+   "tb_engine_default_track",
+   "tb_engine_stack_defaults",
+   "tb_engine_fx_on",
+   "tb_engine_route_defaults",
+   "tb_engine_upgrade",
+   "tb_engine_widen_steps",
+   "tb_engine_relayout",
+   "tb_engine_default_project",
+   "tb_engine_set_machine"
+  ],
+  "globals": 76
+ },
+ {
+  "file": "firmware/rfm/engine/tb_fx.c",
+  "lines": 339,
+  "units": [
+   "tb_fx.c"
+  ],
+  "functions": [
+   "tb_filter_set",
+   "tb_filter_run",
+   "tb_fx_init",
+   "tb_fx_run",
+   "tb_fx_master",
+   "tb_fx_dist"
+  ],
+  "globals": 7
+ },
+ {
+  "file": "firmware/rfm/engine/tb_hall.h",
+  "lines": 11,
+  "units": [
+   "tb_fx.c",
+   "tb_hall.c"
+  ],
+  "functions": [],
+  "globals": 0
+ },
+ {
+  "file": "firmware/rfm/engine/tb_hall.c",
+  "lines": 243,
+  "units": [
+   "tb_hall.c"
+  ],
+  "functions": [
+   "exp2_neg",
+   "hall_gains",
+   "hall_ap",
+   "hall_end",
+   "hall_end_lp",
+   "rev_hall",
+   "tb_hall_clear",
+   "tb_hall_run"
+  ],
+  "globals": 6
+ },
+ {
+  "file": "firmware/rfm/engine/tb_ins.c",
+  "lines": 238,
+  "units": [
+   "tb_ins.c"
+  ],
+  "functions": [
+   "lfo_inc",
+   "pole",
+   "svf_f",
+   "svf",
+   "tap",
+   "tb_ins_run"
+  ],
+  "globals": 2
+ },
+ {
+  "file": "firmware/rfm/engine/tb_kick.c",
+  "lines": 856,
+  "units": [
+   "tb_kick.c"
+  ],
+  "functions": [
+   "k_exp2",
+   "k_log2",
+   "k_isqrt",
+   "k_land",
+   "k_scale",
+   "atelier",
+   "tb_kick_note",
+   "k_setup",
+   "k_refresh",
+   "tb_kick_init",
+   "tb_kick_hit",
+   "k_ceiling",
+   "k_tail",
+   "k_smp_at",
+   "k_smp",
+   "k_run",
+   "tb_kick_render"
+  ],
+  "globals": 7
+ },
+ {
+  "file": "firmware/rfm/gen/tb_kick_smp.h",
+  "lines": 3264,
+  "units": [
+   "tb_kick.c"
+  ],
+  "functions": [],
+  "globals": 0
+ },
+ {
+  "file": "firmware/rfm/engine/tb_kick_nov26.inc",
+  "lines": 241,
+  "units": [
+   "tb_kick.c"
+  ],
+  "functions": [],
+  "globals": 0
+ },
+ {
+  "file": "firmware/rfm/engine/tb_rave.c",
+  "lines": 480,
+  "units": [
+   "tb_rave.c"
+  ],
+  "functions": [
+   "mulq16",
+   "rblep",
+   "softclip",
+   "tsvf_coef_k",
+   "tsvf_lp",
+   "amp_at",
+   "soft_knee",
+   "cents_inc",
+   "kick_exp2",
+   "kick_scale",
+   "tube_aa",
+   "rave_note_on",
+   "rave_render",
+   "glide_set",
+   "voice_start",
+   "voice_alloc",
+   "mono_play",
+   "mono_remove",
+   "tb_rave_on",
+   "tb_rave_off",
+   "tb_rave_all_off",
+   "env_tick",
+   "tick",
+   "tb_rave_render"
+  ],
+  "globals": 1
+ },
+ {
+  "file": "firmware/rfm/engine/tb_store.c",
+  "lines": 517,
+  "units": [
+   "tb_store.c"
+  ],
+  "functions": [
+   "half_at",
+   "crc32",
+   "half_hdr",
+   "newest",
+   "flush",
+   "put",
+   "global_seq",
+   "pack_proj",
+   "tb_store_save",
+   "unpack",
+   "tb_store_load",
+   "tb_store_load_last",
+   "tb_store_info",
+   "pool_n",
+   "rec",
+   "pnewest",
+   "tb_store_save",
+   "tb_store_load",
+   "tb_store_load_last",
+   "tb_store_info",
+   "tb_store_smp_prepare",
+   "tb_store_smp_write",
+   "tb_store_samples_load",
+   "tb_store_samples_save",
+   "tb_store_samples_load"
+  ],
+  "globals": 4
+ },
+ {
+  "file": "firmware/rfm/engine/tb_synth.c",
+  "lines": 719,
+  "units": [
+   "tb_synth.c"
+  ],
+  "functions": [
+   "rave_mode",
+   "tb_syn_all_off",
+   "start",
+   "play_mono",
+   "tb_syn_on",
+   "tb_syn_off",
+   "tb_syn_env",
+   "blep",
+   "pulse",
+   "k_pole1",
+   "tb_syn_render"
+  ],
+  "globals": 9
+ },
+ {
+  "file": "firmware/rfm_crt0.S",
+  "lines": 29,
+  "units": [
+   "rfm_crt0.S"
+  ],
+  "functions": [],
+  "globals": 0
+ },
+ {
+  "file": "firmware/hal/fm1_vec.S",
+  "lines": 37,
+  "units": [
+   "fm1_vec.S"
+  ],
+  "functions": [],
+  "globals": 0
+ },
+ {
+  "file": "firmware/hal/fm1_isr.S",
+  "lines": 21,
+  "units": [
+   "fm1_isr.S"
+  ],
+  "functions": [],
+  "globals": 0
+ }
+]

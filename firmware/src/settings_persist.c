@@ -1,0 +1,138 @@
+/* SPDX-License-Identifier: GPL-3.0-only */
+/* Shared PER4 layout: each feature updates only its own fields, preserving
+ * the other feature's saved preferences when either is built independently.
+ * PER1/PER2 are upstream; PER3 added bold; PER4 added favorites.
+ * palette: UI_PAL_TAG + index; an old id (below 20, earlier firmware) is migrated on import.
+ * bold: no longer used (one font weight); kept as it was saved, unless it holds the HOLD setting (panel.c).
+ * zoom: no longer used (the large readout); kept as it was saved, unless it holds the LEDS setting (panel.c).
+ * favorites.factory[15][23]: JIANT_PAL_SEEN (JIANT 0.6.81). [15][20]: SKIN (JIANT 0.8.9; 0 = COLORS; 0.9.7: 3 AIR, new settings'). [15][19]: SCOPE (0.9.7; 0 = OFF). favorites.factory[15][28..31]: CLICK / CLICK LEVEL / COUNT-IN (1.1), STYLE, MENU's flags, [31] the layers seen (0.9.5: unused, kept as saved) (bytes no
+ * engine uses; 0 in older settings = every one's default); [15][27]: SCREEN OFF (1.1.5; 0 = 30 MIN, the default).
+ * [15][0..12] (0.9.5): how many times each teaching hint has been given (ui.c hint_given; 0 in older settings = not yet).
+ * MENU's flags (ui.c PREF_*) are append-only bits whose 0 is the default: BPM LOCK (16) is clear in every older setting
+ * = unlocked, LARGE (32) = OFF, RESTORE LAST OFF (128, 1.2) = ON, read as saved (nothing to migrate, so importing twice changes nothing). */
+typedef struct {
+    uint32_t magic, palette, lowcut, zoom;
+    panel_t panel;
+    uint32_t bold;
+    struct { uint8_t factory[16][32]; uint32_t user, filter; } favorites;
+} persist_t;
+#define PERSIST_MAGIC 0x50455234u
+#define JIANT_PAL_SEEN 0x4Au                    /* favorites.factory[15][23]: the palette set to JIANT once */
+
+/* Normalize in place; 1 = current, 2 = migrated, 0 = invalid. */
+/* (p1) settings_import's checks of engine 15's bytes, out of line (its room before the sound is pinned) */
+static __attribute__((noinline)) void settings_fix15(uint8_t *f)
+{
+    if (f[27] > 7u)                                 /* SCREEN OFF (1.1.5, ui.c SCR_CODE): unknown = 0 (NEVER since 1.1.5.1) */
+        f[27] = 0;
+    if (f[16] > 7u)                                 /* OCT BEND (V10.6z4, ui.c oct_xp): unknown = 2 ST (0) */
+        f[16] = 0;
+    if (!(f[14] >> 4) && ((f[14] ^ 2u) & 3u) != 2u) {   /* (V10.7.23) AFTERTOUCH OFF 1..10 in bits 4-7: an older
+                                                     * OFF LOW HIGH (bits 0-1) as 0 3 8, once (bits 0-1 then MID's) */
+        static const uint8_t AT_OLD[4] = {0, 3, 5, 8};
+        f[14] = (uint8_t)((f[14] & 0x0Cu) | (uint32_t)(AT_OLD[(f[14] ^ 2u) & 3u] ^ 5u) << 4);
+    }
+    f[18] = f[18] == 10u ? 10u : 0u;                /* PRESETS' LIST type (ui.c list_type): not kept over a power-off,
+                                                     * but USER (10 = PT_N, V10.7.22: the user's own bank) is
+                                                     * (V10.7.19: two users left it on VOX and found "no presets": the
+                                                     * PRESETS knob walked the VOX sounds alone). FAV is kept as before */
+}
+static int settings_import(persist_t *p, int n)
+{
+    int current = n == (int)sizeof *p && p->magic == PERSIST_MAGIC;
+    int old3 = n == (int)(sizeof *p - sizeof p->favorites) && p->magic == 0x50455233u;
+    int old2 = n == (int)(sizeof *p - sizeof p->favorites - sizeof p->bold) && p->magic == 0x50455232u;
+    int old1 = n == (int)(8u + sizeof(panel_t)) && p->magic == 0x50455231u;
+    if (!(current || old3 || old2 || old1)) return 0;
+    if (old1) {
+        panel_t old;
+        memcpy(&old, (uint8_t *)p + 8, sizeof old);
+        p->panel = old;
+        p->lowcut = p->zoom = 0;
+    }
+    if (old1 || old2) p->bold = 0;
+    if (!current) memset(&p->favorites, 0, sizeof p->favorites);
+    p->favorites.factory[15][20] = 0;             /* SKIN (JIANT 0.8.9 .. V10.7.22; 3 was AIR, 1 BOTTOM, 2 HUD; retired V10.7.23):
+                                                    * COLORS, the one skin (0, as older firmware reads it) */
+    if (p->favorites.factory[15][19] > 1u)         /* SCOPE (0.9.7, ui.c ui_scope): unknown = OFF (0, older settings too) */
+        p->favorites.factory[15][19] = 0;
+    p->favorites.factory[15][29] = 0;             /* STYLE (retired: 1 LINE, 2 PIXEL): FLAT, the one style (0, as older firmware
+                                                    * reads it) */
+    {   /* CLICK, CLICK LEVEL, COUNT-IN (ui.c ui_rec_prefs): two bits each, 3 is no value: the default (0) */
+        uint32_t b = p->favorites.factory[15][28], f;
+        for (f = 0; f < 3u; f++)
+            if (((b >> (2u * f)) & 3u) == 3u)
+                b &= ~(3u << (2u * f));
+        p->favorites.factory[15][28] = (uint8_t)b;
+    }
+    if (p->favorites.factory[15][21] > 3u)         /* USB STEMS / IN+OUT / STEMS+IN (0.7.1, 0.7.5, 0.8.0, ui.c usb_out): unknown = stereo */
+        p->favorites.factory[15][21] = 0;
+    if (p->favorites.factory[15][22] > 4u)         /* USB LEVEL past FIXED (0.7.0, ui.c usb_lvl): unknown = FULL */
+        p->favorites.factory[15][22] = 0;
+    if (p->favorites.factory[15][26] > 2u)         /* LOAD (JIANT 0.6.30, ui.c ui_load): unknown = FULL */
+        p->favorites.factory[15][26] = 0;
+    if (p->favorites.factory[15][24] > 3u)         /* MIDI OUT (JIANT 0.6.72, ui.c midi_out_mode): unknown = KEYS */
+        p->favorites.factory[15][24] = 0;
+    settings_fix15(p->favorites.factory[15]);
+    vk_cal = 0;                                     /* (V10.6z6) the keys' calibration read again (vel.c) */
+    p->magic = PERSIST_MAGIC;
+    p->palette = palette_to_stored(palette_from_stored(p->palette));
+    settings.magic = SETTINGS_MAGIC;
+    settings.palette = palette_from_stored(p->palette);
+    settings.lowcut = p->lowcut;
+    settings.zoom = p->zoom;
+    settings_hold = (uint8_t)hold_from_stored(p->bold);
+    settings_leds = (uint8_t)leds_from_stored(p->zoom);
+#ifdef FELUCCA_FAVORITES
+    memcpy(&favorites, &p->favorites, sizeof favorites);
+    favorites.filter = favorites.filter == 1u;
+#if defined(FM4_NPRESETS) && !FELUCCA_FM4
+    {   /* DIGITAL's starred presets (engine 1, retired) -> the FM6 presets that cover them (fm4_convert.c) */
+        uint32_t k;
+        for (k = 0; k < FM4_NPRESETS; k++)
+            if ((favorites.factory[ENGI_DIGITAL][0] >> k) & 1u)
+                favorites.factory[ENGI_FM6][FM4_TO_FM6[k] / 8u] |= (uint8_t)(1u << (FM4_TO_FM6[k] % 8u));
+        favorites.factory[ENGI_DIGITAL][0] = 0;   /* (p1, as main 0.9.12: the row's bytes 1..31 MIDI MAP and LEARN's,
+                                                   * midi_learn.c) */
+    }
+#endif
+#ifdef SMP_SET_PERC
+    if ((favorites.factory[ENGI_SAMPLE][0] >> SMP_SET_PERC) & 1u) {   /* SAMPLE's PERC (preset 4, retired): DRUM's */
+        favorites.factory[ENGI_DRUM][0] |= 1u;                         /* kit (core.h drum_from_perc) */
+        favorites.factory[ENGI_SAMPLE][0] &= (uint8_t)~(1u << SMP_SET_PERC);
+    }
+#endif
+#endif
+    if (p->panel.magic == PANEL_MAGIC) panel = p->panel;
+    return current ? 1 : 2;
+}
+
+/* (JIANT 0.6.81) at power-on (persist_boot, not a backup's restore): settings saved by Felucca or an earlier JIANT keep
+ * their palette, often GREY or MONO (a black and white screen after installing): set to JIANT once, marked (the mark
+ * saved with the next settings: a palette picked after this is kept) */
+static void settings_jiant_once(persist_t *p)
+{
+    if (p->favorites.factory[15][23] == JIANT_PAL_SEEN)
+        return;
+    p->favorites.factory[15][23] = JIANT_PAL_SEEN;
+    p->palette = palette_to_stored(UI_JIANT_INDEX);
+    settings.palette = UI_JIANT_INDEX;
+#ifdef FELUCCA_FAVORITES
+    favorites.factory[15][23] = JIANT_PAL_SEEN;
+#endif
+}
+
+/* Start with the last imported/saved object, including fields owned by a
+ * feature absent from this build. No save-on-boot or extra flash writes. */
+static void settings_export(persist_t *p)
+{
+    p->magic = PERSIST_MAGIC;
+    p->palette = palette_to_stored(settings.palette);
+    p->lowcut = settings.lowcut;
+    p->zoom = settings.zoom = leds_to_stored(settings.zoom, settings_leds);
+    p->panel = panel;
+    p->bold = hold_to_stored(p->bold, settings_hold);
+#ifdef FELUCCA_FAVORITES
+    memcpy(&p->favorites, &favorites, sizeof favorites);
+#endif
+}

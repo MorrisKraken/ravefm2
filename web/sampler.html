@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RAVE FM Sampler</title>
+<style>
+/* SPDX-License-Identifier: GPL-3.0-only
+   RAVE FM 2's sampler, on the phone: a sound recorded with the phone's microphone, or a file from it, trimmed, sent
+   to the FM-1 over the USB-C cable (Web MIDI, SysEx "TB" S/D/E: 16 kHz mono, mu-law). It lands among the SAMPLE and
+   BREAK tracks' sources (PRESETS). Android + Chrome; an iPhone's Safari has no MIDI. */
+:root {
+  --bg: #000; --panel: #120606; --edge: #3a1414; --ink: #f6f0ea; --quiet: #a8a2a0; --red: #ec2a2a; --hot: #ffb000;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--ink); font-family: system-ui, "Segoe UI", Roboto, sans-serif; }
+body { padding: max(14px, env(safe-area-inset-top)) 16px max(18px, env(safe-area-inset-bottom)); max-width: 560px; margin: 0 auto; }
+header { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 14px; }
+h1 { margin: 0; font-size: 1.5rem; letter-spacing: 0.08em; font-weight: 900; }
+h1 span { color: var(--red); }
+.state { font-size: 0.8rem; color: var(--quiet); text-align: right; }
+.state b { color: var(--ink); }
+.card { background: var(--panel); border: 1px solid var(--edge); border-radius: 14px; padding: 14px; margin-bottom: 12px; display: grid; gap: 10px; }
+.label { font-size: 0.72rem; letter-spacing: 0.14em; color: var(--quiet); text-transform: uppercase; }
+button { font: inherit; font-weight: 700; color: var(--ink); background: #1e0c0c; border: 1px solid var(--edge); border-radius: 12px;
+  min-height: 48px; padding: 0 14px; cursor: pointer; touch-action: manipulation; }
+button.main { background: var(--red); border-color: var(--red); color: #000; }
+button.rec { background: #2a0606; border-color: var(--red); color: var(--red); }
+button.rec.on { background: var(--red); color: #000; }
+button:disabled { opacity: 0.4; }
+button:focus-visible, select:focus-visible, input:focus-visible { outline: 2px solid var(--hot); outline-offset: 2px; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.slots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.slots button.on { background: var(--ink); color: #000; border-color: var(--ink); }
+canvas { width: 100%; height: 110px; background: #000; border: 1px solid var(--edge); border-radius: 10px; display: block; }
+input[type=range] { width: 100%; accent-color: var(--red); }
+.trim { display: grid; grid-template-columns: 56px 1fr 52px; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--quiet); }
+progress { width: 100%; height: 10px; accent-color: var(--red); }
+.msg { font-size: 0.85rem; color: var(--quiet); min-height: 1.2em; }
+.msg.err { color: var(--red); }
+.msg.ok { color: var(--hot); }
+p { margin: 0; font-size: 0.85rem; color: var(--quiet); line-height: 1.4; }
+</style>
+</head>
+<body>
+<header>
+  <h1>RAVE <span>FM</span> SAMPLER</h1>
+  <div class="state" id="state">pas branché</div>
+</header>
+
+<div class="card">
+  <p>Branche le FM-1 au téléphone avec un câble <b>USB-C</b> (Android, Chrome), puis touche CONNECTER.</p>
+  <button type="button" class="main" id="connect">CONNECTER LE FM-1</button>
+</div>
+
+<div class="card">
+  <span class="label">1 · Le son</span>
+  <div class="row">
+    <button type="button" class="rec" id="rec">● ENREGISTRER</button>
+    <button type="button" id="pick">FICHIER…</button>
+  </div>
+  <input type="file" id="file" accept="audio/*" hidden>
+  <p id="rec-hint">Le micro du téléphone enregistre jusqu'à 6 secondes. Touche à nouveau pour arrêter.</p>
+  <canvas id="wave" width="1040" height="220" aria-label="la forme du son"></canvas>
+  <div class="trim"><span>DÉBUT</span><input type="range" id="t0" min="0" max="1000" value="0"><span id="t0v">0.0 s</span></div>
+  <div class="trim"><span>FIN</span><input type="range" id="t1" min="0" max="1000" value="1000"><span id="t1v">0.0 s</span></div>
+  <button type="button" id="play" disabled>▶ ÉCOUTER</button>
+</div>
+
+<div class="card">
+  <span class="label">2 · Sa place sur le FM-1</span>
+  <div class="slots" id="slots"></div>
+  <p>4 places, <b>6 secondes en tout</b>. Une place remplace celle-ci et efface celles d'après.</p>
+</div>
+
+<div class="card">
+  <span class="label">3 · Envoyer</span>
+  <button type="button" class="main" id="send" disabled>ENVOYER AU FM-1</button>
+  <progress id="prog" value="0" max="1" hidden></progress>
+  <div class="msg" id="msg"></div>
+  <p>Sur le FM-1 : piste SAMPLE (ou BREAK), tourne PRESETS : ton son est après AMEN, THINK et HOT PANTS.</p>
+</div>
+
+<script>
+"use strict";
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const RATE = 16000, MAX_S = 6, HEAD = [0xf0, 0x7d, 0x54, 0x42];
+  const frame = (cmd, data = []) => Uint8Array.from([...HEAD, cmd.charCodeAt(0), ...data.map((x) => x & 0x7f), 0xf7]);
+  const w28 = (v) => [v & 127, (v >> 7) & 127, (v >> 14) & 127, (v >> 21) & 127];
+  let outs = [], pcm = null, name = "SAMPLE", slot = 0, actx = null;
+
+  // ------------------------------------------------------------------ the FM-1 ---
+  $("connect").addEventListener("click", async () => {
+    if (!navigator.requestMIDIAccess) { $("state").textContent = "pas de MIDI ici (Chrome sur Android)"; return; }
+    try {
+      const m = await navigator.requestMIDIAccess({ sysex: true });
+      const look = () => {
+        outs = [...m.outputs.values()].filter((o) => /rave|fm|m-vave/i.test(o.name || "") || m.outputs.size === 1);
+        $("state").innerHTML = outs.length ? "<b>" + outs[0].name + "</b> branché" : "FM-1 introuvable";
+        update();
+      };
+      m.onstatechange = look;
+      look();
+      outs.forEach((o) => o.send(frame("H")));
+    } catch (e) { $("state").textContent = "MIDI refusé"; }
+  });
+
+  // ------------------------------------------------------------------ the sound ---
+  function setSound(data, nm) {
+    pcm = data, name = nm;
+    $("t0").value = 0, $("t1").value = 1000;
+    draw(), update();
+  }
+  async function decode(buf) {
+    const AC = window.OfflineAudioContext || window.webkitOfflineAudioContext;
+    const src = await new AC(1, 1, 44100).decodeAudioData(buf);
+    const n = Math.max(1, Math.min(Math.ceil(src.duration * RATE), RATE * 30));
+    const off = new AC(1, n, RATE), s = off.createBufferSource();
+    s.buffer = src, s.connect(off.destination), s.start();
+    return (await off.startRendering()).getChannelData(0).slice();
+  }
+  $("pick").addEventListener("click", () => $("file").click());
+  $("file").addEventListener("change", async (e) => {
+    const f = e.target.files[0];
+    if (!f) return;
+    try {
+      const nm = f.name.replace(/\.[^.]*$/, "");
+      setSound(await decode(await f.arrayBuffer()), nm);
+      say("", "");
+    } catch (err) { say("Ce fichier ne se lit pas.", "err"); }
+    e.target.value = "";
+  });
+  let rec = null, chunks = [], recTimer = 0;
+  $("rec").addEventListener("click", async () => {
+    if (rec) { rec.stop(); return; }
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: false } });
+      chunks = [];
+      rec = new MediaRecorder(stream);
+      rec.ondataavailable = (e) => chunks.push(e.data);
+      rec.onstop = async () => {
+        clearTimeout(recTimer);
+        stream.getTracks().forEach((t) => t.stop());
+        $("rec").classList.remove("on"), $("rec").textContent = "● ENREGISTRER";
+        rec = null;
+        try { setSound(await decode(await new Blob(chunks).arrayBuffer()), "MIC"); }
+        catch (err) { say("L'enregistrement ne se lit pas.", "err"); }
+      };
+      rec.start();
+      $("rec").classList.add("on"), $("rec").textContent = "■ STOP";
+      recTimer = setTimeout(() => rec && rec.stop(), MAX_S * 1000 + 300);
+    } catch (err) { say("Le micro est refusé.", "err"); }
+  });
+  function span() {
+    if (!pcm) return [0, 0];
+    let a = Math.floor(pcm.length * $("t0").value / 1000), b = Math.floor(pcm.length * $("t1").value / 1000);
+    if (b < a) [a, b] = [b, a];
+    return [a, Math.min(b, a + RATE * MAX_S)];
+  }
+  function draw() {
+    const c = $("wave"), g = c.getContext("2d"), w = c.width, h = c.height;
+    g.fillStyle = "#000", g.fillRect(0, 0, w, h);
+    if (!pcm) return;
+    const [a, b] = span(), step = pcm.length / w;
+    for (let x = 0; x < w; x++) {
+      let m = 0;
+      for (let i = Math.floor(x * step); i < Math.floor((x + 1) * step); i++) m = Math.max(m, Math.abs(pcm[i] || 0));
+      const i0 = x * step, inside = i0 >= a && i0 < b;
+      g.fillStyle = inside ? "#ec2a2a" : "#3a1414";
+      g.fillRect(x, h / 2 - m * h / 2, 1, Math.max(1, m * h));
+    }
+    $("t0v").textContent = (a / RATE).toFixed(1) + " s", $("t1v").textContent = (b / RATE).toFixed(1) + " s";
+  }
+  $("t0").addEventListener("input", draw), $("t1").addEventListener("input", draw);
+  $("play").addEventListener("click", () => {
+    const [a, b] = span();
+    if (!pcm || b <= a) return;
+    actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+    const buf = actx.createBuffer(1, b - a, RATE);
+    buf.getChannelData(0).set(pcm.subarray(a, b));
+    const s = actx.createBufferSource();
+    s.buffer = buf, s.connect(actx.destination), s.start();
+  });
+
+  // ------------------------------------------------------------------ the place ---
+  for (let i = 0; i < 4; i++) {
+    const b = document.createElement("button");
+    b.type = "button", b.textContent = "PLACE " + (i + 1);
+    b.addEventListener("click", () => { slot = i; [...$("slots").children].forEach((x, k) => x.classList.toggle("on", k === i)); });
+    $("slots").append(b);
+  }
+  $("slots").children[0].classList.add("on");
+
+  // ------------------------------------------------------------------ sending ---
+  function ulaw(x) {
+    const sign = x < 0 ? 0x80 : 0;
+    x = Math.min(32635, Math.abs(x)) + 0x84;
+    let e = 7;
+    while (e > 0 && !(x & (0x4000 >> (7 - e)))) e--;
+    return ~(sign | (e << 4) | ((x >> (e + 3)) & 15)) & 255;
+  }
+  function frames() {
+    const [a, b] = span(), part = pcm.subarray(a, b);
+    let peak = 1e-6;
+    for (const v of part) peak = Math.max(peak, Math.abs(v));
+    const u = new Uint8Array(part.length);
+    for (let i = 0; i < part.length; i++) u[i] = ulaw(Math.round(part[i] / peak * 32000));
+    const nm = name.toUpperCase().replace(/[^A-Z0-9 ]/g, " ").replace(/\s+/g, " ").trim().slice(0, 11) || "SAMPLE";
+    const out = [frame("S", [slot, ...w28(u.length), ...[...nm].map((c) => c.charCodeAt(0))])];
+    for (let at = 0; at < u.length; at += 105) {
+      const chunk = u.subarray(at, at + 105), d = [...w28(at)];
+      for (let g = 0; g < chunk.length; g += 7) {
+        let hb = 0;
+        const grp = chunk.subarray(g, g + 7);
+        grp.forEach((v, j) => { if (v & 128) hb |= 1 << j; });
+        d.push(hb, ...[...grp].map((v) => v & 127));
+      }
+      out.push(frame("D", d));
+    }
+    out.push(frame("E"));
+    return { out, nm, secs: u.length / RATE };
+  }
+  $("send").addEventListener("click", async () => {
+    if (!outs.length || !pcm) return;
+    const f = frames(), prog = $("prog");
+    $("send").disabled = true, prog.hidden = false, say("Le FM-1 prépare la place…", "");
+    outs[0].send(f.out[0]);
+    await new Promise((r) => setTimeout(r, 1800));       // (its room erased in flash first)
+    for (let i = 1; i < f.out.length; i++) {
+      outs[0].send(f.out[i]);
+      prog.value = i / (f.out.length - 1);
+      if (i % 4 === 0) await new Promise((r) => setTimeout(r, 8));
+    }
+    say(f.nm + " · " + f.secs.toFixed(1) + " s envoyé à la place " + (slot + 1) + ".", "ok");
+    $("send").disabled = false;
+  });
+  function say(t, k) { $("msg").textContent = t, $("msg").className = "msg " + (k || ""); }
+  function update() {
+    $("play").disabled = !pcm;
+    $("send").disabled = !pcm || !outs.length;
+  }
+})();
+</script>
+</body>
+</html>

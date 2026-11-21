@@ -1,0 +1,21 @@
+configurations run: 91 (pairwise 31, 3-way 58, edges 2); sanitizer errors: 0; flagged (clip, peak >= 0.999, |dc| > 2 %, sanitizer): 0
+CPU (time per block on this PC, x the all-off configuration 33.7 us): min 1.03  median 1.49  max 3.15
+heaviest five:
+  x3.15  peak 0.897  {'DRIVE': 'OVERDRIVE', 'STACK': 'PHASER', 'CHORUS': 'MAX', 'REVERB': '20', 'DELAY': '0', 'CHORD': 'AUTO 9', 'ARP': 'off', 'FX KEY': 'ROLL32', 'EVENT': 'DROP', 'BPM': '260', 'EQ': 'MAX', '909': 'VRAI'}
+  x2.39  peak 0.963  {'DRIVE': 'OVERDRIVE', 'STACK': 'PHASER', 'CHORUS': 'MAX', 'REVERB': '20', 'DELAY': 'MAX', 'CHORD': 'OFF', 'ARP': 'on', 'FX KEY': 'WASH', 'EVENT': 'none', 'BPM': '140', 'EQ': 'flat', '909': 'DRUM-X+MORPH+DRIVE'}
+  x2.16  peak 0.919  {'DRIVE': 'FUZZ', 'STACK': 'none', 'CHORUS': 'MAX', 'REVERB': 'MAX', 'DELAY': 'MAX', 'CHORD': 'AUTO 9', 'ARP': 'on', 'FX KEY': 'KILLBASS', 'EVENT': 'RISER', 'BPM': '260', 'EQ': 'flat', '909': 'VRAI'}
+  x2.14  peak 0.873  {'DRIVE': 'OFF', 'STACK': 'PHASER', 'CHORUS': '0', 'REVERB': '20', 'DELAY': '0', 'CHORD': 'OFF', 'ARP': 'on', 'FX KEY': 'KILLBASS', 'EVENT': 'DROP', 'BPM': '260', 'EQ': 'flat', '909': 'VRAI'}
+  x2.11  peak 0.890  {'DRIVE': 'DIST', 'STACK': 'PHASER', 'CHORUS': 'MAX', 'REVERB': '20', 'DELAY': 'MAX', 'CHORD': 'OFF', 'ARP': 'on', 'FX KEY': 'ROLL32', 'EVENT': 'DROP', 'BPM': '140', 'EQ': 'flat', '909': 'VRAI'}
+mean CPU by factor level:
+  DRIVE: OFF x1.52, OVERDRIVE x1.68, DIST x1.63, FUZZ x1.66, LO-FI x1.53, FOLD x1.55
+  STACK: none x1.43, FLANGER x1.54, PHASER x1.85, TREMOLO x1.53
+  CHORUS: 0 x1.49, MAX x1.69
+  REVERB: 20 x1.63, MAX x1.56
+  DELAY: 0 x1.58, MAX x1.61
+  CHORD: OFF x1.53, AUTO 9 x1.67
+  ARP: off x1.56, on x1.63
+  FX KEY: none x1.41, WASH x1.64, ROLL32 x1.70, KILLBASS x1.65, ECHO x1.51
+  EVENT: none x1.49, DROP x1.65, RISER x1.64
+  BPM: 140 x1.53, 260 x1.64
+  EQ: flat x1.59, MAX x1.60
+  909: VRAI x1.60, DRUM-X+MORPH+DRIVE x1.59

@@ -1,0 +1,1472 @@
+In file included from firmware/rfm/engine/rfm_ui.c:11:
+In file included from firmware/rfm/engine/../jui/rfm_screen.c:8:
+firmware/rfm/engine/../jui/jgfx.c:816:19: warning: Value stored to 'step' during its initialization is never read [deadcode.DeadStores]
+  816 |     const int32_t step = 16 >> f->psh;
+      |                   ^~~~   ~~~~~~~~~~~~
+firmware/rfm/engine/../jui/jgfx.c:816:19: note: Value stored to 'step' during its initialization is never read
+  816 |     const int32_t step = 16 >> f->psh;
+      |                   ^~~~   ~~~~~~~~~~~~
+firmware/rfm/engine/../jui/jgfx.c:841:9: warning: Value stored to 'err' is never read [deadcode.DeadStores]
+  841 |         err = pos - pen;
+      |         ^     ~~~~~~~~~
+firmware/rfm/engine/../jui/jgfx.c:841:9: note: Value stored to 'err' is never read
+  841 |         err = pos - pen;
+      |         ^     ~~~~~~~~~
+firmware/rfm/engine/rfm_ui.c:717:18: warning: Although the value stored to 'cool' is used in the enclosing expression, the value is never actually read from 'cool' [deadcode.DeadStores]
+  717 |         ink[1] = cool = ux_mix(cool, warm, (int32_t)((rage - 100u) * 60u / 156u));
+      |                  ^      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/rfm_ui.c:717:18: note: Although the value stored to 'cool' is used in the enclosing expression, the value is never actually read from 'cool'
+  717 |         ink[1] = cool = ux_mix(cool, warm, (int32_t)((rage - 100u) * 60u / 156u));
+      |                  ^      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/rfm_ui.c:1350:17: warning: Out of bound access to memory preceding the field 'sl' [alpha.security.ArrayBoundV2]
+ 1350 |             if (s->sl[i] >= 9 && slice_len(s, i, last) * sw < 17)
+      |                 ^~~~~~~~
+firmware/rfm/engine/rfm_ui.c:1339:17: note: Assuming 'i' is >= field 'len'
+ 1339 |     for (i = 0; i < s->len; i += 4) {                 /* the beats */
+      |                 ^~~~~~~~~~
+firmware/rfm/engine/rfm_ui.c:1339:5: note: Loop condition is false. Execution continues on line 1344
+ 1339 |     for (i = 0; i < s->len; i += 4) {                 /* the beats */
+      |     ^
+firmware/rfm/engine/rfm_ui.c:1344:19: note: Assuming 'row' is < field 'rows'
+ 1344 |     for (row = 0; row < l->rows; row++) {
+      |                   ^~~~~~~~~~~~~
+firmware/rfm/engine/rfm_ui.c:1344:5: note: Loop condition is true.  Entering loop body
+ 1344 |     for (row = 0; row < l->rows; row++) {
+      |     ^
+firmware/rfm/engine/rfm_ui.c:1349:25: note: Assuming 'i' is >= 'last'
+ 1349 |         for (i = first; i < last && i < s->len; i++)  /* (two-digit numbers too wide for their pieces: every other one) */
+      |                         ^~~~~~~~
+firmware/rfm/engine/rfm_ui.c:1349:34: note: Left side of '&&' is false
+ 1349 |         for (i = first; i < last && i < s->len; i++)  /* (two-digit numbers too wide for their pieces: every other one) */
+      |                                  ^
+firmware/rfm/engine/rfm_ui.c:1352:25: note: 'i' is >= 'last'
+ 1352 |         for (i = first; i < last && i < s->len; i++) {
+      |                         ^
+firmware/rfm/engine/rfm_ui.c:1352:34: note: Left side of '&&' is false
+ 1352 |         for (i = first; i < last && i < s->len; i++) {
+      |                                  ^
+firmware/rfm/engine/rfm_ui.c:1344:19: note: Assuming 'row' is < field 'rows'
+ 1344 |     for (row = 0; row < l->rows; row++) {
+      |                   ^~~~~~~~~~~~~
+firmware/rfm/engine/rfm_ui.c:1344:5: note: Loop condition is true.  Entering loop body
+ 1344 |     for (row = 0; row < l->rows; row++) {
+      |     ^
+firmware/rfm/engine/rfm_ui.c:1349:25: note: Assuming 'i' is < 'last'
+ 1349 |         for (i = first; i < last && i < s->len; i++)  /* (two-digit numbers too wide for their pieces: every other one) */
+      |                         ^~~~~~~~
+firmware/rfm/engine/rfm_ui.c:1349:25: note: Left side of '&&' is true
+firmware/rfm/engine/rfm_ui.c:1349:37: note: 'i' is < field 'len'
+ 1349 |         for (i = first; i < last && i < s->len; i++)  /* (two-digit numbers too wide for their pieces: every other one) */
+      |                                     ^
+firmware/rfm/engine/rfm_ui.c:1349:9: note: Loop condition is true.  Entering loop body
+ 1349 |         for (i = first; i < last && i < s->len; i++)  /* (two-digit numbers too wide for their pieces: every other one) */
+      |         ^
+firmware/rfm/engine/rfm_ui.c:1350:17: note: Access of the field 'sl' at negative byte offset
+ 1350 |             if (s->sl[i] >= 9 && slice_len(s, i, last) * sw < 17)
+      |                 ^~~~~~~~
+4 warnings generated.
+firmware/rfm/engine/tb_app.c:694:13: warning: Although the value stored to 'r' is used in the enclosing expression, the value is never actually read from 'r' [deadcode.DeadStores]
+  694 |     while ((r = fm1_screen_pending()) > 0 && fm1_millis() - t0 < 40u)
+      |             ^   ~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:694:13: note: Although the value stored to 'r' is used in the enclosing expression, the value is never actually read from 'r'
+  694 |     while ((r = fm1_screen_pending()) > 0 && fm1_millis() - t0 < 40u)
+      |             ^   ~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:959:22: warning: Out of bound access to memory after the end of the field 'at' [alpha.security.ArrayBoundV2]
+  959 |     int32_t lo = i ? m->at[i - 1u] + 50 : 0, hi = i + 1u < m->n ? m->at[i + 1u] - 50 : (int32_t)man_len4() - 50;
+      |                      ^
+firmware/rfm/engine/tb_app.c:1116:9: note: Assuming 'ref' is not equal to R_TOOL
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |         ^~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1116:9: note: Left side of '&&' is true
+firmware/rfm/engine/tb_app.c:1116:26: note: Assuming 'ref' is not equal to R_TP1
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |                          ^~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1116:9: note: Left side of '&&' is true
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |         ^
+firmware/rfm/engine/tb_app.c:1116:42: note: Assuming 'ref' is not equal to R_TP2
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |                                          ^~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1116:9: note: Left side of '&&' is true
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |         ^
+firmware/rfm/engine/tb_app.c:1116:58: note: Assuming 'ref' is not equal to R_SLOT
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |                                                          ^~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1116:9: note: Left side of '&&' is true
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |         ^
+firmware/rfm/engine/tb_app.c:1116:75: note: Assuming 'ref' is not equal to R_MON
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |                                                                           ^~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1116:9: note: Left side of '&&' is true
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |         ^
+firmware/rfm/engine/tb_app.c:1116:91: note: Assuming 'ref' is not equal to R_PAL
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |                                                                                           ^~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1116:9: note: Left side of '&&' is true
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |         ^
+firmware/rfm/engine/tb_app.c:1116:107: note: Assuming 'ref' is not equal to R_LIGHT
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |                                                                                                           ^~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1116:9: note: Left side of '&&' is true
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |         ^
+firmware/rfm/engine/tb_app.c:1116:125: note: Assuming 'ref' is not equal to R_SPOS
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |                                                                                                                             ^~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1116:9: note: Left side of '&&' is true
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |         ^
+firmware/rfm/engine/tb_app.c:1116:142: note: Assuming 'ref' is not equal to R_SCUR
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |                                                                                                                                              ^~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1116:9: note: Left side of '&&' is true
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |         ^
+firmware/rfm/engine/tb_app.c:1116:159: note: Assuming 'ref' is not equal to R_SVAL
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |                                                                                                                                                               ^~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1116:9: note: Left side of '&&' is true
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |         ^
+firmware/rfm/engine/tb_app.c:1116:176: note: Assuming 'ref' is not equal to R_RSEL
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |                                                                                                                                                                                ^~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1116:9: note: Left side of '&&' is true
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |         ^
+firmware/rfm/engine/tb_app.c:1117:9: note: Assuming 'ref' is not equal to R_SPAGE
+ 1117 |         ref != R_SPAGE && ref != R_SPIECE && ref != R_SRES && ref != R_DSEL)
+      |         ^~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1116:9: note: Left side of '&&' is true
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |         ^
+firmware/rfm/engine/tb_app.c:1117:27: note: Assuming 'ref' is not equal to R_SPIECE
+ 1117 |         ref != R_SPAGE && ref != R_SPIECE && ref != R_SRES && ref != R_DSEL)
+      |                           ^~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1116:9: note: Left side of '&&' is true
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |         ^
+firmware/rfm/engine/tb_app.c:1117:46: note: Assuming 'ref' is not equal to R_SRES
+ 1117 |         ref != R_SPAGE && ref != R_SPIECE && ref != R_SRES && ref != R_DSEL)
+      |                                              ^~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1116:9: note: Left side of '&&' is true
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |         ^
+firmware/rfm/engine/tb_app.c:1117:63: note: Assuming 'ref' is not equal to R_DSEL
+ 1117 |         ref != R_SPAGE && ref != R_SPIECE && ref != R_SRES && ref != R_DSEL)
+      |                                                               ^~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1116:5: note: Taking true branch
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |     ^
+firmware/rfm/engine/tb_app.c:1119:9: note: Assuming 'ref' is >= 32
+ 1119 |     if (ref < 32u) {
+      |         ^~~~~~~~~
+firmware/rfm/engine/tb_app.c:1119:5: note: Taking false branch
+ 1119 |     if (ref < 32u) {
+      |     ^
+firmware/rfm/engine/tb_app.c:1125:9: note: Assuming 'ref' is < R_TVOL
+ 1125 |     if (ref >= R_TVOL && ref < R_TVOL + TB_TRACKS) {
+      |         ^~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1125:23: note: Left side of '&&' is false
+ 1125 |     if (ref >= R_TVOL && ref < R_TVOL + TB_TRACKS) {
+      |                       ^
+firmware/rfm/engine/tb_app.c:1129:9: note: Assuming 'ref' is < R_STK
+ 1129 |     if (ref >= R_STK && ref <= R_STK_END) {
+      |         ^~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1129:22: note: Left side of '&&' is false
+ 1129 |     if (ref >= R_STK && ref <= R_STK_END) {
+      |                      ^
+firmware/rfm/engine/tb_app.c:1133:9: note: 'ref' is < R_STKM
+ 1133 |     if (ref >= R_STKM && ref <= R_STKM_END) {
+      |         ^~~
+firmware/rfm/engine/tb_app.c:1133:23: note: Left side of '&&' is false
+ 1133 |     if (ref >= R_STKM && ref <= R_STKM_END) {
+      |                       ^
+firmware/rfm/engine/tb_app.c:1137:9: note: 'ref' is < R_FXV
+ 1137 |     if (ref >= R_FXV && ref <= R_FXV_END) {
+      |         ^~~
+firmware/rfm/engine/tb_app.c:1137:22: note: Left side of '&&' is false
+ 1137 |     if (ref >= R_FXV && ref <= R_FXV_END) {
+      |                      ^
+firmware/rfm/engine/tb_app.c:1141:9: note: Assuming 'ref' is not equal to R_INSB
+ 1141 |     if (ref == R_INSB)
+      |         ^~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1141:5: note: Taking false branch
+ 1141 |     if (ref == R_INSB)
+      |     ^
+firmware/rfm/engine/tb_app.c:1143:9: note: Assuming 'ref' is >= R_INSA
+ 1143 |     if (ref >= R_INSA && ref <= R_INSB3) {
+      |         ^~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1143:9: note: Left side of '&&' is true
+firmware/rfm/engine/tb_app.c:1143:26: note: Assuming 'ref' is > R_INSB3
+ 1143 |     if (ref >= R_INSA && ref <= R_INSB3) {
+      |                          ^~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1143:5: note: Taking false branch
+ 1143 |     if (ref >= R_INSA && ref <= R_INSB3) {
+      |     ^
+firmware/rfm/engine/tb_app.c:1156:5: note: Control jumps to 'case R_MPOS:'  at line 1316
+ 1156 |     switch (ref) {
+      |     ^
+firmware/rfm/engine/tb_app.c:1316:50: note: Calling 'man_move'
+ 1316 |     case R_MPOS: { tb_brk_man_t *m = man_take(); man_move(m, man_sel, (int32_t)((uint32_t)v * man_len4() / 1000u)); break; }
+      |                                                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:959:18: note: 'i' is 255
+  959 |     int32_t lo = i ? m->at[i - 1u] + 50 : 0, hi = i + 1u < m->n ? m->at[i + 1u] - 50 : (int32_t)man_len4() - 50;
+      |                  ^
+firmware/rfm/engine/tb_app.c:959:18: note: '?' condition is true
+firmware/rfm/engine/tb_app.c:959:22: note: Access of the field 'at' at index 254, while it holds only 32 'unsigned short' elements
+  959 |     int32_t lo = i ? m->at[i - 1u] + 50 : 0, hi = i + 1u < m->n ? m->at[i + 1u] - 50 : (int32_t)man_len4() - 50;
+      |                      ^~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1317:81: warning: Out of bound access to memory after the end of the field 'at' [alpha.security.ArrayBoundV2]
+ 1317 |     case R_MFINE: { tb_brk_man_t *m = man_take(); man_move(m, man_sel, (int32_t)m->at[man_sel] + (v - 64) * 8); break; }
+      |                                                                                 ^~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1116:9: note: Assuming 'ref' is not equal to R_TOOL
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |         ^~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1116:9: note: Left side of '&&' is true
+firmware/rfm/engine/tb_app.c:1116:26: note: Assuming 'ref' is not equal to R_TP1
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |                          ^~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1116:9: note: Left side of '&&' is true
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |         ^
+firmware/rfm/engine/tb_app.c:1116:42: note: Assuming 'ref' is not equal to R_TP2
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |                                          ^~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1116:9: note: Left side of '&&' is true
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |         ^
+firmware/rfm/engine/tb_app.c:1116:58: note: Assuming 'ref' is not equal to R_SLOT
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |                                                          ^~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1116:9: note: Left side of '&&' is true
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |         ^
+firmware/rfm/engine/tb_app.c:1116:75: note: Assuming 'ref' is not equal to R_MON
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |                                                                           ^~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1116:9: note: Left side of '&&' is true
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |         ^
+firmware/rfm/engine/tb_app.c:1116:91: note: Assuming 'ref' is not equal to R_PAL
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |                                                                                           ^~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1116:9: note: Left side of '&&' is true
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |         ^
+firmware/rfm/engine/tb_app.c:1116:107: note: Assuming 'ref' is not equal to R_LIGHT
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |                                                                                                           ^~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1116:9: note: Left side of '&&' is true
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |         ^
+firmware/rfm/engine/tb_app.c:1116:125: note: Assuming 'ref' is not equal to R_SPOS
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |                                                                                                                             ^~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1116:9: note: Left side of '&&' is true
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |         ^
+firmware/rfm/engine/tb_app.c:1116:142: note: Assuming 'ref' is not equal to R_SCUR
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |                                                                                                                                              ^~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1116:9: note: Left side of '&&' is true
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |         ^
+firmware/rfm/engine/tb_app.c:1116:159: note: Assuming 'ref' is not equal to R_SVAL
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |                                                                                                                                                               ^~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1116:9: note: Left side of '&&' is true
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |         ^
+firmware/rfm/engine/tb_app.c:1116:176: note: Assuming 'ref' is not equal to R_RSEL
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |                                                                                                                                                                                ^~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1116:9: note: Left side of '&&' is true
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |         ^
+firmware/rfm/engine/tb_app.c:1117:9: note: Assuming 'ref' is not equal to R_SPAGE
+ 1117 |         ref != R_SPAGE && ref != R_SPIECE && ref != R_SRES && ref != R_DSEL)
+      |         ^~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1116:9: note: Left side of '&&' is true
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |         ^
+firmware/rfm/engine/tb_app.c:1117:27: note: Assuming 'ref' is not equal to R_SPIECE
+ 1117 |         ref != R_SPAGE && ref != R_SPIECE && ref != R_SRES && ref != R_DSEL)
+      |                           ^~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1116:9: note: Left side of '&&' is true
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |         ^
+firmware/rfm/engine/tb_app.c:1117:46: note: Assuming 'ref' is not equal to R_SRES
+ 1117 |         ref != R_SPAGE && ref != R_SPIECE && ref != R_SRES && ref != R_DSEL)
+      |                                              ^~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1116:9: note: Left side of '&&' is true
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |         ^
+firmware/rfm/engine/tb_app.c:1117:63: note: Assuming 'ref' is not equal to R_DSEL
+ 1117 |         ref != R_SPAGE && ref != R_SPIECE && ref != R_SRES && ref != R_DSEL)
+      |                                                               ^~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1116:5: note: Taking true branch
+ 1116 |     if (ref != R_TOOL && ref != R_TP1 && ref != R_TP2 && ref != R_SLOT && ref != R_MON && ref != R_PAL && ref != R_LIGHT && ref != R_SPOS && ref != R_SCUR && ref != R_SVAL && ref != R_RSEL &&
+      |     ^
+firmware/rfm/engine/tb_app.c:1119:9: note: Assuming 'ref' is >= 32
+ 1119 |     if (ref < 32u) {
+      |         ^~~~~~~~~
+firmware/rfm/engine/tb_app.c:1119:5: note: Taking false branch
+ 1119 |     if (ref < 32u) {
+      |     ^
+firmware/rfm/engine/tb_app.c:1125:9: note: Assuming 'ref' is < R_TVOL
+ 1125 |     if (ref >= R_TVOL && ref < R_TVOL + TB_TRACKS) {
+      |         ^~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1125:23: note: Left side of '&&' is false
+ 1125 |     if (ref >= R_TVOL && ref < R_TVOL + TB_TRACKS) {
+      |                       ^
+firmware/rfm/engine/tb_app.c:1129:9: note: Assuming 'ref' is < R_STK
+ 1129 |     if (ref >= R_STK && ref <= R_STK_END) {
+      |         ^~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1129:22: note: Left side of '&&' is false
+ 1129 |     if (ref >= R_STK && ref <= R_STK_END) {
+      |                      ^
+firmware/rfm/engine/tb_app.c:1133:9: note: 'ref' is < R_STKM
+ 1133 |     if (ref >= R_STKM && ref <= R_STKM_END) {
+      |         ^~~
+firmware/rfm/engine/tb_app.c:1133:23: note: Left side of '&&' is false
+ 1133 |     if (ref >= R_STKM && ref <= R_STKM_END) {
+      |                       ^
+firmware/rfm/engine/tb_app.c:1137:9: note: 'ref' is < R_FXV
+ 1137 |     if (ref >= R_FXV && ref <= R_FXV_END) {
+      |         ^~~
+firmware/rfm/engine/tb_app.c:1137:22: note: Left side of '&&' is false
+ 1137 |     if (ref >= R_FXV && ref <= R_FXV_END) {
+      |                      ^
+firmware/rfm/engine/tb_app.c:1141:9: note: Assuming 'ref' is not equal to R_INSB
+ 1141 |     if (ref == R_INSB)
+      |         ^~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1141:5: note: Taking false branch
+ 1141 |     if (ref == R_INSB)
+      |     ^
+firmware/rfm/engine/tb_app.c:1143:9: note: Assuming 'ref' is >= R_INSA
+ 1143 |     if (ref >= R_INSA && ref <= R_INSB3) {
+      |         ^~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1143:9: note: Left side of '&&' is true
+firmware/rfm/engine/tb_app.c:1143:26: note: Assuming 'ref' is > R_INSB3
+ 1143 |     if (ref >= R_INSA && ref <= R_INSB3) {
+      |                          ^~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1143:5: note: Taking false branch
+ 1143 |     if (ref >= R_INSA && ref <= R_INSB3) {
+      |     ^
+firmware/rfm/engine/tb_app.c:1156:5: note: Control jumps to 'case R_MFINE:'  at line 1317
+ 1156 |     switch (ref) {
+      |     ^
+firmware/rfm/engine/tb_app.c:1317:81: note: Access of the field 'at' at index 255, while it holds only 32 'unsigned short' elements
+ 1317 |     case R_MFINE: { tb_brk_man_t *m = man_take(); man_move(m, man_sel, (int32_t)m->at[man_sel] + (v - 64) * 8); break; }
+      |                                                                                 ^~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:2039:36: warning: Left shift by '127' overflows the capacity of 'unsigned int' [core.BitwiseShift]
+ 2039 |             e.hits = (uint16_t)(1u << what);
+      |                                    ^
+firmware/rfm/engine/tb_app.c:2445:9: note: Assuming the condition is false
+ 2445 |     if (c->buttons & BTN(B_GLO)) {                    /* GLO held: mutes (white 1..8), solos (9..16) */
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:2445:5: note: Taking false branch
+ 2445 |     if (c->buttons & BTN(B_GLO)) {                    /* GLO held: mutes (white 1..8), solos (9..16) */
+      |     ^
+firmware/rfm/engine/tb_app.c:2453:9: note: Assuming the condition is false
+ 2453 |     if (FX_LAYER(c->buttons)) {                       /* FX held (or locked open): the live effects; the black keys mute */
+      |         ^~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:630:23: note: expanded from macro 'FX_LAYER'
+  630 | #define FX_LAYER(b) (((b) & BTN(B_FX)) || fx_lock)
+      |                       ^~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:2453:9: note: Left side of '||' is false
+firmware/rfm/engine/tb_app.c:630:22: note: expanded from macro 'FX_LAYER'
+  630 | #define FX_LAYER(b) (((b) & BTN(B_FX)) || fx_lock)
+      |                      ^
+firmware/rfm/engine/tb_app.c:2453:9: note: Assuming 'fx_lock' is 0
+ 2453 |     if (FX_LAYER(c->buttons)) {                       /* FX held (or locked open): the live effects; the black keys mute */
+      |         ^~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:630:43: note: expanded from macro 'FX_LAYER'
+  630 | #define FX_LAYER(b) (((b) & BTN(B_FX)) || fx_lock)
+      |                                           ^~~~~~~
+firmware/rfm/engine/tb_app.c:2453:5: note: Taking false branch
+ 2453 |     if (FX_LAYER(c->buttons)) {                       /* FX held (or locked open): the live effects; the black keys mute */
+      |     ^
+firmware/rfm/engine/tb_app.c:2488:9: note: Assuming the condition is false
+ 2488 |     if (c->buttons & BTN(B_EDIT)) {                   /* EDIT held: the machine (white 1..5) */
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:2488:5: note: Taking false branch
+ 2488 |     if (c->buttons & BTN(B_EDIT)) {                   /* EDIT held: the machine (white 1..5) */
+      |     ^
+firmware/rfm/engine/tb_app.c:2502:9: note: Assuming the condition is false
+ 2502 |     if (c->buttons & BTN(B_SCL)) {                    /* SCL held: the key is the root */
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:2502:5: note: Taking false branch
+ 2502 |     if (c->buttons & BTN(B_SCL)) {                    /* SCL held: the key is the root */
+      |     ^
+firmware/rfm/engine/tb_app.c:2508:9: note: Assuming 'menu' is not equal to TB_MENU_NOTES
+ 2508 |     if (menu == TB_MENU_NOTES) {                      /* EDIT: a key gives the note its pitch, or chooses a hit */
+      |         ^~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:2508:5: note: Taking false branch
+ 2508 |     if (menu == TB_MENU_NOTES) {                      /* EDIT: a key gives the note its pitch, or chooses a hit */
+      |     ^
+firmware/rfm/engine/tb_app.c:2512:9: note: Left side of '&&' is true
+ 2512 |     if (TB_HAS_ROLL && (c->buttons & BTN(B_ARP)) && menu != TB_MENU_SEQ) {   /* ARP held: NOTE REPEAT (the key repeats) */
+      |         ^
+firmware/rfm/engine/tb_features.h:44:21: note: expanded from macro 'TB_HAS_ROLL'
+   44 | #define TB_HAS_ROLL TB_FULL         /* the roll / repeat held on a key */
+      |                     ^
+firmware/rfm/engine/tb_features.h:9:17: note: expanded from macro 'TB_FULL'
+    9 | #define TB_FULL (!TB_LITE)
+      |                 ^
+firmware/rfm/engine/tb_app.c:2512:25: note: Assuming the condition is false
+ 2512 |     if (TB_HAS_ROLL && (c->buttons & BTN(B_ARP)) && menu != TB_MENU_SEQ) {   /* ARP held: NOTE REPEAT (the key repeats) */
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:2512:50: note: Left side of '&&' is false
+ 2512 |     if (TB_HAS_ROLL && (c->buttons & BTN(B_ARP)) && menu != TB_MENU_SEQ) {   /* ARP held: NOTE REPEAT (the key repeats) */
+      |                                                  ^
+firmware/rfm/engine/tb_app.c:2520:9: note: Assuming 'menu' is not equal to TB_MENU_SEQ
+ 2520 |     if (menu == TB_MENU_SEQ && melodic(sel)) {        /* SEQ, a melody: step by step */
+      |         ^~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:2520:29: note: Left side of '&&' is false
+ 2520 |     if (menu == TB_MENU_SEQ && melodic(sel)) {        /* SEQ, a melody: step by step */
+      |                             ^
+firmware/rfm/engine/tb_app.c:2524:9: note: 'menu' is not equal to TB_MENU_SEQ
+ 2524 |     if (menu == TB_MENU_SEQ) {
+      |         ^~~~
+firmware/rfm/engine/tb_app.c:2524:5: note: Taking false branch
+ 2524 |     if (menu == TB_MENU_SEQ) {
+      |     ^
+firmware/rfm/engine/tb_app.c:2533:9: note: Assuming field 'machine' is not equal to TB_M_909
+ 2533 |     if (tr->machine == TB_M_909) {
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:2533:5: note: Taking false branch
+ 2533 |     if (tr->machine == TB_M_909) {
+      |     ^
+firmware/rfm/engine/tb_app.c:2545:22: note: Calling 'note_of_key'
+ 2545 |         unsigned n = note_of_key(k);
+      |                      ^~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:2005:13: note: Assuming field 'machine' is not equal to TB_M_BREAK
+ 2005 |     int n = tb_proj.trk[sel].machine == TB_M_BREAK ? 60 + (int)k : 53 + (int)k;   /* (BREAK: the lowest key, slice 1) */
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:2005:13: note: '?' condition is false
+firmware/rfm/engine/tb_app.c:2007:9: note: Assuming 'n' is >= 0
+ 2007 |     n = n < 0 ? 0 : n > 127 ? 127 : n;
+      |         ^~~~~
+firmware/rfm/engine/tb_app.c:2007:9: note: '?' condition is false
+firmware/rfm/engine/tb_app.c:2007:21: note: Assuming 'n' is > 127
+ 2007 |     n = n < 0 ? 0 : n > 127 ? 127 : n;
+      |                     ^~~~~~~
+firmware/rfm/engine/tb_app.c:2007:21: note: '?' condition is true
+firmware/rfm/engine/tb_app.c:2007:5: note: The value 127 is assigned to 'n'
+ 2007 |     n = n < 0 ? 0 : n > 127 ? 127 : n;
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:2008:9: note: Assuming field 'quantize' is 0
+ 2008 |     if (tb_proj.quantize && tb_proj.scale && tb_proj.trk[sel].machine != TB_M_BREAK)
+      |         ^~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:2008:26: note: Left side of '&&' is false
+ 2008 |     if (tb_proj.quantize && tb_proj.scale && tb_proj.trk[sel].machine != TB_M_BREAK)
+      |                          ^
+firmware/rfm/engine/tb_app.c:2010:5: note: Returning the value 127 (loaded from 'n')
+ 2010 |     return (unsigned)n;
+      |     ^~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:2545:22: note: Returning from 'note_of_key'
+ 2545 |         unsigned n = note_of_key(k);
+      |                      ^~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:2545:9: note: 'n' initialized to 127
+ 2545 |         unsigned n = note_of_key(k);
+      |         ^~~~~~~~~~
+firmware/rfm/engine/tb_app.c:2549:13: note: Assuming field 'machine' is equal to TB_M_BREAK
+ 2549 |         if (tr->machine != TB_M_BREAK)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:2549:9: note: Taking false branch
+ 2549 |         if (tr->machine != TB_M_BREAK)
+      |         ^
+firmware/rfm/engine/tb_app.c:2551:13: note: Assuming 'rec' is not equal to 0
+ 2551 |         if (rec && tb_engine_playing() && !(tr->arp && arp_allowed(sel)))
+      |             ^~~
+firmware/rfm/engine/tb_app.c:2551:13: note: Left side of '&&' is true
+firmware/rfm/engine/tb_app.c:2551:20: note: Assuming the condition is true
+ 2551 |         if (rec && tb_engine_playing() && !(tr->arp && arp_allowed(sel)))
+      |                    ^~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:2551:13: note: Left side of '&&' is true
+ 2551 |         if (rec && tb_engine_playing() && !(tr->arp && arp_allowed(sel)))
+      |             ^
+firmware/rfm/engine/tb_app.c:2551:45: note: Assuming field 'arp' is 0
+ 2551 |         if (rec && tb_engine_playing() && !(tr->arp && arp_allowed(sel)))
+      |                                             ^~~~~~~
+firmware/rfm/engine/tb_app.c:2551:53: note: Left side of '&&' is false
+ 2551 |         if (rec && tb_engine_playing() && !(tr->arp && arp_allowed(sel)))
+      |                                                     ^
+firmware/rfm/engine/tb_app.c:2551:9: note: Taking true branch
+ 2551 |         if (rec && tb_engine_playing() && !(tr->arp && arp_allowed(sel)))
+      |         ^
+firmware/rfm/engine/tb_app.c:2552:25: note: Passing the value 127 via 2nd parameter 'what'
+ 2552 |             rec_down(k, n);
+      |                         ^
+firmware/rfm/engine/tb_app.c:2552:13: note: Calling 'rec_down'
+ 2552 |             rec_down(k, n);
+      |             ^~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:2023:9: note: Assuming the condition is false
+ 2023 |     if (!tb_engine_playing())
+      |         ^~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:2023:5: note: Taking false branch
+ 2023 |     if (!tb_engine_playing())
+      |     ^
+firmware/rfm/engine/tb_app.c:2033:13: note: 'gr' is equal to TB_RECG_FREE
+ 2033 |         if (gr != TB_RECG_FREE) {
+      |             ^~
+firmware/rfm/engine/tb_app.c:2033:9: note: Taking false branch
+ 2033 |         if (gr != TB_RECG_FREE) {
+      |         ^
+firmware/rfm/engine/tb_app.c:2038:9: note: Taking true branch
+ 2038 |         if (is_drum(sel))
+      |         ^
+firmware/rfm/engine/tb_app.c:2039:36: note: The result of left shift is undefined because the right operand '127' is not smaller than 32, the capacity of 'unsigned int'
+ 2039 |             e.hits = (uint16_t)(1u << what);
+      |                                 ~~~^~~~~~~
+firmware/rfm/engine/tb_app.c:2437:13: warning: Out of bound access to memory after the end of 'TOOL_NAME' [alpha.security.ArrayBoundV2]
+ 2437 |     hud_say(TOOL_NAME[tool], done, 255);
+      |             ^~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:2188:20: note: Assuming 'sel' is >= 2
+ 2188 |     tb_step_t *S = TB_TSTEPS(P, sel);
+      |                    ^~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_engine.h:196:38: note: expanded from macro 'TB_TSTEPS'
+  196 | #define TB_TSTEPS(P, t) ((P)->step + TB_SOFF(t))   /* pattern P's steps of track t */
+      |                                      ^~~~~~~~~~
+firmware/rfm/engine/tb_engine.h:43:32: note: expanded from macro 'TB_SOFF'
+   43 | #define TB_SOFF(t) ((unsigned)((t) < TB_NDRUMT ? (t) * TB_DSTEPS : TB_NDRUMT * TB_DSTEPS + ((t) - TB_NDRUMT) * TB_STEPS))
+      |                                ^~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:2188:20: note: '?' condition is false
+firmware/rfm/engine/tb_engine.h:196:38: note: expanded from macro 'TB_TSTEPS'
+  196 | #define TB_TSTEPS(P, t) ((P)->step + TB_SOFF(t))   /* pattern P's steps of track t */
+      |                                      ^
+firmware/rfm/engine/tb_engine.h:43:32: note: expanded from macro 'TB_SOFF'
+   43 | #define TB_SOFF(t) ((unsigned)((t) < TB_NDRUMT ? (t) * TB_DSTEPS : TB_NDRUMT * TB_DSTEPS + ((t) - TB_NDRUMT) * TB_STEPS))
+      |                                ^
+firmware/rfm/engine/tb_app.c:2189:72: note: Assuming 'sel' is >= 2
+ 2189 |     unsigned len = len_of(sel), i, m = tb_proj.trk[sel].machine, cap = TB_TCAP(sel);
+      |                                                                        ^~~~~~~~~~~~
+firmware/rfm/engine/tb_engine.h:42:32: note: expanded from macro 'TB_TCAP'
+   42 | #define TB_TCAP(t) ((unsigned)((t) < TB_NDRUMT ? TB_DSTEPS : TB_STEPS))   /* track t's steps at most */
+      |                                ^~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:2189:72: note: '?' condition is false
+firmware/rfm/engine/tb_engine.h:42:32: note: expanded from macro 'TB_TCAP'
+   42 | #define TB_TCAP(t) ((unsigned)((t) < TB_NDRUMT ? TB_DSTEPS : TB_STEPS))   /* track t's steps at most */
+      |                                ^
+firmware/rfm/engine/tb_app.c:2192:9: note: Assuming 'tool' is not equal to T_COPY
+ 2192 |     if (tool != T_COPY && tool != T_PCOPY)
+      |         ^~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:2192:9: note: Left side of '&&' is true
+firmware/rfm/engine/tb_app.c:2192:27: note: Assuming 'tool' is not equal to T_PCOPY
+ 2192 |     if (tool != T_COPY && tool != T_PCOPY)
+      |                           ^~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:2192:5: note: Taking true branch
+ 2192 |     if (tool != T_COPY && tool != T_PCOPY)
+      |     ^
+firmware/rfm/engine/tb_app.c:2194:5: note: Control jumps to the 'default' case at line 2435
+ 2194 |     switch (tool) {
+      |     ^
+firmware/rfm/engine/tb_app.c:2435:14: note:  Execution continues on line 2437
+ 2435 |     default: break;
+      |              ^
+firmware/rfm/engine/tb_app.c:2437:13: note: Access of 'TOOL_NAME' at an overflowing index, while it holds only 16 'const char *' elements
+ 2437 |     hud_say(TOOL_NAME[tool], done, 255);
+      |             ^~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:2667:17: warning: Value stored to 'na' during its initialization is never read [deadcode.DeadStores]
+ 2667 |     const char *na = "", *nb = "";
+      |                 ^~   ~~
+firmware/rfm/engine/tb_app.c:2667:17: note: Value stored to 'na' during its initialization is never read
+ 2667 |     const char *na = "", *nb = "";
+      |                 ^~   ~~
+firmware/rfm/engine/tb_app.c:2667:27: warning: Value stored to 'nb' during its initialization is never read [deadcode.DeadStores]
+ 2667 |     const char *na = "", *nb = "";
+      |                           ^~   ~~
+firmware/rfm/engine/tb_app.c:2667:27: note: Value stored to 'nb' during its initialization is never read
+ 2667 |     const char *na = "", *nb = "";
+      |                           ^~   ~~
+7 warnings generated.
+firmware/rfm/engine/tb_break.c:196:22: warning: Out of bound access to memory after the end of 'TBB' [alpha.security.ArrayBoundV2]
+  196 |         n = TBB_N && TBB[br].nauto ? TBB[br].nauto : 1u;
+      |                      ^
+firmware/rfm/engine/tb_break.c:280:9: note: Assuming the condition is false
+  280 |     if (p[TBB_MODE] == TBB_DISC && !tb_brk_transport) {   /* DISC, PLAY off: a key starts the record, again stops it */
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_break.c:280:33: note: Left side of '&&' is false
+  280 |     if (p[TBB_MODE] == TBB_DISC && !tb_brk_transport) {   /* DISC, PLAY off: a key starts the record, again stops it */
+      |                                 ^
+firmware/rfm/engine/tb_break.c:288:5: note: Calling 'tb_brk_slices'
+  288 |     tb_brk_slices(p, m, (unsigned)((int)note - 60 + p[TBB_START] + 1024), &a, &b);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_break.c:183:19: note: Assuming the condition is true
+  183 |     unsigned br = p[TBB_SRC] < tb_brk_count() ? p[TBB_SRC] : 0u, div = p[TBB_DIV], n;
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_break.c:183:19: note: '?' condition is true
+firmware/rfm/engine/tb_break.c:185:9: note: Assuming 'div' is not equal to TBB_MAN
+  185 |     if (div == TBB_MAN && m && m->n) {
+      |         ^~~~~~~~~~~~~~
+firmware/rfm/engine/tb_break.c:185:24: note: Left side of '&&' is false
+  185 |     if (div == TBB_MAN && m && m->n) {
+      |                        ^
+firmware/rfm/engine/tb_break.c:190:16: note: Assuming 'div' is >= TBB_AUTO
+  190 |     } else if (div >= TBB_AUTO && user(br)) {
+      |                ^~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_break.c:190:16: note: Left side of '&&' is true
+firmware/rfm/engine/tb_break.c:190:12: note: Taking false branch
+  190 |     } else if (div >= TBB_AUTO && user(br)) {
+      |            ^
+firmware/rfm/engine/tb_break.c:195:16: note: 'div' is >= TBB_AUTO
+  195 |     } else if (div >= TBB_AUTO) {
+      |                ^~~
+firmware/rfm/engine/tb_break.c:195:12: note: Taking true branch
+  195 |     } else if (div >= TBB_AUTO) {
+      |            ^
+firmware/rfm/engine/tb_break.c:196:13: note: Left side of '&&' is true
+  196 |         n = TBB_N && TBB[br].nauto ? TBB[br].nauto : 1u;
+      |             ^
+firmware/rfm/gen/tb_break_data.h:6:15: note: expanded from macro 'TBB_N'
+    6 | #define TBB_N 3
+      |               ^
+firmware/rfm/engine/tb_break.c:196:22: note: Access of 'TBB' at an overflowing index, while it holds only 3 'struct (unnamed at firmware/rfm/gen/tb_break_data.h:14:14)' elements
+  196 |         n = TBB_N && TBB[br].nauto ? TBB[br].nauto : 1u;
+      |                      ^~~~~~~
+1 warning generated.
+firmware/rfm/engine/tb_engine.c:619:21: warning: Assigned value is garbage or undefined [core.uninitialized.Assign]
+  619 |             c[nc++] = s[lo];
+      |                     ^
+firmware/rfm/engine/tb_engine.c:663:9: note: Assuming field 'on' is 0
+  663 |     if (a->on) {
+      |         ^~~~~
+firmware/rfm/engine/tb_engine.c:663:5: note: Taking false branch
+  663 |     if (a->on) {
+      |     ^
+firmware/rfm/engine/tb_engine.c:667:17: note: Assuming 'i' is >= field 'nchord_on'
+  667 |     for (i = 0; i < a->nchord_on; i++)
+      |                 ^~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_engine.c:667:5: note: Loop condition is false. Execution continues on line 669
+  667 |     for (i = 0; i < a->nchord_on; i++)
+      |     ^
+firmware/rfm/engine/tb_engine.c:670:9: note: Assuming field 'n' is not equal to 0
+  670 |     if (!a->n)
+      |         ^~~~~
+firmware/rfm/engine/tb_engine.c:670:5: note: Taking false branch
+  670 |     if (!a->n)
+      |     ^
+firmware/rfm/engine/tb_engine.c:673:9: note: Assuming the condition is false
+  673 |     if (tr->arp_rhythm % TB_ARP_NRHYTHM == TB_ARP_NRHYTHM - 1u)
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_engine.c:673:5: note: Taking false branch
+  673 |     if (tr->arp_rhythm % TB_ARP_NRHYTHM == TB_ARP_NRHYTHM - 1u)
+      |     ^
+firmware/rfm/engine/tb_engine.c:675:16: note: Assuming right operand of bit shift is less than 32
+  675 |     play_it = (rhythm >> (a->rstep & 7u)) & 1u;
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_engine.c:678:9: note: Assuming 'play_it' is not equal to 0
+  678 |     if (!play_it)
+      |         ^~~~~~~~
+firmware/rfm/engine/tb_engine.c:678:5: note: Taking false branch
+  678 |     if (!play_it)
+      |     ^
+firmware/rfm/engine/tb_engine.c:680:9: note: Calling 'arp_order'
+  680 |     n = arp_order(t, seq);
+      |         ^~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_engine.c:580:20: note: Assuming field 'arp_oct' is 0
+  580 |     unsigned oct = tr->arp_oct ? (tr->arp_oct > 4u ? 4u : tr->arp_oct) : 1u, n = 0, i, k, m = 0;
+      |                    ^~~~~~~~~~~
+firmware/rfm/engine/tb_engine.c:580:20: note: '?' condition is false
+firmware/rfm/engine/tb_engine.c:582:9: note: Assuming field 'n' is not equal to 0
+  582 |     if (!a->n)
+      |         ^~~~~
+firmware/rfm/engine/tb_engine.c:582:5: note: Taking false branch
+  582 |     if (!a->n)
+      |     ^
+firmware/rfm/engine/tb_engine.c:584:5: note: Loop condition is true.  Entering loop body
+  584 |     for (k = 0; k < oct; k++)                         /* the notes over the octaves, sorted or as played */
+      |     ^
+firmware/rfm/engine/tb_engine.c:585:21: note: Assuming 'i' is >= field 'n'
+  585 |         for (i = 0; i < a->n && m < 32u; i++)
+      |                     ^~~~~~~~
+firmware/rfm/engine/tb_engine.c:585:30: note: Left side of '&&' is false
+  585 |         for (i = 0; i < a->n && m < 32u; i++)
+      |                              ^
+firmware/rfm/engine/tb_engine.c:584:5: note: Loop condition is false. Execution continues on line 587
+  584 |     for (k = 0; k < oct; k++)                         /* the notes over the octaves, sorted or as played */
+      |     ^
+firmware/rfm/engine/tb_engine.c:587:9: note: Assuming field 'arp' is not equal to TB_ARP_PLAYED
+  587 |     if (tr->arp != TB_ARP_PLAYED)
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_engine.c:587:5: note: Taking true branch
+  587 |     if (tr->arp != TB_ARP_PLAYED)
+      |     ^
+firmware/rfm/engine/tb_engine.c:588:9: note: Loop condition is false. Execution continues on line 595
+  588 |         for (i = 1; i < m; i++) {
+      |         ^
+firmware/rfm/engine/tb_engine.c:595:5: note: Control jumps to 'case TB_ARP_DIVERGE:'  at line 614
+  595 |     switch (tr->arp) {
+      |     ^
+firmware/rfm/engine/tb_engine.c:615:18: note: 'lo' initialized to 0
+  615 |         unsigned lo = 0, hi = m - 1u;
+      |                  ^~
+firmware/rfm/engine/tb_engine.c:618:16: note: 'lo' is <= 'hi'
+  618 |         while (lo <= hi && nc < 32u) {
+      |                ^~
+firmware/rfm/engine/tb_engine.c:618:16: note: Left side of '&&' is true
+firmware/rfm/engine/tb_engine.c:618:9: note: Loop condition is true.  Entering loop body
+  618 |         while (lo <= hi && nc < 32u) {
+      |         ^
+firmware/rfm/engine/tb_engine.c:619:21: note: Assigned value is garbage or undefined
+  619 |             c[nc++] = s[lo];
+      |                     ^ ~~~~~
+firmware/rfm/engine/tb_engine.c:696:70: warning: Division by zero [core.DivideZero]
+  696 |         unsigned nn = tr->arp == TB_ARP_RANDOM ? seq[tb_noise(&seed) % n] : seq[a->idx % n];
+      |                                                      ~~~~~~~~~~~~~~~~^~~
+firmware/rfm/engine/tb_engine.c:663:9: note: Assuming field 'on' is 0
+  663 |     if (a->on) {
+      |         ^~~~~
+firmware/rfm/engine/tb_engine.c:663:5: note: Taking false branch
+  663 |     if (a->on) {
+      |     ^
+firmware/rfm/engine/tb_engine.c:667:17: note: Assuming 'i' is >= field 'nchord_on'
+  667 |     for (i = 0; i < a->nchord_on; i++)
+      |                 ^~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_engine.c:667:5: note: Loop condition is false. Execution continues on line 669
+  667 |     for (i = 0; i < a->nchord_on; i++)
+      |     ^
+firmware/rfm/engine/tb_engine.c:670:9: note: Assuming field 'n' is not equal to 0
+  670 |     if (!a->n)
+      |         ^~~~~
+firmware/rfm/engine/tb_engine.c:670:5: note: Taking false branch
+  670 |     if (!a->n)
+      |     ^
+firmware/rfm/engine/tb_engine.c:673:9: note: Assuming the condition is false
+  673 |     if (tr->arp_rhythm % TB_ARP_NRHYTHM == TB_ARP_NRHYTHM - 1u)
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_engine.c:673:5: note: Taking false branch
+  673 |     if (tr->arp_rhythm % TB_ARP_NRHYTHM == TB_ARP_NRHYTHM - 1u)
+      |     ^
+firmware/rfm/engine/tb_engine.c:675:16: note: Assuming right operand of bit shift is less than 32
+  675 |     play_it = (rhythm >> (a->rstep & 7u)) & 1u;
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_engine.c:678:9: note: Assuming 'play_it' is not equal to 0
+  678 |     if (!play_it)
+      |         ^~~~~~~~
+firmware/rfm/engine/tb_engine.c:678:5: note: Taking false branch
+  678 |     if (!play_it)
+      |     ^
+firmware/rfm/engine/tb_engine.c:680:5: note: Value assigned to 'n'
+  680 |     n = arp_order(t, seq);
+      |     ^~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_engine.c:681:5: note: Control jumps to 'case TB_ACC_RISE:'  at line 684
+  681 |     switch (tr->arp_accent) {                         /* the velocity */
+      |     ^
+firmware/rfm/engine/tb_engine.c:684:47: note: Assuming 'n' is 0
+  684 |     case TB_ACC_RISE: vel = 60u + ((a->idx % (n ? n : 1u)) * 67u) / (n ? n : 1u); break;
+      |                                               ^
+firmware/rfm/engine/tb_engine.c:684:47: note: '?' condition is false
+firmware/rfm/engine/tb_engine.c:684:70: note: 'n' is 0
+  684 |     case TB_ACC_RISE: vel = 60u + ((a->idx % (n ? n : 1u)) * 67u) / (n ? n : 1u); break;
+      |                                                                      ^
+firmware/rfm/engine/tb_engine.c:684:70: note: '?' condition is false
+firmware/rfm/engine/tb_engine.c:684:83: note:  Execution continues on line 687
+  684 |     case TB_ACC_RISE: vel = 60u + ((a->idx % (n ? n : 1u)) * 67u) / (n ? n : 1u); break;
+      |                                                                                   ^
+firmware/rfm/engine/tb_engine.c:688:9: note: Assuming field 'arp' is not equal to TB_ARP_CHORD
+  688 |     if (tr->arp == TB_ARP_CHORD) {                    /* ACCORD: all of them, each beat */
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_engine.c:688:5: note: Taking false branch
+  688 |     if (tr->arp == TB_ARP_CHORD) {                    /* ACCORD: all of them, each beat */
+      |     ^
+firmware/rfm/engine/tb_engine.c:696:23: note: Assuming field 'arp' is equal to TB_ARP_RANDOM
+  696 |         unsigned nn = tr->arp == TB_ARP_RANDOM ? seq[tb_noise(&seed) % n] : seq[a->idx % n];
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_engine.c:696:23: note: '?' condition is true
+firmware/rfm/engine/tb_engine.c:696:70: note: Division by zero
+  696 |         unsigned nn = tr->arp == TB_ARP_RANDOM ? seq[tb_noise(&seed) % n] : seq[a->idx % n];
+      |                                                      ~~~~~~~~~~~~~~~~^~~
+firmware/rfm/engine/tb_engine.c:696:88: warning: Division by zero [core.DivideZero]
+  696 |         unsigned nn = tr->arp == TB_ARP_RANDOM ? seq[tb_noise(&seed) % n] : seq[a->idx % n];
+      |                                                                                 ~~~~~~~^~~
+firmware/rfm/engine/tb_engine.c:663:9: note: Assuming field 'on' is 0
+  663 |     if (a->on) {
+      |         ^~~~~
+firmware/rfm/engine/tb_engine.c:663:5: note: Taking false branch
+  663 |     if (a->on) {
+      |     ^
+firmware/rfm/engine/tb_engine.c:667:17: note: Assuming 'i' is >= field 'nchord_on'
+  667 |     for (i = 0; i < a->nchord_on; i++)
+      |                 ^~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_engine.c:667:5: note: Loop condition is false. Execution continues on line 669
+  667 |     for (i = 0; i < a->nchord_on; i++)
+      |     ^
+firmware/rfm/engine/tb_engine.c:670:9: note: Assuming field 'n' is not equal to 0
+  670 |     if (!a->n)
+      |         ^~~~~
+firmware/rfm/engine/tb_engine.c:670:5: note: Taking false branch
+  670 |     if (!a->n)
+      |     ^
+firmware/rfm/engine/tb_engine.c:673:9: note: Assuming the condition is false
+  673 |     if (tr->arp_rhythm % TB_ARP_NRHYTHM == TB_ARP_NRHYTHM - 1u)
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_engine.c:673:5: note: Taking false branch
+  673 |     if (tr->arp_rhythm % TB_ARP_NRHYTHM == TB_ARP_NRHYTHM - 1u)
+      |     ^
+firmware/rfm/engine/tb_engine.c:675:16: note: Assuming right operand of bit shift is less than 32
+  675 |     play_it = (rhythm >> (a->rstep & 7u)) & 1u;
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_engine.c:678:9: note: Assuming 'play_it' is not equal to 0
+  678 |     if (!play_it)
+      |         ^~~~~~~~
+firmware/rfm/engine/tb_engine.c:678:5: note: Taking false branch
+  678 |     if (!play_it)
+      |     ^
+firmware/rfm/engine/tb_engine.c:680:5: note: Value assigned to 'n'
+  680 |     n = arp_order(t, seq);
+      |     ^~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_engine.c:681:5: note: Control jumps to 'case TB_ACC_RISE:'  at line 684
+  681 |     switch (tr->arp_accent) {                         /* the velocity */
+      |     ^
+firmware/rfm/engine/tb_engine.c:684:47: note: Assuming 'n' is 0
+  684 |     case TB_ACC_RISE: vel = 60u + ((a->idx % (n ? n : 1u)) * 67u) / (n ? n : 1u); break;
+      |                                               ^
+firmware/rfm/engine/tb_engine.c:684:47: note: '?' condition is false
+firmware/rfm/engine/tb_engine.c:684:70: note: 'n' is 0
+  684 |     case TB_ACC_RISE: vel = 60u + ((a->idx % (n ? n : 1u)) * 67u) / (n ? n : 1u); break;
+      |                                                                      ^
+firmware/rfm/engine/tb_engine.c:684:70: note: '?' condition is false
+firmware/rfm/engine/tb_engine.c:684:83: note:  Execution continues on line 687
+  684 |     case TB_ACC_RISE: vel = 60u + ((a->idx % (n ? n : 1u)) * 67u) / (n ? n : 1u); break;
+      |                                                                                   ^
+firmware/rfm/engine/tb_engine.c:688:9: note: Assuming field 'arp' is not equal to TB_ARP_CHORD
+  688 |     if (tr->arp == TB_ARP_CHORD) {                    /* ACCORD: all of them, each beat */
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_engine.c:688:5: note: Taking false branch
+  688 |     if (tr->arp == TB_ARP_CHORD) {                    /* ACCORD: all of them, each beat */
+      |     ^
+firmware/rfm/engine/tb_engine.c:696:23: note: Assuming field 'arp' is not equal to TB_ARP_RANDOM
+  696 |         unsigned nn = tr->arp == TB_ARP_RANDOM ? seq[tb_noise(&seed) % n] : seq[a->idx % n];
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_engine.c:696:23: note: '?' condition is false
+firmware/rfm/engine/tb_engine.c:696:88: note: Division by zero
+  696 |         unsigned nn = tr->arp == TB_ARP_RANDOM ? seq[tb_noise(&seed) % n] : seq[a->idx % n];
+      |                                                                                 ~~~~~~~^~~
+firmware/rfm/engine/tb_engine.c:1268:34: warning: Out of bound access to memory after the end of 'RP.note' [alpha.security.ArrayBoundV2]
+ 1268 |                     RP.note[i] = RP.note[i + 1u], RP.vel[i] = RP.vel[i + 1u];
+      |                                  ^
+firmware/rfm/engine/tb_engine.c:1526:9: note: Assuming 'n' is <= TB_BLOCK
+ 1526 |     if (n > TB_BLOCK)
+      |         ^~~~~~~~~~~~
+firmware/rfm/engine/tb_engine.c:1526:5: note: Taking false branch
+ 1526 |     if (n > TB_BLOCK)
+      |     ^
+firmware/rfm/engine/tb_engine.c:1529:9: note: Assuming 'play_req' is not equal to 1
+ 1529 |     if (play_req == 1 && !playing && ci_req && !ci_left) {   /* a count-in first: the clicks, then PLAY */
+      |         ^~~~~~~~~~~~~
+firmware/rfm/engine/tb_engine.c:1529:23: note: Left side of '&&' is false
+ 1529 |     if (play_req == 1 && !playing && ci_req && !ci_left) {   /* a count-in first: the clicks, then PLAY */
+      |                       ^
+firmware/rfm/engine/tb_engine.c:1532:16: note: Assuming 'play_req' is not equal to 2
+ 1532 |     } else if (play_req == 2 && ci_left)              /* (stopped while counting in) */
+      |                ^~~~~~~~~~~~~
+firmware/rfm/engine/tb_engine.c:1532:30: note: Left side of '&&' is false
+ 1532 |     } else if (play_req == 2 && ci_left)              /* (stopped while counting in) */
+      |                              ^
+firmware/rfm/engine/tb_engine.c:1534:9: note: Assuming 'ci_left' is 0
+ 1534 |     if (ci_left) {
+      |         ^~~~~~~
+firmware/rfm/engine/tb_engine.c:1534:5: note: Taking false branch
+ 1534 |     if (ci_left) {
+      |     ^
+firmware/rfm/engine/tb_engine.c:1543:9: note: 'play_req' is not equal to 1
+ 1543 |     if (play_req == 1 && !playing) {
+      |         ^~~~~~~~
+firmware/rfm/engine/tb_engine.c:1543:23: note: Left side of '&&' is false
+ 1543 |     if (play_req == 1 && !playing) {
+      |                       ^
+firmware/rfm/engine/tb_engine.c:1553:16: note: 'play_req' is not equal to 2
+ 1553 |     } else if (play_req == 2 && playing) {
+      |                ^~~~~~~~
+firmware/rfm/engine/tb_engine.c:1553:30: note: Left side of '&&' is false
+ 1553 |     } else if (play_req == 2 && playing) {
+      |                              ^
+firmware/rfm/engine/tb_engine.c:1566:5: note: Calling 'take_keys'
+ 1566 |     take_keys();
+      |     ^~~~~~~~~~~
+firmware/rfm/engine/tb_engine.c:1226:12: note: Assuming 'kr' is not equal to 'kw'
+ 1226 |     while (kr != kw) {
+      |            ^~~~~~~~
+firmware/rfm/engine/tb_engine.c:1226:5: note: Loop condition is true.  Entering loop body
+ 1226 |     while (kr != kw) {
+      |     ^
+firmware/rfm/engine/tb_engine.c:1229:13: note: Assuming field 'note' is not equal to 255
+ 1229 |         if (k.note == 255) {                          /* panic: everything on the track off */
+      |             ^~~~~~~~~~~~~
+firmware/rfm/engine/tb_engine.c:1229:9: note: Taking false branch
+ 1229 |         if (k.note == 255) {                          /* panic: everything on the track off */
+      |         ^
+firmware/rfm/engine/tb_engine.c:1249:13: note: Left side of '&&' is true
+ 1249 |         if (TB_HAS_ROLL && (int8_t)k.track == rep_track) {   /* NOTE REPEAT: the key held repeats */
+      |             ^
+firmware/rfm/engine/tb_features.h:44:21: note: expanded from macro 'TB_HAS_ROLL'
+   44 | #define TB_HAS_ROLL TB_FULL         /* the roll / repeat held on a key */
+      |                     ^
+firmware/rfm/engine/tb_features.h:9:17: note: expanded from macro 'TB_FULL'
+    9 | #define TB_FULL (!TB_LITE)
+      |                 ^
+firmware/rfm/engine/tb_engine.c:1249:28: note: Assuming 'rep_track' is equal to field 'track'
+ 1249 |         if (TB_HAS_ROLL && (int8_t)k.track == rep_track) {   /* NOTE REPEAT: the key held repeats */
+      |                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_engine.c:1249:9: note: Taking true branch
+ 1249 |         if (TB_HAS_ROLL && (int8_t)k.track == rep_track) {   /* NOTE REPEAT: the key held repeats */
+      |         ^
+firmware/rfm/engine/tb_engine.c:1251:25: note: Assuming 'i' is < field 'n'
+ 1251 |             for (i = 0; i < RP.n && RP.note[i] != k.note; i++)
+      |                         ^~~~~~~~
+firmware/rfm/engine/tb_engine.c:1251:25: note: Left side of '&&' is true
+firmware/rfm/engine/tb_engine.c:1251:37: note: Assuming the condition is true
+ 1251 |             for (i = 0; i < RP.n && RP.note[i] != k.note; i++)
+      |                                     ^~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_engine.c:1251:13: note: Loop condition is true.  Entering loop body
+ 1251 |             for (i = 0; i < RP.n && RP.note[i] != k.note; i++)
+      |             ^
+firmware/rfm/engine/tb_engine.c:1251:25: note: Assuming 'i' is < field 'n'
+ 1251 |             for (i = 0; i < RP.n && RP.note[i] != k.note; i++)
+      |                         ^~~~~~~~
+firmware/rfm/engine/tb_engine.c:1251:25: note: Left side of '&&' is true
+firmware/rfm/engine/tb_engine.c:1251:37: note: Assuming the condition is true
+ 1251 |             for (i = 0; i < RP.n && RP.note[i] != k.note; i++)
+      |                                     ^~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_engine.c:1251:13: note: Loop condition is true.  Entering loop body
+ 1251 |             for (i = 0; i < RP.n && RP.note[i] != k.note; i++)
+      |             ^
+firmware/rfm/engine/tb_engine.c:1251:25: note: Assuming 'i' is < field 'n'
+ 1251 |             for (i = 0; i < RP.n && RP.note[i] != k.note; i++)
+      |                         ^~~~~~~~
+firmware/rfm/engine/tb_engine.c:1251:25: note: Left side of '&&' is true
+firmware/rfm/engine/tb_engine.c:1251:37: note: Assuming the condition is true
+ 1251 |             for (i = 0; i < RP.n && RP.note[i] != k.note; i++)
+      |                                     ^~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_engine.c:1251:13: note: Loop condition is true.  Entering loop body
+ 1251 |             for (i = 0; i < RP.n && RP.note[i] != k.note; i++)
+      |             ^
+firmware/rfm/engine/tb_engine.c:1251:25: note: Assuming 'i' is < field 'n'
+ 1251 |             for (i = 0; i < RP.n && RP.note[i] != k.note; i++)
+      |                         ^~~~~~~~
+firmware/rfm/engine/tb_engine.c:1251:25: note: Left side of '&&' is true
+firmware/rfm/engine/tb_engine.c:1251:37: note: Assuming the condition is false
+ 1251 |             for (i = 0; i < RP.n && RP.note[i] != k.note; i++)
+      |                                     ^~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_engine.c:1251:13: note: Loop condition is false. Execution continues on line 1253
+ 1251 |             for (i = 0; i < RP.n && RP.note[i] != k.note; i++)
+      |             ^
+firmware/rfm/engine/tb_engine.c:1253:17: note: Assuming 'RP.track' is equal to 'k.track'
+ 1253 |             if (RP.track != k.track)
+      |                 ^~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_engine.c:1253:13: note: Taking false branch
+ 1253 |             if (RP.track != k.track)
+      |             ^
+firmware/rfm/engine/tb_engine.c:1255:17: note: Assuming field 'vel' is 0
+ 1255 |             if (k.vel) {
+      |                 ^~~~~
+firmware/rfm/engine/tb_engine.c:1255:13: note: Taking false branch
+ 1255 |             if (k.vel) {
+      |             ^
+firmware/rfm/engine/tb_engine.c:1266:24: note: 'i' is < field 'n'
+ 1266 |             } else if (i < RP.n) {
+      |                        ^
+firmware/rfm/engine/tb_engine.c:1266:20: note: Taking true branch
+ 1266 |             } else if (i < RP.n) {
+      |                    ^
+firmware/rfm/engine/tb_engine.c:1267:24: note: Assuming the condition is true
+ 1267 |                 for (; i + 1u < RP.n; i++)
+      |                        ^~~~~~~~~~~~~
+firmware/rfm/engine/tb_engine.c:1267:17: note: Loop condition is true.  Entering loop body
+ 1267 |                 for (; i + 1u < RP.n; i++)
+      |                 ^
+firmware/rfm/engine/tb_engine.c:1268:34: note: Access of 'RP.note' at index 4, while it holds only 4 'unsigned char' elements
+ 1268 |                     RP.note[i] = RP.note[i + 1u], RP.vel[i] = RP.vel[i + 1u];
+      |                                  ^~~~~~~~~~~~~~~
+4 warnings generated.
+firmware/rfm/engine/tb_kick.c:560:89: warning: Division by zero [core.DivideZero]
+  560 |                 uint32_t u = (uint32_t)(((uint64_t)(t < c->t_len ? t : c->t_len) << 16) / c->t_len);
+      |                                                                                         ^
+firmware/rfm/engine/tb_kick.c:677:35: note: Assuming field 't' is >= field 'hold'
+  677 |     uint32_t i, inc0, inc1, sw1 = h->t < c->hold ? h->sw : ((h->sw >> 1) * (c->g_sw >> 1)) >> 14,
+      |                                   ^~~~~~~~~~~~~~
+firmware/rfm/engine/tb_kick.c:677:35: note: '?' condition is false
+firmware/rfm/engine/tb_kick.c:679:57: note: Assuming field 'ck_g' is 0
+  679 |     int32_t og0 = 0, og1 = 0, e0, e1, k0 = h->clk, k1 = c->ck_g ? mulq16(h->clk, (uint32_t)c->ck_g)
+      |                                                         ^~~~~~~
+firmware/rfm/engine/tb_kick.c:679:57: note: '?' condition is false
+firmware/rfm/engine/tb_kick.c:682:9: note: Assuming field 'sidx' is 0
+  682 |     if (h->sidx) {
+      |         ^~~~~~~
+firmware/rfm/engine/tb_kick.c:682:5: note: Taking false branch
+  682 |     if (h->sidx) {
+      |     ^
+firmware/rfm/engine/tb_kick.c:686:9: note: Assuming field 'mid_g' is 0
+  686 |     if (c->mid_g) {                                   /* (the mid moving: its place, block by block) */
+      |         ^~~~~~~~
+firmware/rfm/engine/tb_kick.c:686:5: note: Taking false branch
+  686 |     if (c->mid_g) {                                   /* (the mid moving: its place, block by block) */
+      |     ^
+firmware/rfm/engine/tb_kick.c:694:9: note: Assuming field 't' is < field 'len'
+  694 |     if (h->t < c->len && !h->choke && !h->rel) {     /* the body */
+      |         ^~~~~~~~~~~~~
+firmware/rfm/engine/tb_kick.c:694:9: note: Left side of '&&' is true
+firmware/rfm/engine/tb_kick.c:694:26: note: Assuming field 'choke' is 0
+  694 |     if (h->t < c->len && !h->choke && !h->rel) {     /* the body */
+      |                          ^~~~~~~~~
+firmware/rfm/engine/tb_kick.c:694:9: note: Left side of '&&' is true
+  694 |     if (h->t < c->len && !h->choke && !h->rel) {     /* the body */
+      |         ^
+firmware/rfm/engine/tb_kick.c:694:39: note: Assuming field 'rel' is 0
+  694 |     if (h->t < c->len && !h->choke && !h->rel) {     /* the body */
+      |                                       ^~~~~~~
+firmware/rfm/engine/tb_kick.c:694:5: note: Taking true branch
+  694 |     if (h->t < c->len && !h->choke && !h->rel) {     /* the body */
+      |     ^
+firmware/rfm/engine/tb_kick.c:695:13: note: Assuming field 'env' is 0
+  695 |         if (c->env) {
+      |             ^~~~~~
+firmware/rfm/engine/tb_kick.c:695:9: note: Taking false branch
+  695 |         if (c->env) {
+      |         ^
+firmware/rfm/engine/tb_kick.c:703:18: note: Assuming the condition is false
+  703 |             e1 = h->t + n < c->len ? 32767 - (int32_t)((11468u * (h->t + n)) / c->len) : 21299;
+      |                  ^~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_kick.c:703:18: note: '?' condition is false
+firmware/rfm/engine/tb_kick.c:724:9: note: Assuming field 'pdead' is 0
+  724 |     if (h->pdead && (!c->t_wave || h->tdone)) {       /* (the punch and the tail both gone) */
+      |         ^~~~~~~~
+firmware/rfm/engine/tb_kick.c:724:18: note: Left side of '&&' is false
+  724 |     if (h->pdead && (!c->t_wave || h->tdone)) {       /* (the punch and the tail both gone) */
+      |                  ^
+firmware/rfm/engine/tb_kick.c:728:5: note: Calling 'k_tail'
+  728 |     k_tail(c, h, tb, n);
+      |     ^~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_kick.c:537:17: note: Assuming 'i' is < 'n'
+  537 |     for (i = 0; i < n; i++) {
+      |                 ^~~~~
+firmware/rfm/engine/tb_kick.c:537:5: note: Loop condition is true.  Entering loop body
+  537 |     for (i = 0; i < n; i++) {
+      |     ^
+firmware/rfm/engine/tb_kick.c:541:13: note: Assuming field 't_wave' is not equal to 0
+  541 |         if (!c->t_wave || h->tdone || t < c->t_at)
+      |             ^~~~~~~~~~
+firmware/rfm/engine/tb_kick.c:541:13: note: Left side of '||' is false
+firmware/rfm/engine/tb_kick.c:541:27: note: Assuming field 'tdone' is 0
+  541 |         if (!c->t_wave || h->tdone || t < c->t_at)
+      |                           ^~~~~~~~
+firmware/rfm/engine/tb_kick.c:541:13: note: Left side of '||' is false
+  541 |         if (!c->t_wave || h->tdone || t < c->t_at)
+      |             ^
+firmware/rfm/engine/tb_kick.c:541:39: note: Assuming 't' is >= field 't_at'
+  541 |         if (!c->t_wave || h->tdone || t < c->t_at)
+      |                                       ^~~~~~~~~~~
+firmware/rfm/engine/tb_kick.c:541:9: note: Taking false branch
+  541 |         if (!c->t_wave || h->tdone || t < c->t_at)
+      |         ^
+firmware/rfm/engine/tb_kick.c:545:13: note: Assuming the condition is true
+  545 |         if ((t & 15u) == 0) {                         /* (the slow things, every 16 samples) */
+      |             ^~~~~~~~~~~~~~
+firmware/rfm/engine/tb_kick.c:545:9: note: Taking true branch
+  545 |         if ((t & 15u) == 0) {                         /* (the slow things, every 16 samples) */
+      |         ^
+firmware/rfm/engine/tb_kick.c:548:17: note: Assuming 't' is 0
+  548 |             if (!t) {
+      |                 ^~
+firmware/rfm/engine/tb_kick.c:548:13: note: Taking true branch
+  548 |             if (!t) {
+      |             ^
+firmware/rfm/engine/tb_kick.c:550:25: note: Assuming field 't_env' is equal to TE_SWELL
+  550 |                 h->tl = c->t_env == TE_SWELL ? 0 : 1 << 24;
+      |                         ^~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_kick.c:550:25: note: '?' condition is true
+firmware/rfm/engine/tb_kick.c:557:20: note: Field 't_env' is not equal to TE_FALL
+  557 |             if (c->t_env == TE_FALL)
+      |                    ^
+firmware/rfm/engine/tb_kick.c:557:13: note: Taking false branch
+  557 |             if (c->t_env == TE_FALL)
+      |             ^
+firmware/rfm/engine/tb_kick.c:559:25: note: Field 't_env' is equal to TE_SWELL
+  559 |             else if (c->t_env == TE_SWELL) {
+      |                         ^
+firmware/rfm/engine/tb_kick.c:559:18: note: Taking true branch
+  559 |             else if (c->t_env == TE_SWELL) {
+      |                  ^
+firmware/rfm/engine/tb_kick.c:560:53: note: Assuming 't' is >= field 't_len'
+  560 |                 uint32_t u = (uint32_t)(((uint64_t)(t < c->t_len ? t : c->t_len) << 16) / c->t_len);
+      |                                                     ^~~~~~~~~~~~
+firmware/rfm/engine/tb_kick.c:560:53: note: '?' condition is false
+firmware/rfm/engine/tb_kick.c:560:89: note: Division by zero
+  560 |                 uint32_t u = (uint32_t)(((uint64_t)(t < c->t_len ? t : c->t_len) << 16) / c->t_len);
+      |                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~
+firmware/rfm/engine/tb_kick.c:564:95: warning: Division by zero [core.DivideZero]
+  564 |                 h->tl = (1 << 24) - (int32_t)(((uint64_t)(t < c->t_len ? t : c->t_len) << 22) / c->t_len);
+      |                                                                                               ^
+firmware/rfm/engine/tb_kick.c:677:35: note: Assuming field 't' is >= field 'hold'
+  677 |     uint32_t i, inc0, inc1, sw1 = h->t < c->hold ? h->sw : ((h->sw >> 1) * (c->g_sw >> 1)) >> 14,
+      |                                   ^~~~~~~~~~~~~~
+firmware/rfm/engine/tb_kick.c:677:35: note: '?' condition is false
+firmware/rfm/engine/tb_kick.c:679:57: note: Assuming field 'ck_g' is 0
+  679 |     int32_t og0 = 0, og1 = 0, e0, e1, k0 = h->clk, k1 = c->ck_g ? mulq16(h->clk, (uint32_t)c->ck_g)
+      |                                                         ^~~~~~~
+firmware/rfm/engine/tb_kick.c:679:57: note: '?' condition is false
+firmware/rfm/engine/tb_kick.c:682:9: note: Assuming field 'sidx' is 0
+  682 |     if (h->sidx) {
+      |         ^~~~~~~
+firmware/rfm/engine/tb_kick.c:682:5: note: Taking false branch
+  682 |     if (h->sidx) {
+      |     ^
+firmware/rfm/engine/tb_kick.c:686:9: note: Assuming field 'mid_g' is 0
+  686 |     if (c->mid_g) {                                   /* (the mid moving: its place, block by block) */
+      |         ^~~~~~~~
+firmware/rfm/engine/tb_kick.c:686:5: note: Taking false branch
+  686 |     if (c->mid_g) {                                   /* (the mid moving: its place, block by block) */
+      |     ^
+firmware/rfm/engine/tb_kick.c:694:9: note: Assuming field 't' is < field 'len'
+  694 |     if (h->t < c->len && !h->choke && !h->rel) {     /* the body */
+      |         ^~~~~~~~~~~~~
+firmware/rfm/engine/tb_kick.c:694:9: note: Left side of '&&' is true
+firmware/rfm/engine/tb_kick.c:694:26: note: Assuming field 'choke' is 0
+  694 |     if (h->t < c->len && !h->choke && !h->rel) {     /* the body */
+      |                          ^~~~~~~~~
+firmware/rfm/engine/tb_kick.c:694:9: note: Left side of '&&' is true
+  694 |     if (h->t < c->len && !h->choke && !h->rel) {     /* the body */
+      |         ^
+firmware/rfm/engine/tb_kick.c:694:39: note: Assuming field 'rel' is 0
+  694 |     if (h->t < c->len && !h->choke && !h->rel) {     /* the body */
+      |                                       ^~~~~~~
+firmware/rfm/engine/tb_kick.c:694:5: note: Taking true branch
+  694 |     if (h->t < c->len && !h->choke && !h->rel) {     /* the body */
+      |     ^
+firmware/rfm/engine/tb_kick.c:695:13: note: Assuming field 'env' is 0
+  695 |         if (c->env) {
+      |             ^~~~~~
+firmware/rfm/engine/tb_kick.c:695:9: note: Taking false branch
+  695 |         if (c->env) {
+      |         ^
+firmware/rfm/engine/tb_kick.c:703:18: note: Assuming the condition is false
+  703 |             e1 = h->t + n < c->len ? 32767 - (int32_t)((11468u * (h->t + n)) / c->len) : 21299;
+      |                  ^~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_kick.c:703:18: note: '?' condition is false
+firmware/rfm/engine/tb_kick.c:724:9: note: Assuming field 'pdead' is 0
+  724 |     if (h->pdead && (!c->t_wave || h->tdone)) {       /* (the punch and the tail both gone) */
+      |         ^~~~~~~~
+firmware/rfm/engine/tb_kick.c:724:18: note: Left side of '&&' is false
+  724 |     if (h->pdead && (!c->t_wave || h->tdone)) {       /* (the punch and the tail both gone) */
+      |                  ^
+firmware/rfm/engine/tb_kick.c:728:5: note: Calling 'k_tail'
+  728 |     k_tail(c, h, tb, n);
+      |     ^~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_kick.c:537:17: note: Assuming 'i' is < 'n'
+  537 |     for (i = 0; i < n; i++) {
+      |                 ^~~~~
+firmware/rfm/engine/tb_kick.c:537:5: note: Loop condition is true.  Entering loop body
+  537 |     for (i = 0; i < n; i++) {
+      |     ^
+firmware/rfm/engine/tb_kick.c:541:13: note: Assuming field 't_wave' is not equal to 0
+  541 |         if (!c->t_wave || h->tdone || t < c->t_at)
+      |             ^~~~~~~~~~
+firmware/rfm/engine/tb_kick.c:541:13: note: Left side of '||' is false
+firmware/rfm/engine/tb_kick.c:541:27: note: Assuming field 'tdone' is 0
+  541 |         if (!c->t_wave || h->tdone || t < c->t_at)
+      |                           ^~~~~~~~
+firmware/rfm/engine/tb_kick.c:541:13: note: Left side of '||' is false
+  541 |         if (!c->t_wave || h->tdone || t < c->t_at)
+      |             ^
+firmware/rfm/engine/tb_kick.c:541:39: note: Assuming 't' is >= field 't_at'
+  541 |         if (!c->t_wave || h->tdone || t < c->t_at)
+      |                                       ^~~~~~~~~~~
+firmware/rfm/engine/tb_kick.c:541:9: note: Taking false branch
+  541 |         if (!c->t_wave || h->tdone || t < c->t_at)
+      |         ^
+firmware/rfm/engine/tb_kick.c:545:13: note: Assuming the condition is true
+  545 |         if ((t & 15u) == 0) {                         /* (the slow things, every 16 samples) */
+      |             ^~~~~~~~~~~~~~
+firmware/rfm/engine/tb_kick.c:545:9: note: Taking true branch
+  545 |         if ((t & 15u) == 0) {                         /* (the slow things, every 16 samples) */
+      |         ^
+firmware/rfm/engine/tb_kick.c:548:17: note: Assuming 't' is 0
+  548 |             if (!t) {
+      |                 ^~
+firmware/rfm/engine/tb_kick.c:548:13: note: Taking true branch
+  548 |             if (!t) {
+      |             ^
+firmware/rfm/engine/tb_kick.c:550:25: note: Assuming field 't_env' is not equal to TE_SWELL
+  550 |                 h->tl = c->t_env == TE_SWELL ? 0 : 1 << 24;
+      |                         ^~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_kick.c:550:25: note: '?' condition is false
+firmware/rfm/engine/tb_kick.c:557:17: note: Assuming field 't_env' is not equal to TE_FALL
+  557 |             if (c->t_env == TE_FALL)
+      |                 ^~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_kick.c:557:13: note: Taking false branch
+  557 |             if (c->t_env == TE_FALL)
+      |             ^
+firmware/rfm/engine/tb_kick.c:559:25: note: Field 't_env' is not equal to TE_SWELL
+  559 |             else if (c->t_env == TE_SWELL) {
+      |                         ^
+firmware/rfm/engine/tb_kick.c:559:18: note: Taking false branch
+  559 |             else if (c->t_env == TE_SWELL) {
+      |                  ^
+firmware/rfm/engine/tb_kick.c:564:59: note: Assuming 't' is >= field 't_len'
+  564 |                 h->tl = (1 << 24) - (int32_t)(((uint64_t)(t < c->t_len ? t : c->t_len) << 22) / c->t_len);
+      |                                                           ^~~~~~~~~~~~
+firmware/rfm/engine/tb_kick.c:564:59: note: '?' condition is false
+firmware/rfm/engine/tb_kick.c:564:95: note: Division by zero
+  564 |                 h->tl = (1 << 24) - (int32_t)(((uint64_t)(t < c->t_len ? t : c->t_len) << 22) / c->t_len);
+      |                                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~
+2 warnings generated.
+firmware/rfm/engine/tb_rave.c:242:15: warning: Division by zero [core.DivideZero]
+  242 |         s = s / (int32_t)(nosc - nup);
+      |               ^
+firmware/rfm/engine/tb_rave.c:470:17: note: Assuming 'i' is < 'n'
+  470 |     for (i = 0; i < n; i++) {                         /* (the engine's blocks cut at its ticks: any length; the
+      |                 ^~~~~
+firmware/rfm/engine/tb_rave.c:470:5: note: Loop condition is true.  Entering loop body
+  470 |     for (i = 0; i < n; i++) {                         /* (the engine's blocks cut at its ticks: any length; the
+      |     ^
+firmware/rfm/engine/tb_rave.c:472:13: note: Assuming field 'pos' is 0
+  472 |         if (!t->pos) {
+      |             ^~~~~~~
+firmware/rfm/engine/tb_rave.c:472:9: note: Taking true branch
+  472 |         if (!t->pos) {
+      |         ^
+firmware/rfm/engine/tb_rave.c:474:13: note: Calling 'tick'
+  474 |             tick(t, p, t->buf, pl, cl);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_rave.c:435:5: note: Loop condition is true.  Entering loop body
+  435 |     for (i = 0; i < TBR_VOICES; i++) {
+      |     ^
+firmware/rfm/engine/tb_rave.c:439:13: note: Assuming field 'active' is not equal to 0
+  439 |         if (!v->active)
+      |             ^~~~~~~~~~
+firmware/rfm/engine/tb_rave.c:439:9: note: Taking false branch
+  439 |         if (!v->active)
+      |         ^
+firmware/rfm/engine/tb_rave.c:445:13: note: Assuming field 'pitch_cur' is equal to field 'pitch16'
+  445 |         if (v->pitch_cur != v->pitch16) {             /* glide */
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_rave.c:445:9: note: Taking false branch
+  445 |         if (v->pitch_cur != v->pitch16) {             /* glide */
+      |         ^
+firmware/rfm/engine/tb_rave.c:452:14: note: 'env' is 0
+  452 |         if (!env && !m.amp0 && v->stage == 2)
+      |              ^~~
+firmware/rfm/engine/tb_rave.c:452:13: note: Left side of '&&' is true
+  452 |         if (!env && !m.amp0 && v->stage == 2)
+      |             ^
+firmware/rfm/engine/tb_rave.c:452:21: note: Assuming field 'amp0' is not equal to 0
+  452 |         if (!env && !m.amp0 && v->stage == 2)
+      |                     ^~~~~~~
+firmware/rfm/engine/tb_rave.c:452:29: note: Left side of '&&' is false
+  452 |         if (!env && !m.amp0 && v->stage == 2)
+      |                             ^
+firmware/rfm/engine/tb_rave.c:459:13: note: Assuming field 'vel' is <= 110
+  459 |         if (v->vel > 110)                             /* the accent opens the filter with the envelope */
+      |             ^~~~~~~~~~~~
+firmware/rfm/engine/tb_rave.c:459:9: note: Taking false branch
+  459 |         if (v->vel > 110)                             /* the accent opens the filter with the envelope */
+      |         ^
+firmware/rfm/engine/tb_rave.c:461:9: note: Calling 'rave_render'
+  461 |         rave_render(p, v, out, CTL, &m);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_rave.c:189:41: note: Assuming the condition is false
+  189 |     const rave_type_t *ty = &RAVE_TYPES[E_TYPE(p)];
+      |                                         ^~~~~~~~~
+firmware/rfm/engine/tb_rave.c:164:20: note: expanded from macro 'E_TYPE'
+  164 | #define E_TYPE(p) ((p)[TBS_SUB] < TBR_NTYPE ? (p)[TBS_SUB] : 0u)
+      |                    ^~~~~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_rave.c:189:41: note: '?' condition is false
+firmware/rfm/engine/tb_rave.c:164:20: note: expanded from macro 'E_TYPE'
+  164 | #define E_TYPE(p) ((p)[TBS_SUB] < TBR_NTYPE ? (p)[TBS_SUB] : 0u)
+      |                    ^
+firmware/rfm/engine/tb_rave.c:192:51: note: Assuming field 'osc' is not equal to RO_SAWOCT
+  192 |     uint32_t inc[8], i, k, nosc = ty->nosc, nup = ty->osc == RO_SAWOCT ? 2u : 0u;
+      |                                                   ^~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_rave.c:192:51: note: '?' condition is false
+firmware/rfm/engine/tb_rave.c:199:13: note: Assuming field 'bend_ms' is 0
+  199 |     r->pe = ty->bend_ms ? (uint32_t)(((uint64_t)r->pe * rave_blk(ty->bend_ms)) >> 16) : 0u;
+      |             ^~~~~~~~~~~
+firmware/rfm/engine/tb_rave.c:199:13: note: '?' condition is false
+firmware/rfm/engine/tb_rave.c:201:13: note: Assuming field 'fenv_ms' is 0
+  201 |     r->fe = ty->fenv_ms ? (uint32_t)(((uint64_t)r->fe * rave_blk(ty->fenv_ms)) >> 16) : 0u;
+      |             ^~~~~~~~~~~
+firmware/rfm/engine/tb_rave.c:201:13: note: '?' condition is false
+firmware/rfm/engine/tb_rave.c:205:36: note: Assuming 'dis' is <= 0
+  205 |     tsvf_coef(&fpost, (ty->post - (dis > 0 ? dis / 6 : 0)) << 8, 23);
+      |                                    ^~~~~~~
+firmware/rfm/engine/tb_rave.c:205:36: note: '?' condition is false
+firmware/rfm/engine/tb_rave.c:211:9: note: Assuming 'n2' is <= 'ref'
+  211 |     if (n2 > ref)
+      |         ^~~~~~~~
+firmware/rfm/engine/tb_rave.c:211:5: note: Taking false branch
+  211 |     if (n2 > ref)
+      |     ^
+firmware/rfm/engine/tb_rave.c:213:49: note: Assuming 'ref' is > 2000
+  213 |     bmk = (int32_t)((32767u << 15) / (uint32_t)(ref > 2000 ? ref : 2000));
+      |                                                 ^~~~~~~~~~
+firmware/rfm/engine/tb_rave.c:213:49: note: '?' condition is true
+firmware/rfm/engine/tb_rave.c:214:9: note: Assuming the condition is false
+  214 |     if (bmk > 4 * 32767)
+      |         ^~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_rave.c:214:5: note: Taking false branch
+  214 |     if (bmk > 4 * 32767)
+      |     ^
+firmware/rfm/engine/tb_rave.c:218:21: note: Assuming 'k' is >= 'nosc'
+  218 |         for (k = 0; k < nosc; k++) {
+      |                     ^~~~~~~~
+firmware/rfm/engine/tb_rave.c:218:9: note: Loop condition is false. Execution continues on line 229
+  218 |         for (k = 0; k < nosc; k++) {
+      |         ^
+firmware/rfm/engine/tb_rave.c:229:5: note: Loop condition is true.  Entering loop body
+  229 |     for (i = 0; i < n; i++) {
+      |     ^
+firmware/rfm/engine/tb_rave.c:231:9: note: Loop condition is false. Execution continues on line 242
+  231 |         for (k = 0; k < nosc; k++) {
+      |         ^
+firmware/rfm/engine/tb_rave.c:242:15: note: Division by zero
+  242 |         s = s / (int32_t)(nosc - nup);
+      |             ~~^~~~~~~~~~~~~~~~~~~~~~~
+1 warning generated.
+firmware/rfm/engine/tb_synth.c:235:88: warning: Division by zero [core.DivideZero]
+  235 |         v->bendk = p[TBS_PTIME] ? (int32_t)(65536 - (int32_t)(((uint64_t)47554u << 16) / (10ull * tb_exp2((int32_t)p[TBS_PTIME] * 65536 / 16)))) : 0;
+      |                                                                                        ^
+firmware/rfm/engine/tb_synth.c:302:12: note: Field 'rmode' is 0
+  302 |     if (s->rmode) {                                    /* RAVE: the key's notes let go */
+      |            ^
+firmware/rfm/engine/tb_synth.c:302:5: note: Taking false branch
+  302 |     if (s->rmode) {                                    /* RAVE: the key's notes let go */
+      |     ^
+firmware/rfm/engine/tb_synth.c:311:21: note: Assuming 'i' is < field 'nheld'
+  311 |     for (i = j = 0; i < s->nheld; i++)
+      |                     ^~~~~~~~~~~~
+firmware/rfm/engine/tb_synth.c:311:5: note: Loop condition is true.  Entering loop body
+  311 |     for (i = j = 0; i < s->nheld; i++)
+      |     ^
+firmware/rfm/engine/tb_synth.c:312:13: note: Assuming the condition is true
+  312 |         if (s->held[i] != note) {
+      |             ^~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_synth.c:312:9: note: Taking true branch
+  312 |         if (s->held[i] != note) {
+      |         ^
+firmware/rfm/engine/tb_synth.c:311:21: note: Assuming 'i' is >= field 'nheld'
+  311 |     for (i = j = 0; i < s->nheld; i++)
+      |                     ^~~~~~~~~~~~
+firmware/rfm/engine/tb_synth.c:311:5: note: Loop condition is false. Execution continues on line 317
+  311 |     for (i = j = 0; i < s->nheld; i++)
+      |     ^
+firmware/rfm/engine/tb_synth.c:318:12: note: Field 'rmode' is 0
+  318 |     if (s->rmode)
+      |            ^
+firmware/rfm/engine/tb_synth.c:318:5: note: Taking false branch
+  318 |     if (s->rmode)
+      |     ^
+firmware/rfm/engine/tb_synth.c:320:9: note: Assuming the condition is true
+  320 |     if (p[TBS_MODE] != TBS_POLY) {
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_synth.c:320:5: note: Taking true branch
+  320 |     if (p[TBS_MODE] != TBS_POLY) {
+      |     ^
+firmware/rfm/engine/tb_synth.c:321:16: note: Field 'nheld' is 1
+  321 |         if (s->nheld) {                                /* back to the key still down */
+      |                ^
+firmware/rfm/engine/tb_synth.c:321:9: note: Taking true branch
+  321 |         if (s->nheld) {                                /* back to the key still down */
+      |         ^
+firmware/rfm/engine/tb_synth.c:323:17: note: Assuming 'note' is equal to field 'key'
+  323 |             if (s->v[0].key == note)
+      |                 ^~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_synth.c:323:13: note: Taking true branch
+  323 |             if (s->v[0].key == note)
+      |             ^
+firmware/rfm/engine/tb_synth.c:324:17: note: Calling 'play_mono'
+  324 |                 play_mono(s, p, s->held[h], s->v[0].vel / 258u, s->iv[h], s->niv[h], 1);
+      |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_synth.c:250:5: note: Loop condition is true.  Entering loop body
+  250 |     for (i = 0; i < TBS_VOICES; i++) {
+      |     ^
+firmware/rfm/engine/tb_synth.c:252:13: note: Assuming 'i' is < 'n'
+  252 |         if (i < n)
+      |             ^~~~~
+firmware/rfm/engine/tb_synth.c:252:9: note: Taking true branch
+  252 |         if (i < n)
+      |         ^
+firmware/rfm/engine/tb_synth.c:253:53: note: Assuming the condition is true
+  253 |             start(v, p, (int)key + iv[i], key, vel, p[TBS_GLIDE] && (legato_from || p[TBS_MODE] == TBS_MONO),
+      |                                                     ^~~~~~~~~~~~
+firmware/rfm/engine/tb_synth.c:253:53: note: Left side of '&&' is true
+firmware/rfm/engine/tb_synth.c:253:70: note: 'legato_from' is 1
+  253 |             start(v, p, (int)key + iv[i], key, vel, p[TBS_GLIDE] && (legato_from || p[TBS_MODE] == TBS_MONO),
+      |                                                                      ^~~~~~~~~~~
+firmware/rfm/engine/tb_synth.c:253:82: note: Left side of '||' is true
+  253 |             start(v, p, (int)key + iv[i], key, vel, p[TBS_GLIDE] && (legato_from || p[TBS_MODE] == TBS_MONO),
+      |                                                                                  ^
+firmware/rfm/engine/tb_synth.c:254:21: note: 'legato_from' is 1
+  254 |                   !(legato_from && p[TBS_MODE] == TBS_LEGATO), ++s->age);
+      |                     ^~~~~~~~~~~
+firmware/rfm/engine/tb_synth.c:254:21: note: Left side of '&&' is true
+firmware/rfm/engine/tb_synth.c:254:36: note: Assuming the condition is false
+  254 |                   !(legato_from && p[TBS_MODE] == TBS_LEGATO), ++s->age);
+      |                                    ^~~~~~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_synth.c:253:13: note: Calling 'start'
+  253 |             start(v, p, (int)key + iv[i], key, vel, p[TBS_GLIDE] && (legato_from || p[TBS_MODE] == TBS_MONO),
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  254 |                   !(legato_from && p[TBS_MODE] == TBS_LEGATO), ++s->age);
+      |                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_synth.c:220:9: note: Assuming field 'live' is not equal to 0
+  220 |     if (!v->live || !glide)
+      |         ^~~~~~~~
+firmware/rfm/engine/tb_synth.c:220:9: note: Left side of '||' is false
+firmware/rfm/engine/tb_synth.c:220:22: note: 'glide' is 1
+  220 |     if (!v->live || !glide)
+      |                      ^~~~~
+firmware/rfm/engine/tb_synth.c:220:5: note: Taking false branch
+  220 |     if (!v->live || !glide)
+      |     ^
+firmware/rfm/engine/tb_synth.c:223:9: note: Assuming field 'live' is not equal to 0
+  223 |     if (!v->live) {
+      |         ^~~~~~~~
+firmware/rfm/engine/tb_synth.c:223:5: note: Taking false branch
+  223 |     if (!v->live) {
+      |     ^
+firmware/rfm/engine/tb_synth.c:231:9: note: 'retrig' is 1
+  231 |     if (retrig || !v->live) {
+      |         ^~~~~~
+firmware/rfm/engine/tb_synth.c:231:16: note: Left side of '||' is true
+  231 |     if (retrig || !v->live) {
+      |                ^
+firmware/rfm/engine/tb_synth.c:234:50: note: Assuming the condition is true
+  234 |         v->bend = ((int32_t)p[TBS_BEND] - 64) * (p[TBS_PTIME] ? 24 : 12) * 65536 / 64;
+      |                                                  ^~~~~~~~~~~~
+firmware/rfm/engine/tb_synth.c:234:50: note: '?' condition is true
+firmware/rfm/engine/tb_synth.c:235:20: note: '?' condition is true
+  235 |         v->bendk = p[TBS_PTIME] ? (int32_t)(65536 - (int32_t)(((uint64_t)47554u << 16) / (10ull * tb_exp2((int32_t)p[TBS_PTIME] * 65536 / 16)))) : 0;
+      |                    ^
+firmware/rfm/engine/tb_synth.c:235:99: note: Calling 'tb_exp2'
+  235 |         v->bendk = p[TBS_PTIME] ? (int32_t)(65536 - (int32_t)(((uint64_t)47554u << 16) / (10ull * tb_exp2((int32_t)p[TBS_PTIME] * 65536 / 16)))) : 0;
+      |                                                                                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_dsp.h:57:9: note: Assuming 'n' is < 15
+   57 |     if (n >= 15)
+      |         ^~~~~~~
+firmware/rfm/engine/tb_dsp.h:57:5: note: Taking false branch
+   57 |     if (n >= 15)
+      |     ^
+firmware/rfm/engine/tb_dsp.h:59:12: note: Assuming 'n' is < 0
+   59 |     return n >= 0 ? p << n : n <= -31 ? 0u : p >> -n;
+      |            ^~~~~~
+firmware/rfm/engine/tb_dsp.h:59:12: note: '?' condition is false
+firmware/rfm/engine/tb_dsp.h:59:30: note: Assuming the condition is true
+   59 |     return n >= 0 ? p << n : n <= -31 ? 0u : p >> -n;
+      |                              ^~~~~~~~
+firmware/rfm/engine/tb_dsp.h:59:30: note: '?' condition is true
+firmware/rfm/engine/tb_dsp.h:59:5: note: Returning zero
+   59 |     return n >= 0 ? p << n : n <= -31 ? 0u : p >> -n;
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_synth.c:235:99: note: Returning from 'tb_exp2'
+  235 |         v->bendk = p[TBS_PTIME] ? (int32_t)(65536 - (int32_t)(((uint64_t)47554u << 16) / (10ull * tb_exp2((int32_t)p[TBS_PTIME] * 65536 / 16)))) : 0;
+      |                                                                                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_synth.c:235:88: note: Division by zero
+  235 |         v->bendk = p[TBS_PTIME] ? (int32_t)(65536 - (int32_t)(((uint64_t)47554u << 16) / (10ull * tb_exp2((int32_t)p[TBS_PTIME] * 65536 / 16)))) : 0;
+      |                                                               ~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1 warning generated.

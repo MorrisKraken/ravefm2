@@ -1,0 +1,397 @@
+In file included from firmware/rfm/engine/../jui/jgfx.c:43,
+                 from firmware/rfm/engine/../jui/rfm_screen.c:8,
+                 from firmware/rfm/engine/rfm_ui.c:11:
+firmware/rfm/gen/ui_fonts.h:138:1: warning: missing initializer for field 'rise' of 'aafont_t' [-Wmissing-field-initializers]
+  138 | static const aafont_t AF_S = {16, 12, 32, 95, 10, 73, AF_S_GH, AF_S_GP, AF_S_DATA, AF_S_KI, AF_S_KP, AF_S_EX, 0, AF_S_HC};
+      | ^~~~~~
+firmware/rfm/engine/../jui/jgfx.c:39:13: note: 'rise' declared here
+   39 |     uint8_t rise;                       /* the ink drawn this many rows higher (AF_X: S, where the 5 x 7 face was) */
+      |             ^~~~
+firmware/rfm/gen/ui_fonts.h:338:1: warning: missing initializer for field 'rise' of 'aafont_t' [-Wmissing-field-initializers]
+  338 | static const aafont_t AF_M = {19, 15, 32, 95, 10, 73, AF_M_GH, AF_M_GP, AF_M_DATA, AF_M_KI, AF_M_KP, AF_M_EX, 0, AF_M_HC};
+      | ^~~~~~
+firmware/rfm/engine/../jui/jgfx.c:39:13: note: 'rise' declared here
+   39 |     uint8_t rise;                       /* the ink drawn this many rows higher (AF_X: S, where the 5 x 7 face was) */
+      |             ^~~~
+firmware/rfm/gen/ui_fonts.h:474:1: warning: missing initializer for field 'rise' of 'aafont_t' [-Wmissing-field-initializers]
+  474 | static const aafont_t AF_L = {26, 21, 32, 32, 40, 41, AF_L_GH, AF_L_GP, AF_L_DATA, AF_L_KI, AF_L_KP, AF_L_EX, 0, AF_L_HC};
+      | ^~~~~~
+firmware/rfm/engine/../jui/jgfx.c:39:13: note: 'rise' declared here
+   39 |     uint8_t rise;                       /* the ink drawn this many rows higher (AF_X: S, where the 5 x 7 face was) */
+      |             ^~~~
+firmware/rfm/gen/ui_fonts.h:538:1: warning: missing initializer for field 'rise' of 'aafont_t' [-Wmissing-field-initializers]
+  538 | static const aafont_t AF_V = {25, 19, 32, 32, 15, 14, AF_V_GH, AF_V_GP, AF_V_DATA, AF_V_KI, AF_V_KP, AF_V_EX, 0, 0};
+      | ^~~~~~
+firmware/rfm/engine/../jui/jgfx.c:39:13: note: 'rise' declared here
+   39 |     uint8_t rise;                       /* the ink drawn this many rows higher (AF_X: S, where the 5 x 7 face was) */
+      |             ^~~~
+firmware/rfm/engine/../jui/jgfx.c: In function 'cv_alpha_hc':
+firmware/rfm/engine/../jui/jgfx.c:699:51: warning: declaration of 'py' shadows a previous local [-Wshadow]
+  699 |                     int32_t px = x + (int32_t)gy, py = y - (int32_t)(gx + k);
+      |                                                   ^~
+firmware/rfm/engine/../jui/jgfx.c:664:17: note: shadowed declaration is here
+  664 |         int32_t py = y + (int32_t)gy;
+      |                 ^~
+firmware/rfm/engine/../jui/jgfx.c: In function 'text_run':
+firmware/rfm/engine/../jui/jgfx.c:822:26: warning: unused variable 'd1' [-Wunused-variable]
+  822 |         int32_t pos, d0, d1;
+      |                          ^~
+firmware/rfm/engine/../jui/jgfx.c:822:22: warning: unused variable 'd0' [-Wunused-variable]
+  822 |         int32_t pos, d0, d1;
+      |                      ^~
+firmware/rfm/engine/../jui/jgfx.c:816:19: warning: unused variable 'step' [-Wunused-variable]
+  816 |     const int32_t step = 16 >> f->psh;
+      |                   ^~~~
+firmware/rfm/engine/../jui/jgfx.c:815:22: warning: variable 'err' set but not used [-Wunused-but-set-variable]
+  815 |     int32_t pen = 0, err = 0, x0 = 0x7FFF, y0 = 0x7FFF, x1 = -0x7FFF, y1 = -0x7FFF;
+      |                      ^~~
+firmware/rfm/engine/rfm_ui.c: In function 'menu_fx':
+firmware/rfm/engine/rfm_ui.c:2067:34: warning: declaration of 'y' shadows a previous local [-Wshadow]
+ 2067 |             int x = 24 + j * 39, y = (f->par >> e & 1u) ? L2 : L1, sel = e == f->rsel, on = f->fxon >> e & 1u;
+      |                                  ^
+firmware/rfm/engine/rfm_ui.c:2010:13: note: shadowed declaration is here
+ 2010 |     int16_t y[64];
+      |             ^
+firmware/rfm/engine/rfm_ui.c: At top level:
+firmware/rfm/engine/rfm_ui.c:1764:13: warning: 'menu_tiles' defined but not used [-Wunused-function]
+ 1764 | static void menu_tiles(const tb_view_t *v)
+      |             ^~~~~~~~~~
+firmware/rfm/engine/rfm_ui.c:784:17: warning: 'kick_ms' defined but not used [-Wunused-variable]
+  784 | static uint32_t kick_ms;
+      |                 ^~~~~~~
+firmware/rfm/engine/rfm_ui.c:776:12: warning: 'kick_plays' defined but not used [-Wunused-function]
+  776 | static int kick_plays(const tb_view_t *v)
+      |            ^~~~~~~~~~
+firmware/rfm/engine/rfm_ui.c:766:12: warning: 'melody_now' defined but not used [-Wunused-function]
+  766 | static int melody_now(const tb_view_t *v)
+      |            ^~~~~~~~~~
+firmware/rfm/engine/rfm_ui.c:541:17: warning: 'add565' defined but not used [-Wunused-function]
+  541 | static uint16_t add565(uint16_t a, uint16_t b)          /* a + b, each channel held at its top */
+      |                 ^~~~~~
+firmware/rfm/engine/rfm_ui.c:413:13: warning: 'instrument_lines' defined but not used [-Wunused-function]
+  413 | static void instrument_lines(const tb_view_t *v, int32_t y0, int32_t h)
+      |             ^~~~~~~~~~~~~~~~
+firmware/rfm/engine/rfm_ui.c:284:13: warning: 'home_floor' defined but not used [-Wunused-function]
+  284 | static void home_floor(const tb_view_t *v)
+      |             ^~~~~~~~~~
+firmware/rfm/engine/rfm_ui.c:52:13: warning: 'txt_fit' defined but not used [-Wunused-function]
+   52 | static void txt_fit(int cx, int y, int w, const char *s, uint32_t col, uint8_t a, const tb_font_t *big)
+      |             ^~~~~~~
+firmware/rfm/engine/../jui/jgfx.c:1190:13: warning: 'draw_text_box' defined but not used [-Wunused-function]
+ 1190 | static void draw_text_box(uint32_t x, uint32_t y, uint32_t w, const aafont_t *f, const char *s,
+      |             ^~~~~~~~~~~~~
+firmware/rfm/engine/../jui/jgfx.c:1151:16: warning: 'kc_tag' defined but not used [-Wunused-function]
+ 1151 | static int32_t kc_tag(const char *s, uint32_t *len)
+      |                ^~~~~~
+firmware/rfm/engine/../jui/jgfx.c:1130:13: warning: 'cv_key_row' defined but not used [-Wunused-function]
+ 1130 | static void cv_key_row(int32_t x0, int32_t x1, int32_t y, const khint_t *h, uint32_t n, uint32_t on, uint16_t under)
+      |             ^~~~~~~~~~
+firmware/rfm/engine/../jui/jgfx.c:1109:16: warning: 'kh_ink' defined but not used [-Wunused-function]
+ 1109 | static int32_t kh_ink(uint32_t id, const char *act)
+      |                ^~~~~~
+firmware/rfm/engine/../jui/jgfx.c:1001:16: warning: 'cv_clip_text' defined but not used [-Wunused-function]
+ 1001 | static int32_t cv_clip_text(int32_t x, int32_t y, const aafont_t *f, const char *s, uint16_t fg, uint16_t bg, int32_t maxw)
+      |                ^~~~~~~~~~~~
+firmware/rfm/engine/../jui/jgfx.c:882:12: warning: 'cv_txt_in' defined but not used [-Wunused-function]
+  882 | static int cv_txt_in(int32_t x0, int32_t y0, int32_t x1, int32_t y1)
+      |            ^~~~~~~~~
+firmware/rfm/engine/../jui/jgfx.c:506:13: warning: 'cv_line_t' defined but not used [-Wunused-function]
+  506 | static void cv_line_t(int32_t x0, int32_t y0, int32_t x1, int32_t y1, uint16_t c, int32_t thick)
+      |             ^~~~~~~~~
+firmware/rfm/engine/../jui/jgfx.c:279:13: warning: 'cv_blit_from' defined but not used [-Wunused-function]
+  279 | static void cv_blit_from(uint32_t x, uint32_t y, uint32_t r0)
+      |             ^~~~~~~~~~~~
+firmware/rfm/engine/../jui/jgfx.c:209:13: warning: 'scr_holes' defined but not used [-Wunused-function]
+  209 | static void scr_holes(const int16_t (*r)[4], uint32_t n)
+      |             ^~~~~~~~~
+firmware/rfm/engine/../jui/jgfx.c:179:12: warning: 'palette_stored_ok' defined but not used [-Wunused-function]
+  179 | static int palette_stored_ok(uint32_t v) { return v < 20u || v - UI_PAL_TAG < sizeof UI_PAL_READ; }
+      |            ^~~~~~~~~~~~~~~~~
+firmware/rfm/engine/../jui/jgfx.c:178:17: warning: 'palette_to_stored' defined but not used [-Wunused-function]
+  178 | static uint32_t palette_to_stored(uint32_t i) { return UI_PAL_TAG + UI_PAL_STORED[i % NPALETTES]; }
+      |                 ^~~~~~~~~~~~~~~~~
+firmware/rfm/engine/../jui/jgfx.c:173:17: warning: 'palette_from_stored' defined but not used [-Wunused-function]
+  173 | static uint32_t palette_from_stored(uint32_t v)
+      |                 ^~~~~~~~~~~~~~~~~~~
+In file included from /usr/include/string.h:548,
+                 from firmware/rfm/engine/rfm_ui.c:10:
+In function 'memcpy',
+    inlined from 'palette_set' at firmware/rfm/engine/../jui/jgfx.c:162:5,
+    inlined from 'gfx_palette' at firmware/rfm/engine/../jui/rfm_screen.c:69:5:
+/usr/include/x86_64-linux-gnu/bits/string_fortified.h:29:10: warning: '__builtin_memcpy' offset [2, 23] from the object at 'ux' is out of the bounds of referenced subobject 'bg' with type 'short unsigned int' at offset 0 [-Warray-bounds=]
+   29 |   return __builtin___memcpy_chk (__dest, __src, __len,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   30 |                                  __glibc_objsize0 (__dest));
+      |                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/../jui/jgfx.c: In function 'gfx_palette':
+firmware/rfm/engine/../jui/jgfx.c:119:14: note: subobject 'bg' declared here
+  119 |     uint16_t bg, surf, text, theme, accent, mid, dim, line, sel, tint, rec, raise;
+      |              ^~
+firmware/rfm/engine/rfm_ui.c: In function 'tb_ui_seq':
+firmware/rfm/engine/rfm_ui.c:1223:45: warning: '%d' directive output may be truncated writing between 1 and 10 bytes into a region of size 5 [-Wformat-truncation=]
+ 1223 |                     snprintf(b, sizeof b, "C%d", n / 12 - 1);
+      |                                             ^~
+In function 'seq_notes',
+    inlined from 'tb_ui_seq' at firmware/rfm/engine/rfm_ui.c:1507:24:
+firmware/rfm/engine/rfm_ui.c:1223:43: note: directive argument in the range [-178956971, 178956969]
+ 1223 |                     snprintf(b, sizeof b, "C%d", n / 12 - 1);
+      |                                           ^~~~~
+In file included from /usr/include/stdio.h:980,
+                 from firmware/rfm/engine/rfm_ui.c:9:
+In function 'snprintf',
+    inlined from 'seq_notes' at firmware/rfm/engine/rfm_ui.c:1223:21,
+    inlined from 'tb_ui_seq' at firmware/rfm/engine/rfm_ui.c:1507:24:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:54:10: note: '__builtin___snprintf_chk' output between 3 and 12 bytes into a destination of size 6
+   54 |   return __builtin___snprintf_chk (__s, __n, __USE_FORTIFY_LEVEL - 1,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   55 |                                    __glibc_objsize (__s), __fmt,
+      |                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   56 |                                    __va_arg_pack ());
+      |                                    ~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/rfm_ui.c: In function 'tb_ui_menu':
+firmware/rfm/engine/rfm_ui.c:1940:54: warning: ' · HIGH ' directive output may be truncated writing 9 bytes into a region of size between 6 and 28 [-Wformat-truncation=]
+ 1940 |         snprintf(a, sizeof a, "LOW %s \xc2\xb7 MID %s \xc2\xb7 HIGH %s", v->knob_value[0], v->knob_value[1], v->knob_value[2]);
+      |                                                      ^~~~~~~~~~~~~~~
+In function 'snprintf',
+    inlined from 'menu_fx_j' at firmware/rfm/engine/rfm_ui.c:1940:9,
+    inlined from 'menu_fx' at firmware/rfm/engine/rfm_ui.c:2006:9,
+    inlined from 'tb_ui_menu' at firmware/rfm/engine/rfm_ui.c:2486:22:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:54:10: note: '__builtin___snprintf_chk' output between 22 and 55 bytes into a destination of size 40
+   54 |   return __builtin___snprintf_chk (__s, __n, __USE_FORTIFY_LEVEL - 1,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   55 |                                    __glibc_objsize (__s), __fmt,
+      |                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   56 |                                    __va_arg_pack ());
+      |                                    ~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/rfm_ui.c: In function 'tb_ui_menu':
+firmware/rfm/engine/rfm_ui.c:1940:54: warning: ' · HIGH ' directive output may be truncated writing 9 bytes into a region of size between 6 and 28 [-Wformat-truncation=]
+ 1940 |         snprintf(a, sizeof a, "LOW %s \xc2\xb7 MID %s \xc2\xb7 HIGH %s", v->knob_value[0], v->knob_value[1], v->knob_value[2]);
+      |                                                      ^~~~~~~~~~~~~~~
+In function 'snprintf',
+    inlined from 'menu_fx_j' at firmware/rfm/engine/rfm_ui.c:1940:9,
+    inlined from 'menu_fx' at firmware/rfm/engine/rfm_ui.c:2006:9,
+    inlined from 'tb_ui_menu' at firmware/rfm/engine/rfm_ui.c:2486:22:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:54:10: note: '__builtin___snprintf_chk' output between 22 and 55 bytes into a destination of size 40
+   54 |   return __builtin___snprintf_chk (__s, __n, __USE_FORTIFY_LEVEL - 1,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   55 |                                    __glibc_objsize (__s), __fmt,
+      |                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   56 |                                    __va_arg_pack ());
+      |                                    ~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_909.c: In function 'tb909_render_x':
+firmware/rfm/engine/tb_909.c:124:36: warning: logical 'and' of equal expressions [-Wlogical-op]
+  124 |     for (pc = 0; pc < TB909_PIECES && pc < TB909_N; pc++) {
+      |                                    ^~
+firmware/rfm/engine/tb_akick.c:70:26: warning: 'N_KICK_TYPE' defined but not used [-Wunused-const-variable=]
+   70 | static const char *const N_KICK_TYPE[KT_COUNT] = {"ROND", "CREUX", "PROF", "NASAL", "FUZZ", "CASSE", "ASYM", "GABBR", "MOKUM", "TOK", "TERRO", "SPEED", "UPTMP", "DOEF", "EARLY", "BELGE", "DOOM", "909", "BOOM", "JUMP", "JUMPD", "BOUNC"};
+      |                          ^~~~~~~~~~~
+firmware/rfm/engine/tb_app.c:472:5: warning: missing initializer for field 'kick_sound' of 'style_t' [-Wmissing-field-initializers]
+  472 |     {"GABBER",     180, "x...x...x...x...", "", "..x...x...x...x.", "", "", "", ""},
+      |     ^
+firmware/rfm/engine/tb_app.c:467:100: note: 'kick_sound' declared here
+  467 | typedef struct { const char *name; uint16_t bpm; const char *kick, *ch, *oh, *cp, *sd, *rd, *brk, *kick_sound, *alt1, *alt2; } style_t;
+      |                                                                                                    ^~~~~~~~~~
+firmware/rfm/engine/tb_app.c:473:5: warning: missing initializer for field 'kick_sound' of 'style_t' [-Wmissing-field-initializers]
+  473 |     {"HAPPY HC",   170, "x...x...x...x...", ".x.x.x.x.x.x.x.x", "..x...x...x...x.", "....x.......x...", "", "", ""},
+      |     ^
+firmware/rfm/engine/tb_app.c:467:100: note: 'kick_sound' declared here
+  467 | typedef struct { const char *name; uint16_t bpm; const char *kick, *ch, *oh, *cp, *sd, *rd, *brk, *kick_sound, *alt1, *alt2; } style_t;
+      |                                                                                                    ^~~~~~~~~~
+firmware/rfm/engine/tb_app.c:474:5: warning: missing initializer for field 'kick_sound' of 'style_t' [-Wmissing-field-initializers]
+  474 |     {"EARLY HC",   165, "x...x...x...x.x.", "", "..x...x...x...x.", "....x.......x...", "", "", ""},
+      |     ^
+firmware/rfm/engine/tb_app.c:467:100: note: 'kick_sound' declared here
+  467 | typedef struct { const char *name; uint16_t bpm; const char *kick, *ch, *oh, *cp, *sd, *rd, *brk, *kick_sound, *alt1, *alt2; } style_t;
+      |                                                                                                    ^~~~~~~~~~
+firmware/rfm/engine/tb_app.c:475:5: warning: missing initializer for field 'kick_sound' of 'style_t' [-Wmissing-field-initializers]
+  475 |     {"FRENCHCORE", 200, "x...x...x...x...", "", "..x...x...x...x.", "............x...", "", "", ""},
+      |     ^
+firmware/rfm/engine/tb_app.c:467:100: note: 'kick_sound' declared here
+  467 | typedef struct { const char *name; uint16_t bpm; const char *kick, *ch, *oh, *cp, *sd, *rd, *brk, *kick_sound, *alt1, *alt2; } style_t;
+      |                                                                                                    ^~~~~~~~~~
+firmware/rfm/engine/tb_app.c:476:5: warning: missing initializer for field 'kick_sound' of 'style_t' [-Wmissing-field-initializers]
+  476 |     {"UPTEMPO",    200, "x...x...x...x..x", "", "..x...x...x...x.", "....x.......x...", "", "", ""},
+      |     ^
+firmware/rfm/engine/tb_app.c:467:100: note: 'kick_sound' declared here
+  467 | typedef struct { const char *name; uint16_t bpm; const char *kick, *ch, *oh, *cp, *sd, *rd, *brk, *kick_sound, *alt1, *alt2; } style_t;
+      |                                                                                                    ^~~~~~~~~~
+firmware/rfm/engine/tb_app.c:477:5: warning: missing initializer for field 'kick_sound' of 'style_t' [-Wmissing-field-initializers]
+  477 |     {"HARDTEK",    180, "x...x...x...x.xx", ".x...x...x...x..", "..x...x...x...x.", "", "", "", ""},
+      |     ^
+firmware/rfm/engine/tb_app.c:467:100: note: 'kick_sound' declared here
+  467 | typedef struct { const char *name; uint16_t bpm; const char *kick, *ch, *oh, *cp, *sd, *rd, *brk, *kick_sound, *alt1, *alt2; } style_t;
+      |                                                                                                    ^~~~~~~~~~
+firmware/rfm/engine/tb_app.c:478:5: warning: missing initializer for field 'kick_sound' of 'style_t' [-Wmissing-field-initializers]
+  478 |     {"TERROR",     240, "x.x.x.x.x.x.x.x.", "xxxxxxxxxxxxxxxx", "", "", "....x.......x...", "", ""},
+      |     ^
+firmware/rfm/engine/tb_app.c:467:100: note: 'kick_sound' declared here
+  467 | typedef struct { const char *name; uint16_t bpm; const char *kick, *ch, *oh, *cp, *sd, *rd, *brk, *kick_sound, *alt1, *alt2; } style_t;
+      |                                                                                                    ^~~~~~~~~~
+firmware/rfm/engine/tb_app.c:479:5: warning: missing initializer for field 'kick_sound' of 'style_t' [-Wmissing-field-initializers]
+  479 |     {"SPEEDCORE",  300, "x.x.x.x.x.x.x.x.", "", "", "", "....x.......x...", "x...x...x...x...", ""},
+      |     ^
+firmware/rfm/engine/tb_app.c:467:100: note: 'kick_sound' declared here
+  467 | typedef struct { const char *name; uint16_t bpm; const char *kick, *ch, *oh, *cp, *sd, *rd, *brk, *kick_sound, *alt1, *alt2; } style_t;
+      |                                                                                                    ^~~~~~~~~~
+firmware/rfm/engine/tb_app.c:480:5: warning: missing initializer for field 'kick_sound' of 'style_t' [-Wmissing-field-initializers]
+  480 |     {"INDUSTRIAL", 150, "x..x..x...x..x..", "x.x.x.x.x.x.x.x.", "", "", "....x.......x...", "", ""},
+      |     ^
+firmware/rfm/engine/tb_app.c:467:100: note: 'kick_sound' declared here
+  467 | typedef struct { const char *name; uint16_t bpm; const char *kick, *ch, *oh, *cp, *sd, *rd, *brk, *kick_sound, *alt1, *alt2; } style_t;
+      |                                                                                                    ^~~~~~~~~~
+firmware/rfm/engine/tb_app.c:481:5: warning: missing initializer for field 'kick_sound' of 'style_t' [-Wmissing-field-initializers]
+  481 |     {"DOOMCORE",   140, "x...x...x...x...", "", "", "............x...", "", "..x...x...x...x.", ""},
+      |     ^
+firmware/rfm/engine/tb_app.c:467:100: note: 'kick_sound' declared here
+  467 | typedef struct { const char *name; uint16_t bpm; const char *kick, *ch, *oh, *cp, *sd, *rd, *brk, *kick_sound, *alt1, *alt2; } style_t;
+      |                                                                                                    ^~~~~~~~~~
+firmware/rfm/engine/tb_app.c:482:5: warning: missing initializer for field 'kick_sound' of 'style_t' [-Wmissing-field-initializers]
+  482 |     {"JUNGLE",     170, "x.........x.....", "", "", "", "....x.......x...", "x.x.x.x.x.x.x.x.", "01.24.6789.4BCDF"},
+      |     ^
+firmware/rfm/engine/tb_app.c:467:100: note: 'kick_sound' declared here
+  467 | typedef struct { const char *name; uint16_t bpm; const char *kick, *ch, *oh, *cp, *sd, *rd, *brk, *kick_sound, *alt1, *alt2; } style_t;
+      |                                                                                                    ^~~~~~~~~~
+firmware/rfm/engine/tb_app.c:483:5: warning: missing initializer for field 'kick_sound' of 'style_t' [-Wmissing-field-initializers]
+  483 |     {"BREAKCORE",  180, "x..x..x.x..x..x.", "", "", "", ".....x.x....x.xx", "", "0123012345674567"},
+      |     ^
+firmware/rfm/engine/tb_app.c:467:100: note: 'kick_sound' declared here
+  467 | typedef struct { const char *name; uint16_t bpm; const char *kick, *ch, *oh, *cp, *sd, *rd, *brk, *kick_sound, *alt1, *alt2; } style_t;
+      |                                                                                                    ^~~~~~~~~~
+firmware/rfm/engine/tb_app.c:484:5: warning: missing initializer for field 'kick_sound' of 'style_t' [-Wmissing-field-initializers]
+  484 |     {"RAVE 92",    140, "x...x...x...x...", "", "..x...x...x...x.", "....x.......x...", "", "", "0123456789ABCDEF"},
+      |     ^
+firmware/rfm/engine/tb_app.c:467:100: note: 'kick_sound' declared here
+  467 | typedef struct { const char *name; uint16_t bpm; const char *kick, *ch, *oh, *cp, *sd, *rd, *brk, *kick_sound, *alt1, *alt2; } style_t;
+      |                                                                                                    ^~~~~~~~~~
+firmware/rfm/engine/tb_app.c:485:5: warning: missing initializer for field 'kick_sound' of 'style_t' [-Wmissing-field-initializers]
+  485 |     {"NEW BEAT",   120, "x...x...x...x...", "x.x.x.x.x.x.x.x.", "", "", "....x.......x...", "", ""},
+      |     ^
+firmware/rfm/engine/tb_app.c:467:100: note: 'kick_sound' declared here
+  467 | typedef struct { const char *name; uint16_t bpm; const char *kick, *ch, *oh, *cp, *sd, *rd, *brk, *kick_sound, *alt1, *alt2; } style_t;
+      |                                                                                                    ^~~~~~~~~~
+firmware/rfm/engine/tb_app.c:486:5: warning: missing initializer for field 'kick_sound' of 'style_t' [-Wmissing-field-initializers]
+  486 |     {"JUMPSTYLE",  150, "x...x...x...x...", "", "..x...x...x...x.", "....x.......x...", "", "", ""},
+      |     ^
+firmware/rfm/engine/tb_app.c:467:100: note: 'kick_sound' declared here
+  467 | typedef struct { const char *name; uint16_t bpm; const char *kick, *ch, *oh, *cp, *sd, *rd, *brk, *kick_sound, *alt1, *alt2; } style_t;
+      |                                                                                                    ^~~~~~~~~~
+firmware/rfm/engine/tb_app.c:742:20: warning: 'seq_title' defined but not used [-Wunused-function]
+  742 | static const char *seq_title(void) { return "WRITE"; }
+      |                    ^~~~~~~~~
+firmware/rfm/engine/tb_app.c: In function 'value_text.constprop':
+firmware/rfm/engine/tb_app.c:1425:31: warning: ' OF ' directive output may be truncated writing 4 bytes into a region of size between 1 and 11 [-Wformat-truncation=]
+ 1425 |             snprintf(o, n, "%d OF %u", v + 1, nn);
+      |                               ^~~~
+firmware/rfm/engine/tb_app.c:1425:28: note: directive argument in the range [1, 4294967295]
+ 1425 |             snprintf(o, n, "%d OF %u", v + 1, nn);
+      |                            ^~~~~~~~~~
+In file included from /usr/include/stdio.h:980,
+                 from firmware/rfm/engine/tb_app.c:24:
+In function 'snprintf',
+    inlined from 'value_text.constprop' at firmware/rfm/engine/tb_app.c:1425:13:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:54:10: note: '__builtin___snprintf_chk' output between 7 and 26 bytes into a destination of size 12
+   54 |   return __builtin___snprintf_chk (__s, __n, __USE_FORTIFY_LEVEL - 1,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   55 |                                    __glibc_objsize (__s), __fmt,
+      |                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   56 |                                    __va_arg_pack ());
+      |                                    ~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c: In function 'value_text.constprop':
+firmware/rfm/engine/tb_app.c:1392:31: warning: ' · EMPTY' directive output may be truncated writing 9 bytes into a region of size between 1 and 11 [-Wformat-truncation=]
+ 1392 |             snprintf(o, n, "%d \xc2\xb7 EMPTY", v + 1);
+      |                               ^~~~~~~~~~~~~~~
+In function 'snprintf',
+    inlined from 'value_text.constprop' at firmware/rfm/engine/tb_app.c:1392:13:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:54:10: note: '__builtin___snprintf_chk' output between 11 and 21 bytes into a destination of size 12
+   54 |   return __builtin___snprintf_chk (__s, __n, __USE_FORTIFY_LEVEL - 1,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   55 |                                    __glibc_objsize (__s), __fmt,
+      |                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   56 |                                    __va_arg_pack ());
+      |                                    ~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c: In function 'value_text.constprop':
+firmware/rfm/engine/tb_app.c:1390:31: warning: ' · ' directive output may be truncated writing 4 bytes into a region of size between 1 and 11 [-Wformat-truncation=]
+ 1390 |             snprintf(o, n, "%d \xc2\xb7 %u", v + 1, bpm / 10u);
+      |                               ^~~~~~~~~~
+firmware/rfm/engine/tb_app.c:1390:28: note: directive argument in the range [0, 429496729]
+ 1390 |             snprintf(o, n, "%d \xc2\xb7 %u", v + 1, bpm / 10u);
+      |                            ^~~~~~~~~~~~~~~~
+In function 'snprintf',
+    inlined from 'value_text.constprop' at firmware/rfm/engine/tb_app.c:1390:13:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:54:10: note: '__builtin___snprintf_chk' output between 7 and 25 bytes into a destination of size 12
+   54 |   return __builtin___snprintf_chk (__s, __n, __USE_FORTIFY_LEVEL - 1,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   55 |                                    __glibc_objsize (__s), __fmt,
+      |                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   56 |                                    __va_arg_pack ());
+      |                                    ~~~~~~~~~~~~~~~~~
+firmware/rfm/engine/tb_app.c: In function 'tb_app_tick':
+firmware/rfm/engine/tb_app.c:1357:69: warning: '%d' directive output may be truncated writing between 1 and 10 bytes into a region of size 8 [-Wformat-truncation=]
+ 1357 | static void note_text(char *o, size_t n, int v) { snprintf(o, n, "%s%d", NOTE_NAME[v % 12], v / 12 - 1); }
+      |                                                                     ^~
+In function 'note_text',
+    inlined from 'build_menu_view' at firmware/rfm/engine/tb_app.c:3835:13,
+    inlined from 'build_view' at firmware/rfm/engine/tb_app.c:4018:9,
+    inlined from 'tb_app_tick' at firmware/rfm/engine/tb_app.c:4109:9:
+firmware/rfm/engine/tb_app.c:1357:66: note: directive argument in the range [-178956971, 178956969]
+ 1357 | static void note_text(char *o, size_t n, int v) { snprintf(o, n, "%s%d", NOTE_NAME[v % 12], v / 12 - 1); }
+      |                                                                  ^~~~~~
+In function 'snprintf',
+    inlined from 'note_text' at firmware/rfm/engine/tb_app.c:1357:51,
+    inlined from 'build_menu_view' at firmware/rfm/engine/tb_app.c:3835:13,
+    inlined from 'build_view' at firmware/rfm/engine/tb_app.c:4018:9,
+    inlined from 'tb_app_tick' at firmware/rfm/engine/tb_app.c:4109:9:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:54:10: note: '__builtin___snprintf_chk' output 2 or more bytes (assuming 11) into a destination of size 8
+   54 |   return __builtin___snprintf_chk (__s, __n, __USE_FORTIFY_LEVEL - 1,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   55 |                                    __glibc_objsize (__s), __fmt,
+      |                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   56 |                                    __va_arg_pack ());
+      |                                    ~~~~~~~~~~~~~~~~~
+In file included from firmware/rfm/engine/tb_drumx.c:62:
+firmware/rfm/engine/tb_drumx_voice.inc: In function 'dx_run_fx':
+firmware/rfm/engine/tb_drumx_voice.inc:374:68: warning: declaration of 'kb' shadows a previous local [-Wshadow]
+  374 |             int32_t ka = (int32_t)((1u << 29) / ((st >> 8) | 1u)), kb = (ka * 2787) >> 12;   /* (the edges' gains, Q8) */
+      |                                                                    ^~
+firmware/rfm/engine/tb_drumx_voice.inc:238:80: note: shadowed declaration is here
+  238 |     uint32_t i, k, wave = L->mode & 3u, flt = (L->mode >> 2) & 3u, ta, tn, tp, kb, inc1, sp, gr = flt == DXF_GR, slen = 0, sinc = 0;
+      |                                                                                ^~
+firmware/rfm/engine/tb_drumx_voice.inc:428:57: warning: declaration of 'c' shadows a previous local [-Wshadow]
+  428 |             int32_t g = 16 + ((fold * fold * 5) >> 10), c = g * 6144 / (8 + g);   /* (Q4: x1 .. x5.9 on fold^2; V10.6q,
+      |                                                         ^
+firmware/rfm/engine/tb_drumx_voice.inc:239:12: note: shadowed declaration is here
+  239 |     tsvf_t c;
+      |            ^
+firmware/rfm/engine/tb_drumx_voice.inc:432:25: warning: declaration of 'v' shadows a parameter [-Wshadow]
+  432 |                 int32_t v = clamp((y[i] * g) >> 4, -5 * 16384, 5 * 16384), a;
+      |                         ^
+firmware/rfm/engine/tb_drumx_voice.inc:233:81: note: shadowed declaration is here
+  233 | static __attribute__((noinline)) void dx_run_fx(const dx_lane_t *L, dx_voice_t *v, int32_t morph, int32_t tune16,
+      |                                                                     ~~~~~~~~~~~~^
+firmware/rfm/engine/tb_drumx_voice.inc: At top level:
+firmware/rfm/engine/tb_drumx_voice.inc:670:12: warning: 'dx_kit_ok' defined but not used [-Wunused-function]
+  670 | static int dx_kit_ok(const dx_lane_t *k)
+      |            ^~~~~~~~~
+firmware/rfm/engine/tb_engine.c: In function 'extras':
+firmware/rfm/engine/tb_engine.c:1381:30: warning: declaration of 'hz' shadows a previous local [-Wshadow]
+ 1381 |                     uint32_t hz = base + (uint32_t)(((int64_t)base * w) >> 18);   /* +- 12 % */
+      |                              ^~
+firmware/rfm/engine/tb_engine.c:1313:18: note: shadowed declaration is here
+ 1313 |         uint32_t hz = (uint32_t)((300ull * tb_exp2(p * 5)) >> 16);                                 /* 300 Hz .. 9.6 kHz */
+      |                  ^~
+firmware/rfm/engine/tb_engine.c:1390:26: warning: declaration of 'hz' shadows a previous local [-Wshadow]
+ 1390 |                 uint32_t hz = (uint32_t)((110ull * tb_exp2(p * 3)) >> 16), k;                       /* 110 .. 880 Hz */
+      |                          ^~
+firmware/rfm/engine/tb_engine.c:1313:18: note: shadowed declaration is here
+ 1313 |         uint32_t hz = (uint32_t)((300ull * tb_exp2(p * 5)) >> 16);                                 /* 300 Hz .. 9.6 kHz */
+      |                  ^~
+firmware/rfm/engine/tb_engine.c:1434:25: warning: declaration of 'q' shadows a previous local [-Wshadow]
+ 1434 |                 int32_t q = (int32_t)lv[ty] * 32768 / 100;   /* (the level in Q15, once a block) */
+      |                         ^
+firmware/rfm/engine/tb_engine.c:1314:51: note: shadowed declaration is here
+ 1314 |         int32_t f = 2 * tb_sin(hz * 24348u / 2u), q = 20000;
+      |                                                   ^
+firmware/rfm/engine/tb_kick.c: In function 'k_setup':
+firmware/rfm/engine/tb_kick.c:443:30: warning: operand of '?:' changes signedness from 'int32_t' {aka 'int'} to 'uint32_t' {aka 'unsigned int'} due to unsignedness of other operand [-Wsign-compare]
+  443 |         c->s_end = lon < 0 ? tb_clamp((int32_t)((uint64_t)L * (uint32_t)(64 + lon) / 64u), 1323, (int32_t)L) : L;
+      |                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

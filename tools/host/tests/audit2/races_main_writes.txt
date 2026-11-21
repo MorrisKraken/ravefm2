@@ -1,0 +1,46 @@
+  40  MAIN WRITES tb_engine_note < key_up < input  [firmware/rfm/engine/tb_engine.c:178]   while AUDIO reads take_keys < tb_engine_render
+  32  MAIN WRITES tb_engine_note < key_down < input  [firmware/rfm/engine/tb_engine.c:178]   while AUDIO reads take_keys < tb_engine_render
+  14  MAIN WRITES tb_engine_note < seq_enter < key_down  [firmware/rfm/engine/tb_engine.c:178]   while AUDIO reads take_keys < tb_engine_render
+  13  MAIN WRITES place_hit < rec_down < key_down  [firmware/rfm/engine/tb_app.c:783]   while AUDIO reads play_track_step < do_tick < tb_engine_render
+  11  MAIN WRITES tb_engine_preview < preset_turn < input  [firmware/rfm/engine/tb_engine.c:187]   while AUDIO reads take_keys < tb_engine_render
+  10  MAIN WRITES tb_engine_note < tb_engine_panic < set  [firmware/rfm/engine/tb_engine.c:178]   while AUDIO reads take_keys < tb_engine_render
+  10  MAIN WRITES tb_engine_preview < set < turn  [firmware/rfm/engine/tb_engine.c:187]   while AUDIO reads take_keys < tb_engine_render
+   8  MAIN WRITES tb_engine_note < tb_engine_panic < preset_turn  [firmware/rfm/engine/tb_engine.c:178]   while AUDIO reads take_keys < tb_engine_render
+   7  MAIN WRITES input < tb_app_tick  [firmware/rfm/engine/tb_app.c:3472]   while AUDIO reads muted < tb_engine_render
+   6  MAIN WRITES tb_engine_note < seq_key_down < key_down  [firmware/rfm/engine/tb_engine.c:178]   while AUDIO reads take_keys < tb_engine_render
+   5  MAIN WRITES set < turn < input  [firmware/rfm/engine/tb_app.c:1122]   while AUDIO reads tb_envk < tb_syn_render < render_tracks
+   5  MAIN WRITES tb_engine_skip < rec_down < key_down  [firmware/rfm/engine/tb_engine.c:356]   while AUDIO writes play_track_step < do_tick < tb_engine_render
+   4  MAIN WRITES preset_turn < input < tb_app_tick  [firmware/rfm/engine/tb_app.c:3175]   while AUDIO reads tb_brk_render < render_tracks < tb_engine_render
+   4  MAIN WRITES set < turn < input  [firmware/rfm/engine/tb_app.c:1122]   while AUDIO reads tb_envk < tb_brk_render < render_tracks
+   3  MAIN WRITES set < turn < input  [firmware/rfm/engine/tb_app.c:1122]   while AUDIO reads tb_syn_render < render_tracks < tb_engine_render
+   3  MAIN WRITES set < turn < input  [firmware/rfm/engine/tb_app.c:1122]   while AUDIO reads memcpy < atelier < tb_kick_render
+   3  MAIN WRITES set < turn < input  [firmware/rfm/engine/tb_app.c:1153]   while AUDIO reads tb_engine_fx_on < tb_engine_render
+   3  MAIN WRITES tb_engine_break_loop < preset_turn < input  [firmware/rfm/engine/tb_engine.c:2115]   while AUDIO reads play_track_step < do_tick < tb_engine_render
+   3  MAIN WRITES set < turn < input  [firmware/rfm/engine/tb_app.c:1122]   while AUDIO reads tb_dx_render < render_tracks < tb_engine_render
+   3  MAIN WRITES set < turn < input  [firmware/rfm/engine/tb_app.c:1122]   while AUDIO reads tb_envk < render_tracks < tb_engine_render
+   3  MAIN WRITES seq_enter < key_down < input  [firmware/rfm/engine/tb_app.c:2161]   while AUDIO reads play_track_step < do_tick < tb_engine_render
+   3  MAIN WRITES set < turn < input  [firmware/rfm/engine/tb_app.c:1122]   while AUDIO reads tb_brk_render < render_tracks < tb_engine_render
+   2  MAIN WRITES set < turn < input  [firmware/rfm/engine/tb_app.c:1181]   while AUDIO reads tb_engine_render
+   2  MAIN WRITES tb_engine_preview < ned_hear < ned_key  [firmware/rfm/engine/tb_engine.c:187]   while AUDIO reads take_keys < tb_engine_render
+   2  MAIN WRITES set < turn < input  [firmware/rfm/engine/tb_app.c:1179]   while AUDIO reads lfo_run < tb_engine_render
+   2  MAIN WRITES set < turn < input  [firmware/rfm/engine/tb_app.c:1157]   while AUDIO reads tb_engine_render
+   2  MAIN WRITES tb_engine_skip < rec_down < key_down  [firmware/rfm/engine/tb_engine.c:356]   while AUDIO reads play_track_step < do_tick < tb_engine_render
+   2  MAIN WRITES tb_engine_break_loop < preset_turn < input  [firmware/rfm/engine/tb_engine.c:2116]   while AUDIO reads play_track_step < do_tick < tb_engine_render
+   2  MAIN WRITES set < turn < input  [firmware/rfm/engine/tb_app.c:1220]   while AUDIO reads tb909_render_x < tb_dx_render < render_tracks
+   1  MAIN WRITES tb_engine_note < tb_engine_panic < key_down  [firmware/rfm/engine/tb_engine.c:178]   while AUDIO reads take_keys < tb_engine_render
+   1  MAIN WRITES set < turn < input  [firmware/rfm/engine/tb_app.c:1181]   while AUDIO reads lfo_cutoff < render_tracks < tb_engine_render
+   1  MAIN WRITES set < turn < input  [firmware/rfm/engine/tb_app.c:1189]   while AUDIO reads tb_chord_notes < note < take_keys
+   1  MAIN WRITES preset_turn < input < tb_app_tick  [firmware/rfm/engine/tb_app.c:3177]   while AUDIO reads tb_brk_on < voice < note
+   1  MAIN WRITES tb_engine_play < buttons < input  [firmware/rfm/engine/tb_engine.c:193]   while AUDIO writes tb_engine_render
+   1  MAIN WRITES tb_engine_break_loop < preset_turn < input  [firmware/rfm/engine/tb_engine.c:2112]   while AUDIO reads track_len < tb_engine_render
+   1  MAIN WRITES set < turn < input  [firmware/rfm/engine/tb_app.c:1183]   while AUDIO reads lfo_run < tb_engine_render
+   1  MAIN WRITES set < turn < input  [firmware/rfm/engine/tb_app.c:1349]   while AUDIO reads do_tick < tb_engine_render
+   1  MAIN WRITES place_hit < rec_down < key_down  [firmware/rfm/engine/tb_app.c:760]   while AUDIO reads play_track_step < do_tick < tb_engine_render
+   1  MAIN WRITES seq_enter < key_down < input  [firmware/rfm/engine/tb_app.c:2169]   while AUDIO reads play_track_step < do_tick < tb_engine_render
+   1  MAIN WRITES set < turn < input  [firmware/rfm/engine/tb_app.c:1126]   while AUDIO reads tb_engine_render
+   1  MAIN WRITES tb_engine_preview < key_down < input  [firmware/rfm/engine/tb_engine.c:187]   while AUDIO reads take_keys < tb_engine_render
+   1  MAIN WRITES place_hit < rec_down < key_down  [firmware/rfm/engine/tb_app.c:762]   while AUDIO reads play_track_step < do_tick < tb_engine_render
+   1  MAIN WRITES set < turn < input  [firmware/rfm/engine/tb_app.c:1122]   while AUDIO reads tb_envk < tb909_render_x < tb_dx_render
+   1  MAIN WRITES set < turn < input  [firmware/rfm/engine/tb_app.c:1162]   while AUDIO reads track_len < tb_engine_render
+   1  MAIN WRITES rec_up < key_up < input  [firmware/rfm/engine/tb_app.c:2073]   while AUDIO reads play_track_step < do_tick < tb_engine_render
+   1  MAIN WRITES set < turn < input  [firmware/rfm/engine/tb_app.c:1182]   while AUDIO reads lfo_pitch < render_tracks < tb_engine_render

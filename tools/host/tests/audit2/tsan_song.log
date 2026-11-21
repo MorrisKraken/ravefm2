@@ -1,0 +1,984 @@
+==================
+WARNING: ThreadSanitizer: data race (pid=671)
+  Atomic write of size 4 at 0x5566444cf6a8 by thread T1:
+    #0 au_loop tools/host/rfm_shot.c:133 (rfm_tsan+0xc819) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Previous read of size 4 at 0x5566444cf6a8 by main thread:
+    #0 fm1_millis tools/host/rfm_shot.c:43 (rfm_tsan+0xccb9) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 tb_app_tick firmware/rfm/engine/tb_app.c:4073 (rfm_tsan+0x3bf62) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 run tools/host/rfm_shot.c:150 (rfm_tsan+0xc732) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #3 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Location is global 'frames' of size 4 at 0x5566444cf6a8 (rfm_tsan+0x1356a8)
+
+  Thread T1 (tid=673, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 run tools/host/rfm_shot.c:146 (rfm_tsan+0xc728) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+SUMMARY: ThreadSanitizer: data race tools/host/rfm_shot.c:133 in au_loop
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=671)
+  Read of size 1 at 0x5566444f187e by thread T1:
+    #0 muted firmware/rfm/engine/tb_engine.c:1212 (rfm_tsan+0x4853c) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 tb_engine_render firmware/rfm/engine/tb_engine.c:1577 (rfm_tsan+0x51088) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 au_loop tools/host/rfm_shot.c:124 (rfm_tsan+0xc845) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Previous write of size 1 at 0x5566444f187e by main thread:
+    #0 input firmware/rfm/engine/tb_app.c:3472 (rfm_tsan+0x3e14f) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 tb_app_tick firmware/rfm/engine/tb_app.c:4092 (rfm_tsan+0x3e14f)
+    #2 run tools/host/rfm_shot.c:150 (rfm_tsan+0xc732) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #3 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Location is global 'tb_proj' of size 28844 at 0x5566444f1640 (rfm_tsan+0x15787e)
+
+  Thread T1 (tid=673, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 run tools/host/rfm_shot.c:146 (rfm_tsan+0xc728) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+SUMMARY: ThreadSanitizer: data race firmware/rfm/engine/tb_engine.c:1212 in muted
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=671)
+  Read of size 2 at 0x5566444fb300 by main thread:
+    #0 tb_engine_view firmware/rfm/engine/tb_engine.c:2011 (rfm_tsan+0x4e7f4) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 build_view firmware/rfm/engine/tb_app.c:3888 (rfm_tsan+0x3e4ce) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 tb_app_tick firmware/rfm/engine/tb_app.c:4109 (rfm_tsan+0x3e4ce)
+    #3 run tools/host/rfm_shot.c:150 (rfm_tsan+0xc732) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #4 main tools/host/rfm_shot.c:226 (rfm_tsan+0xd504) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Previous write of size 2 at 0x5566444fb300 by thread T1:
+    #0 voice firmware/rfm/engine/tb_engine.c:534 (rfm_tsan+0x48d7f) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 note firmware/rfm/engine/tb_engine.c:796 (rfm_tsan+0x4c078) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 take_keys firmware/rfm/engine/tb_engine.c:1273 (rfm_tsan+0x50ac4) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #3 tb_engine_render firmware/rfm/engine/tb_engine.c:1566 (rfm_tsan+0x50ac4)
+    #4 au_loop tools/host/rfm_shot.c:124 (rfm_tsan+0xc845) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Location is global 'hit_count' of size 12 at 0x5566444fb300 (rfm_tsan+0x161300)
+
+  Thread T1 (tid=673, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 run tools/host/rfm_shot.c:146 (rfm_tsan+0xc728) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+SUMMARY: ThreadSanitizer: data race firmware/rfm/engine/tb_engine.c:2011 in tb_engine_view
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=671)
+  Read of size 1 at 0x5566444fb319 by main thread:
+    #0 tb_engine_view firmware/rfm/engine/tb_engine.c:2009 (rfm_tsan+0x4e798) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 build_view firmware/rfm/engine/tb_app.c:3888 (rfm_tsan+0x3e4ce) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 tb_app_tick firmware/rfm/engine/tb_app.c:4109 (rfm_tsan+0x3e4ce)
+    #3 run tools/host/rfm_shot.c:150 (rfm_tsan+0xc732) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #4 main tools/host/rfm_shot.c:226 (rfm_tsan+0xd504) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Previous write of size 1 at 0x5566444fb319 by thread T1:
+    #0 tb_engine_render firmware/rfm/engine/tb_engine.c:1887 (rfm_tsan+0x5456f) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 au_loop tools/host/rfm_shot.c:124 (rfm_tsan+0xc845) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Location is global 'level' of size 6 at 0x5566444fb318 (rfm_tsan+0x161319)
+
+  Thread T1 (tid=673, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 run tools/host/rfm_shot.c:146 (rfm_tsan+0xc728) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+SUMMARY: ThreadSanitizer: data race firmware/rfm/engine/tb_engine.c:2009 in tb_engine_view
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=671)
+  Read of size 1 at 0x5566444fb318 by main thread:
+    #0 tb_engine_view firmware/rfm/engine/tb_engine.c:2009 (rfm_tsan+0x4e798) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 build_view firmware/rfm/engine/tb_app.c:3888 (rfm_tsan+0x3e4ce) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 tb_app_tick firmware/rfm/engine/tb_app.c:4109 (rfm_tsan+0x3e4ce)
+    #3 run tools/host/rfm_shot.c:150 (rfm_tsan+0xc732) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #4 main tools/host/rfm_shot.c:226 (rfm_tsan+0xd52f) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Previous write of size 1 at 0x5566444fb318 by thread T1:
+    #0 tb_engine_render firmware/rfm/engine/tb_engine.c:1887 (rfm_tsan+0x5456f) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 au_loop tools/host/rfm_shot.c:124 (rfm_tsan+0xc845) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Location is global 'level' of size 6 at 0x5566444fb318 (rfm_tsan+0x161318)
+
+  Thread T1 (tid=673, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 run tools/host/rfm_shot.c:146 (rfm_tsan+0xc728) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+SUMMARY: ThreadSanitizer: data race firmware/rfm/engine/tb_engine.c:2009 in tb_engine_view
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=671)
+  Read of size 1 at 0x5566444fb318 by main thread:
+    #0 tb_engine_view firmware/rfm/engine/tb_engine.c:2009 (rfm_tsan+0x4e798) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 build_view firmware/rfm/engine/tb_app.c:3888 (rfm_tsan+0x3e4ce) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 tb_app_tick firmware/rfm/engine/tb_app.c:4109 (rfm_tsan+0x3e4ce)
+    #3 run tools/host/rfm_shot.c:150 (rfm_tsan+0xc732) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #4 main tools/host/rfm_shot.c:229 (rfm_tsan+0xd60c) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Previous write of size 1 at 0x5566444fb318 by thread T1:
+    #0 tb_engine_render firmware/rfm/engine/tb_engine.c:1887 (rfm_tsan+0x5456f) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 au_loop tools/host/rfm_shot.c:124 (rfm_tsan+0xc845) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Location is global 'level' of size 6 at 0x5566444fb318 (rfm_tsan+0x161318)
+
+  Thread T1 (tid=673, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 run tools/host/rfm_shot.c:146 (rfm_tsan+0xc728) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+SUMMARY: ThreadSanitizer: data race firmware/rfm/engine/tb_engine.c:2009 in tb_engine_view
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=671)
+  Read of size 1 at 0x5566444fb220 by thread T1:
+    #0 take_keys firmware/rfm/engine/tb_engine.c:1227 (rfm_tsan+0x50a25) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 tb_engine_render firmware/rfm/engine/tb_engine.c:1566 (rfm_tsan+0x50a25)
+    #2 au_loop tools/host/rfm_shot.c:124 (rfm_tsan+0xc845) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Previous write of size 1 at 0x5566444fb220 by main thread:
+    #0 tb_engine_note firmware/rfm/engine/tb_engine.c:174 (rfm_tsan+0x4aa7f) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 seq_enter firmware/rfm/engine/tb_app.c:2172 (rfm_tsan+0x3a916) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 key_down firmware/rfm/engine/tb_app.c:2521 (rfm_tsan+0x3a916)
+    #3 input firmware/rfm/engine/tb_app.c:3469 (rfm_tsan+0x3e125) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #4 tb_app_tick firmware/rfm/engine/tb_app.c:4092 (rfm_tsan+0x3e125)
+    #5 run tools/host/rfm_shot.c:150 (rfm_tsan+0xc732) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #6 main tools/host/rfm_shot.c:226 (rfm_tsan+0xd504) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Location is global 'kq' of size 256 at 0x5566444fb200 (rfm_tsan+0x161220)
+
+  Thread T1 (tid=673, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 run tools/host/rfm_shot.c:146 (rfm_tsan+0xc728) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+SUMMARY: ThreadSanitizer: data race firmware/rfm/engine/tb_engine.c:1227 in take_keys
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=671)
+  Write of size 1 at 0x556644510fb6 by thread T1:
+    #0 tb_brk_play firmware/rfm/engine/tb_break.c:270 (rfm_tsan+0x42f60) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 tb_brk_on firmware/rfm/engine/tb_break.c:289 (rfm_tsan+0x43207) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 voice firmware/rfm/engine/tb_engine.c:508 (rfm_tsan+0x48d1a) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #3 note firmware/rfm/engine/tb_engine.c:796 (rfm_tsan+0x4c078) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #4 take_keys firmware/rfm/engine/tb_engine.c:1273 (rfm_tsan+0x50ac4) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #5 tb_engine_render firmware/rfm/engine/tb_engine.c:1566 (rfm_tsan+0x50ac4)
+    #6 au_loop tools/host/rfm_shot.c:124 (rfm_tsan+0xc845) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Previous read of size 1 at 0x556644510fb6 by main thread:
+    #0 tb_brk_env firmware/rfm/engine/tb_break.c:320 (rfm_tsan+0x43442) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 tb_engine_view firmware/rfm/engine/tb_engine.c:2028 (rfm_tsan+0x4ec56) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 build_view firmware/rfm/engine/tb_app.c:3888 (rfm_tsan+0x3e4ce) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #3 tb_app_tick firmware/rfm/engine/tb_app.c:4109 (rfm_tsan+0x3e4ce)
+    #4 run tools/host/rfm_shot.c:150 (rfm_tsan+0xc732) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #5 main tools/host/rfm_shot.c:229 (rfm_tsan+0xd60c) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Location is global 'V' of size 21936 at 0x55664450f800 (rfm_tsan+0x176fb6)
+
+  Thread T1 (tid=673, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 run tools/host/rfm_shot.c:146 (rfm_tsan+0xc728) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+SUMMARY: ThreadSanitizer: data race firmware/rfm/engine/tb_break.c:270 in tb_brk_play
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=671)
+  Read of size 1 at 0x5566444fb224 by thread T1:
+    #0 take_keys firmware/rfm/engine/tb_engine.c:1227 (rfm_tsan+0x50a25) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 tb_engine_render firmware/rfm/engine/tb_engine.c:1566 (rfm_tsan+0x50a25)
+    #2 au_loop tools/host/rfm_shot.c:124 (rfm_tsan+0xc845) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Previous write of size 1 at 0x5566444fb224 by main thread:
+    #0 tb_engine_note firmware/rfm/engine/tb_engine.c:174 (rfm_tsan+0x4aa7f) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 key_up firmware/rfm/engine/tb_app.c:2568 (rfm_tsan+0x3969c) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 input firmware/rfm/engine/tb_app.c:3467 (rfm_tsan+0x3e0fe) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #3 tb_app_tick firmware/rfm/engine/tb_app.c:4092 (rfm_tsan+0x3e0fe)
+    #4 run tools/host/rfm_shot.c:150 (rfm_tsan+0xc732) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #5 main tools/host/rfm_shot.c:226 (rfm_tsan+0xd52f) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Location is global 'kq' of size 256 at 0x5566444fb200 (rfm_tsan+0x161224)
+
+  Thread T1 (tid=673, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 run tools/host/rfm_shot.c:146 (rfm_tsan+0xc728) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+SUMMARY: ThreadSanitizer: data race firmware/rfm/engine/tb_engine.c:1227 in take_keys
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=671)
+  Read of size 1 at 0x556644510fbc by main thread:
+    #0 tb_brk_env firmware/rfm/engine/tb_break.c:320 (rfm_tsan+0x43450) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 tb_engine_view firmware/rfm/engine/tb_engine.c:2028 (rfm_tsan+0x4ec56) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 build_view firmware/rfm/engine/tb_app.c:3888 (rfm_tsan+0x3e4ce) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #3 tb_app_tick firmware/rfm/engine/tb_app.c:4109 (rfm_tsan+0x3e4ce)
+    #4 run tools/host/rfm_shot.c:150 (rfm_tsan+0xc732) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #5 main tools/host/rfm_shot.c:226 (rfm_tsan+0xd504) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Previous write of size 1 at 0x556644510fbc by thread T1:
+    #0 tb_brk_play firmware/rfm/engine/tb_break.c:247 (rfm_tsan+0x42c1e) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 tb_brk_on firmware/rfm/engine/tb_break.c:289 (rfm_tsan+0x43207) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 voice firmware/rfm/engine/tb_engine.c:508 (rfm_tsan+0x48d1a) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #3 note firmware/rfm/engine/tb_engine.c:796 (rfm_tsan+0x4c078) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #4 take_keys firmware/rfm/engine/tb_engine.c:1273 (rfm_tsan+0x50ac4) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #5 tb_engine_render firmware/rfm/engine/tb_engine.c:1566 (rfm_tsan+0x50ac4)
+    #6 au_loop tools/host/rfm_shot.c:124 (rfm_tsan+0xc845) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Location is global 'V' of size 21936 at 0x55664450f800 (rfm_tsan+0x176fbc)
+
+  Thread T1 (tid=673, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 run tools/host/rfm_shot.c:146 (rfm_tsan+0xc728) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+SUMMARY: ThreadSanitizer: data race firmware/rfm/engine/tb_break.c:320 in tb_brk_env
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=671)
+  Read of size 1 at 0x556644511018 by main thread:
+    #0 tb_brk_env firmware/rfm/engine/tb_break.c:326 (rfm_tsan+0x43478) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 tb_engine_view firmware/rfm/engine/tb_engine.c:2028 (rfm_tsan+0x4ec56) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 build_view firmware/rfm/engine/tb_app.c:3888 (rfm_tsan+0x3e4ce) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #3 tb_app_tick firmware/rfm/engine/tb_app.c:4109 (rfm_tsan+0x3e4ce)
+    #4 run tools/host/rfm_shot.c:150 (rfm_tsan+0xc732) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #5 main tools/host/rfm_shot.c:226 (rfm_tsan+0xd504) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Previous write of size 1 at 0x556644511018 by thread T1:
+    #0 tb_env_on firmware/rfm/engine/tb_env.h:45 (rfm_tsan+0x42f7c) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 tb_brk_play firmware/rfm/engine/tb_break.c:271 (rfm_tsan+0x42f7c)
+    #2 tb_brk_on firmware/rfm/engine/tb_break.c:289 (rfm_tsan+0x43207) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #3 voice firmware/rfm/engine/tb_engine.c:508 (rfm_tsan+0x48d1a) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #4 note firmware/rfm/engine/tb_engine.c:796 (rfm_tsan+0x4c078) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #5 take_keys firmware/rfm/engine/tb_engine.c:1273 (rfm_tsan+0x50ac4) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #6 tb_engine_render firmware/rfm/engine/tb_engine.c:1566 (rfm_tsan+0x50ac4)
+    #7 au_loop tools/host/rfm_shot.c:124 (rfm_tsan+0xc845) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Location is global 'V' of size 21936 at 0x55664450f800 (rfm_tsan+0x177018)
+
+  Thread T1 (tid=673, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 run tools/host/rfm_shot.c:146 (rfm_tsan+0xc728) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+SUMMARY: ThreadSanitizer: data race firmware/rfm/engine/tb_break.c:326 in tb_brk_env
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=671)
+  Read of size 4 at 0x556644511014 by main thread:
+    #0 tb_brk_env firmware/rfm/engine/tb_break.c:327 (rfm_tsan+0x4349b) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 tb_engine_view firmware/rfm/engine/tb_engine.c:2028 (rfm_tsan+0x4ec56) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 build_view firmware/rfm/engine/tb_app.c:3888 (rfm_tsan+0x3e4ce) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #3 tb_app_tick firmware/rfm/engine/tb_app.c:4109 (rfm_tsan+0x3e4ce)
+    #4 run tools/host/rfm_shot.c:150 (rfm_tsan+0xc732) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #5 main tools/host/rfm_shot.c:226 (rfm_tsan+0xd504) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Previous write of size 4 at 0x556644511014 by thread T1:
+    #0 tb_env_step firmware/rfm/engine/tb_env.h:57 (rfm_tsan+0x43db9) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 tb_brk_render firmware/rfm/engine/tb_break.c:407 (rfm_tsan+0x43db9)
+    #2 render_tracks firmware/rfm/engine/tb_engine.c:1173 (rfm_tsan+0x52b5f) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #3 tb_engine_render firmware/rfm/engine/tb_engine.c:1679 (rfm_tsan+0x52b5f)
+    #4 au_loop tools/host/rfm_shot.c:124 (rfm_tsan+0xc845) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Location is global 'V' of size 21936 at 0x55664450f800 (rfm_tsan+0x177014)
+
+  Thread T1 (tid=673, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 run tools/host/rfm_shot.c:146 (rfm_tsan+0xc728) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+SUMMARY: ThreadSanitizer: data race firmware/rfm/engine/tb_break.c:327 in tb_brk_env
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=671)
+  Write of size 4 at 0x556644511944 by thread T1:
+    #0 tb_env_hit firmware/rfm/engine/tb_env.h:47 (rfm_tsan+0x2568e) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 tb909_hit firmware/rfm/engine/tb_909.c:73 (rfm_tsan+0x2568e)
+    #2 tb_dx_hit firmware/rfm/engine/tb_drumx.c:94 (rfm_tsan+0x46e86) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #3 voice firmware/rfm/engine/tb_engine.c:502 (rfm_tsan+0x48cd2) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #4 note firmware/rfm/engine/tb_engine.c:796 (rfm_tsan+0x4c078) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #5 take_keys firmware/rfm/engine/tb_engine.c:1273 (rfm_tsan+0x50ac4) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #6 tb_engine_render firmware/rfm/engine/tb_engine.c:1566 (rfm_tsan+0x50ac4)
+    #7 au_loop tools/host/rfm_shot.c:124 (rfm_tsan+0xc845) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Previous read of size 4 at 0x556644511944 by main thread:
+    #0 tb_engine_view firmware/rfm/engine/tb_engine.c:2023 (rfm_tsan+0x4eb93) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 build_view firmware/rfm/engine/tb_app.c:3888 (rfm_tsan+0x3e4ce) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 tb_app_tick firmware/rfm/engine/tb_app.c:4109 (rfm_tsan+0x3e4ce)
+    #3 run tools/host/rfm_shot.c:150 (rfm_tsan+0xc732) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #4 main tools/host/rfm_shot.c:229 (rfm_tsan+0xd60c) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Location is global 'V' of size 21936 at 0x55664450f800 (rfm_tsan+0x177944)
+
+  Thread T1 (tid=673, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 run tools/host/rfm_shot.c:146 (rfm_tsan+0xc728) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+SUMMARY: ThreadSanitizer: data race firmware/rfm/engine/tb_env.h:47 in tb_env_hit
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=671)
+  Write of size 1 at 0x556644511948 by thread T1:
+    #0 tb_env_hit firmware/rfm/engine/tb_env.h:47 (rfm_tsan+0x2569f) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 tb909_hit firmware/rfm/engine/tb_909.c:73 (rfm_tsan+0x2569f)
+    #2 tb_dx_hit firmware/rfm/engine/tb_drumx.c:94 (rfm_tsan+0x46e86) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #3 voice firmware/rfm/engine/tb_engine.c:502 (rfm_tsan+0x48cd2) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #4 note firmware/rfm/engine/tb_engine.c:796 (rfm_tsan+0x4c078) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #5 take_keys firmware/rfm/engine/tb_engine.c:1273 (rfm_tsan+0x50ac4) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #6 tb_engine_render firmware/rfm/engine/tb_engine.c:1566 (rfm_tsan+0x50ac4)
+    #7 au_loop tools/host/rfm_shot.c:124 (rfm_tsan+0xc845) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Previous read of size 1 at 0x556644511948 by main thread:
+    #0 tb_engine_view firmware/rfm/engine/tb_engine.c:2025 (rfm_tsan+0x4ec19) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 build_view firmware/rfm/engine/tb_app.c:3888 (rfm_tsan+0x3e4ce) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 tb_app_tick firmware/rfm/engine/tb_app.c:4109 (rfm_tsan+0x3e4ce)
+    #3 run tools/host/rfm_shot.c:150 (rfm_tsan+0xc732) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #4 main tools/host/rfm_shot.c:229 (rfm_tsan+0xd60c) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Location is global 'V' of size 21936 at 0x55664450f800 (rfm_tsan+0x177948)
+
+  Thread T1 (tid=673, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 run tools/host/rfm_shot.c:146 (rfm_tsan+0xc728) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+SUMMARY: ThreadSanitizer: data race firmware/rfm/engine/tb_env.h:47 in tb_env_hit
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=671)
+  Write of size 1 at 0x5566444fb314 by thread T1:
+    #0 voice firmware/rfm/engine/tb_engine.c:534 (rfm_tsan+0x48d2c) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 note firmware/rfm/engine/tb_engine.c:796 (rfm_tsan+0x4c078) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 take_keys firmware/rfm/engine/tb_engine.c:1273 (rfm_tsan+0x50ac4) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #3 tb_engine_render firmware/rfm/engine/tb_engine.c:1566 (rfm_tsan+0x50ac4)
+    #4 au_loop tools/host/rfm_shot.c:124 (rfm_tsan+0xc845) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Previous read of size 1 at 0x5566444fb314 by main thread:
+    #0 tb_engine_view firmware/rfm/engine/tb_engine.c:2010 (rfm_tsan+0x4e7c9) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 build_view firmware/rfm/engine/tb_app.c:3888 (rfm_tsan+0x3e4ce) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 tb_app_tick firmware/rfm/engine/tb_app.c:4109 (rfm_tsan+0x3e4ce)
+    #3 run tools/host/rfm_shot.c:150 (rfm_tsan+0xc732) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #4 main tools/host/rfm_shot.c:226 (rfm_tsan+0xd504) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Location is global 'active' of size 6 at 0x5566444fb312 (rfm_tsan+0x161314)
+
+  Thread T1 (tid=673, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 run tools/host/rfm_shot.c:146 (rfm_tsan+0xc728) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+SUMMARY: ThreadSanitizer: data race firmware/rfm/engine/tb_engine.c:534 in voice
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=671)
+  Read of size 1 at 0x5566444fb270 by thread T1:
+    #0 take_keys firmware/rfm/engine/tb_engine.c:1227 (rfm_tsan+0x50a25) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 tb_engine_render firmware/rfm/engine/tb_engine.c:1566 (rfm_tsan+0x50a25)
+    #2 au_loop tools/host/rfm_shot.c:124 (rfm_tsan+0xc845) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Previous write of size 1 at 0x5566444fb270 by main thread:
+    #0 tb_engine_preview firmware/rfm/engine/tb_engine.c:182 (rfm_tsan+0x4abb7) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 key_down firmware/rfm/engine/tb_app.c:2529 (rfm_tsan+0x3a63e) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 input firmware/rfm/engine/tb_app.c:3469 (rfm_tsan+0x3e125) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #3 tb_app_tick firmware/rfm/engine/tb_app.c:4092 (rfm_tsan+0x3e125)
+    #4 run tools/host/rfm_shot.c:150 (rfm_tsan+0xc732) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #5 main tools/host/rfm_shot.c:226 (rfm_tsan+0xd504) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Location is global 'kq' of size 256 at 0x5566444fb200 (rfm_tsan+0x161270)
+
+  Thread T1 (tid=673, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 run tools/host/rfm_shot.c:146 (rfm_tsan+0xc728) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+SUMMARY: ThreadSanitizer: data race firmware/rfm/engine/tb_engine.c:1227 in take_keys
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=671)
+  Read of size 1 at 0x556644511998 by main thread:
+    #0 tb_engine_view firmware/rfm/engine/tb_engine.c:2025 (rfm_tsan+0x4ec19) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 build_view firmware/rfm/engine/tb_app.c:3888 (rfm_tsan+0x3e4ce) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 tb_app_tick firmware/rfm/engine/tb_app.c:4109 (rfm_tsan+0x3e4ce)
+    #3 run tools/host/rfm_shot.c:150 (rfm_tsan+0xc732) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #4 main tools/host/rfm_shot.c:226 (rfm_tsan+0xd504) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Previous write of size 1 at 0x556644511998 by thread T1:
+    #0 tb_env_hit firmware/rfm/engine/tb_env.h:47 (rfm_tsan+0x2569f) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 tb909_hit firmware/rfm/engine/tb_909.c:73 (rfm_tsan+0x2569f)
+    #2 tb_dx_hit firmware/rfm/engine/tb_drumx.c:94 (rfm_tsan+0x46e86) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #3 voice firmware/rfm/engine/tb_engine.c:502 (rfm_tsan+0x48cd2) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #4 note firmware/rfm/engine/tb_engine.c:796 (rfm_tsan+0x4c078) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #5 take_keys firmware/rfm/engine/tb_engine.c:1273 (rfm_tsan+0x50ac4) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #6 tb_engine_render firmware/rfm/engine/tb_engine.c:1566 (rfm_tsan+0x50ac4)
+    #7 au_loop tools/host/rfm_shot.c:124 (rfm_tsan+0xc845) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Location is global 'V' of size 21936 at 0x55664450f800 (rfm_tsan+0x177998)
+
+  Thread T1 (tid=673, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 run tools/host/rfm_shot.c:146 (rfm_tsan+0xc728) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+SUMMARY: ThreadSanitizer: data race firmware/rfm/engine/tb_engine.c:2025 in tb_engine_view
+==================
+CUT NAME:TRANSPO (TRANSPO)
+==================
+WARNING: ThreadSanitizer: data race (pid=671)
+  Write of size 1 at 0x556644512d8a by thread T1:
+    #0 start firmware/rfm/engine/tb_synth.c:242 (rfm_tsan+0x63160) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 play_mono firmware/rfm/engine/tb_synth.c:253 (rfm_tsan+0x6327b) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 tb_syn_on firmware/rfm/engine/tb_synth.c:283 (rfm_tsan+0x63652) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #3 voice firmware/rfm/engine/tb_engine.c:522 (rfm_tsan+0x48eae) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #4 note firmware/rfm/engine/tb_engine.c:792 (rfm_tsan+0x4c4e4) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #5 take_keys firmware/rfm/engine/tb_engine.c:1273 (rfm_tsan+0x50ac4) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #6 tb_engine_render firmware/rfm/engine/tb_engine.c:1566 (rfm_tsan+0x50ac4)
+    #7 au_loop tools/host/rfm_shot.c:124 (rfm_tsan+0xc845) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Previous read of size 1 at 0x556644512d8a by main thread:
+    #0 tb_syn_env firmware/rfm/engine/tb_synth.c:348 (rfm_tsan+0x63e0e) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 tb_engine_view firmware/rfm/engine/tb_engine.c:2030 (rfm_tsan+0x4ecb0) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 build_view firmware/rfm/engine/tb_app.c:3888 (rfm_tsan+0x3e4ce) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #3 tb_app_tick firmware/rfm/engine/tb_app.c:4109 (rfm_tsan+0x3e4ce)
+    #4 run tools/host/rfm_shot.c:150 (rfm_tsan+0xc732) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #5 main tools/host/rfm_shot.c:229 (rfm_tsan+0xd60c) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Location is global 'V' of size 21936 at 0x55664450f800 (rfm_tsan+0x178d8a)
+
+  Thread T1 (tid=673, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 run tools/host/rfm_shot.c:146 (rfm_tsan+0xc728) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+SUMMARY: ThreadSanitizer: data race firmware/rfm/engine/tb_synth.c:242 in start
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=671)
+  Write of size 2 at 0x5566444fb308 by thread T1:
+    #0 voice firmware/rfm/engine/tb_engine.c:534 (rfm_tsan+0x48d7f) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 note firmware/rfm/engine/tb_engine.c:792 (rfm_tsan+0x4c4e4) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 take_keys firmware/rfm/engine/tb_engine.c:1273 (rfm_tsan+0x50ac4) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #3 tb_engine_render firmware/rfm/engine/tb_engine.c:1566 (rfm_tsan+0x50ac4)
+    #4 au_loop tools/host/rfm_shot.c:124 (rfm_tsan+0xc845) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Previous read of size 2 at 0x5566444fb308 by main thread:
+    #0 tb_engine_view firmware/rfm/engine/tb_engine.c:2011 (rfm_tsan+0x4e7f4) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 build_view firmware/rfm/engine/tb_app.c:3888 (rfm_tsan+0x3e4ce) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 tb_app_tick firmware/rfm/engine/tb_app.c:4109 (rfm_tsan+0x3e4ce)
+    #3 run tools/host/rfm_shot.c:150 (rfm_tsan+0xc732) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #4 main tools/host/rfm_shot.c:226 (rfm_tsan+0xd504) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Location is global 'hit_count' of size 12 at 0x5566444fb300 (rfm_tsan+0x161308)
+
+  Thread T1 (tid=673, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 run tools/host/rfm_shot.c:146 (rfm_tsan+0xc728) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+SUMMARY: ThreadSanitizer: data race firmware/rfm/engine/tb_engine.c:534 in voice
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=671)
+  Write of size 1 at 0x556644514a1a by thread T1:
+    #0 start firmware/rfm/engine/tb_synth.c:242 (rfm_tsan+0x63160) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 tb_syn_on firmware/rfm/engine/tb_synth.c:294 (rfm_tsan+0x637a9) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 voice firmware/rfm/engine/tb_engine.c:522 (rfm_tsan+0x48eae) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #3 note firmware/rfm/engine/tb_engine.c:792 (rfm_tsan+0x4c4e4) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #4 take_keys firmware/rfm/engine/tb_engine.c:1273 (rfm_tsan+0x50ac4) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #5 tb_engine_render firmware/rfm/engine/tb_engine.c:1566 (rfm_tsan+0x50ac4)
+    #6 au_loop tools/host/rfm_shot.c:124 (rfm_tsan+0xc845) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Previous read of size 1 at 0x556644514a1a by main thread:
+    #0 tb_syn_env firmware/rfm/engine/tb_synth.c:348 (rfm_tsan+0x63e0e) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 tb_engine_view firmware/rfm/engine/tb_engine.c:2030 (rfm_tsan+0x4ecb0) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 build_view firmware/rfm/engine/tb_app.c:3888 (rfm_tsan+0x3e4ce) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #3 tb_app_tick firmware/rfm/engine/tb_app.c:4109 (rfm_tsan+0x3e4ce)
+    #4 run tools/host/rfm_shot.c:150 (rfm_tsan+0xc732) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #5 main tools/host/rfm_shot.c:226 (rfm_tsan+0xd504) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Location is global 'V' of size 21936 at 0x55664450f800 (rfm_tsan+0x17aa1a)
+
+  Thread T1 (tid=673, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 run tools/host/rfm_shot.c:146 (rfm_tsan+0xc728) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+SUMMARY: ThreadSanitizer: data race firmware/rfm/engine/tb_synth.c:242 in start
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=671)
+  Read of size 4 at 0x556644514bd0 by main thread:
+    #0 tb_syn_env firmware/rfm/engine/tb_synth.c:348 (rfm_tsan+0x63e22) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 tb_engine_view firmware/rfm/engine/tb_engine.c:2030 (rfm_tsan+0x4ecb0) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 build_view firmware/rfm/engine/tb_app.c:3888 (rfm_tsan+0x3e4ce) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #3 tb_app_tick firmware/rfm/engine/tb_app.c:4109 (rfm_tsan+0x3e4ce)
+    #4 run tools/host/rfm_shot.c:150 (rfm_tsan+0xc732) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #5 main tools/host/rfm_shot.c:226 (rfm_tsan+0xd504) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Previous write of size 4 at 0x556644514bd0 by thread T1:
+    #0 start firmware/rfm/engine/tb_synth.c:244 (rfm_tsan+0x6319d) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 tb_syn_on firmware/rfm/engine/tb_synth.c:294 (rfm_tsan+0x637a9) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 voice firmware/rfm/engine/tb_engine.c:522 (rfm_tsan+0x48eae) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #3 note firmware/rfm/engine/tb_engine.c:792 (rfm_tsan+0x4c4e4) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #4 take_keys firmware/rfm/engine/tb_engine.c:1273 (rfm_tsan+0x50ac4) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #5 tb_engine_render firmware/rfm/engine/tb_engine.c:1566 (rfm_tsan+0x50ac4)
+    #6 au_loop tools/host/rfm_shot.c:124 (rfm_tsan+0xc845) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Location is global 'V' of size 21936 at 0x55664450f800 (rfm_tsan+0x17abd0)
+
+  Thread T1 (tid=673, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 run tools/host/rfm_shot.c:146 (rfm_tsan+0xc728) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+SUMMARY: ThreadSanitizer: data race firmware/rfm/engine/tb_synth.c:348 in tb_syn_env
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=671)
+  Read of size 1 at 0x556644514b78 by main thread:
+    #0 tb_syn_env firmware/rfm/engine/tb_synth.c:354 (rfm_tsan+0x63f14) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 tb_engine_view firmware/rfm/engine/tb_engine.c:2030 (rfm_tsan+0x4ecb0) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 build_view firmware/rfm/engine/tb_app.c:3888 (rfm_tsan+0x3e4ce) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #3 tb_app_tick firmware/rfm/engine/tb_app.c:4109 (rfm_tsan+0x3e4ce)
+    #4 run tools/host/rfm_shot.c:150 (rfm_tsan+0xc732) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #5 main tools/host/rfm_shot.c:226 (rfm_tsan+0xd504) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Previous write of size 1 at 0x556644514b78 by thread T1:
+    #0 tb_env_on firmware/rfm/engine/tb_env.h:45 (rfm_tsan+0x62fc2) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 start firmware/rfm/engine/tb_synth.c:232 (rfm_tsan+0x62fc2)
+    #2 tb_syn_on firmware/rfm/engine/tb_synth.c:294 (rfm_tsan+0x637a9) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #3 voice firmware/rfm/engine/tb_engine.c:522 (rfm_tsan+0x48eae) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #4 note firmware/rfm/engine/tb_engine.c:792 (rfm_tsan+0x4c4e4) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #5 take_keys firmware/rfm/engine/tb_engine.c:1273 (rfm_tsan+0x50ac4) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #6 tb_engine_render firmware/rfm/engine/tb_engine.c:1566 (rfm_tsan+0x50ac4)
+    #7 au_loop tools/host/rfm_shot.c:124 (rfm_tsan+0xc845) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Location is global 'V' of size 21936 at 0x55664450f800 (rfm_tsan+0x17ab78)
+
+  Thread T1 (tid=673, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 run tools/host/rfm_shot.c:146 (rfm_tsan+0xc728) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+SUMMARY: ThreadSanitizer: data race firmware/rfm/engine/tb_synth.c:354 in tb_syn_env
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=671)
+  Read of size 4 at 0x556644514b74 by main thread:
+    #0 tb_syn_env firmware/rfm/engine/tb_synth.c:355 (rfm_tsan+0x63f43) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 tb_engine_view firmware/rfm/engine/tb_engine.c:2030 (rfm_tsan+0x4ecb0) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 build_view firmware/rfm/engine/tb_app.c:3888 (rfm_tsan+0x3e4ce) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #3 tb_app_tick firmware/rfm/engine/tb_app.c:4109 (rfm_tsan+0x3e4ce)
+    #4 run tools/host/rfm_shot.c:150 (rfm_tsan+0xc732) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #5 main tools/host/rfm_shot.c:226 (rfm_tsan+0xd504) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Previous write of size 4 at 0x556644514b74 by thread T1:
+    #0 start firmware/rfm/engine/tb_synth.c:229 (rfm_tsan+0x62fb2) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 tb_syn_on firmware/rfm/engine/tb_synth.c:294 (rfm_tsan+0x637a9) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 voice firmware/rfm/engine/tb_engine.c:522 (rfm_tsan+0x48eae) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #3 note firmware/rfm/engine/tb_engine.c:792 (rfm_tsan+0x4c4e4) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #4 take_keys firmware/rfm/engine/tb_engine.c:1273 (rfm_tsan+0x50ac4) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #5 tb_engine_render firmware/rfm/engine/tb_engine.c:1566 (rfm_tsan+0x50ac4)
+    #6 au_loop tools/host/rfm_shot.c:124 (rfm_tsan+0xc845) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Location is global 'V' of size 21936 at 0x55664450f800 (rfm_tsan+0x17ab74)
+
+  Thread T1 (tid=673, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 run tools/host/rfm_shot.c:146 (rfm_tsan+0xc728) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+SUMMARY: ThreadSanitizer: data race firmware/rfm/engine/tb_synth.c:355 in tb_syn_env
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=671)
+  Read of size 4 at 0x5566444ff008 by main thread:
+    #0 tb_engine_clock24 firmware/rfm/engine/tb_engine.c:1473 (rfm_tsan+0x4e2fb) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 midi_tick firmware/rfm/engine/tb_app.c:2938 (rfm_tsan+0x302a1) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 tb_app_tick firmware/rfm/engine/tb_app.c:4095 (rfm_tsan+0x3c124) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #3 run tools/host/rfm_shot.c:150 (rfm_tsan+0xc732) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #4 main tools/host/rfm_shot.c:223 (rfm_tsan+0xd3c7) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Previous write of size 4 at 0x5566444ff008 by thread T1:
+    #0 tb_engine_render firmware/rfm/engine/tb_engine.c:1544 (rfm_tsan+0x503ff) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 au_loop tools/host/rfm_shot.c:124 (rfm_tsan+0xc845) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Location is global 'ptick' of size 4 at 0x5566444ff008 (rfm_tsan+0x165008)
+
+  Thread T1 (tid=673, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 run tools/host/rfm_shot.c:146 (rfm_tsan+0xc728) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+SUMMARY: ThreadSanitizer: data race firmware/rfm/engine/tb_engine.c:1473 in tb_engine_clock24
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=671)
+  Read of size 2 at 0x5566444fb320 by main thread:
+    #0 tb_engine_view firmware/rfm/engine/tb_engine.c:2007 (rfm_tsan+0x4e74a) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 build_view firmware/rfm/engine/tb_app.c:3888 (rfm_tsan+0x3e4ce) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 tb_app_tick firmware/rfm/engine/tb_app.c:4109 (rfm_tsan+0x3e4ce)
+    #3 run tools/host/rfm_shot.c:150 (rfm_tsan+0xc732) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #4 main tools/host/rfm_shot.c:223 (rfm_tsan+0xd3c7) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Previous write of size 2 at 0x5566444fb320 by thread T1:
+    #0 tb_engine_render firmware/rfm/engine/tb_engine.c:1883 (rfm_tsan+0x54509) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 au_loop tools/host/rfm_shot.c:124 (rfm_tsan+0xc845) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Location is global 'wpos' of size 12 at 0x5566444fb320 (rfm_tsan+0x161320)
+
+  Thread T1 (tid=673, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 run tools/host/rfm_shot.c:146 (rfm_tsan+0xc728) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+SUMMARY: ThreadSanitizer: data race firmware/rfm/engine/tb_engine.c:2007 in tb_engine_view
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=671)
+  Read of size 1 at 0x5566444fb31c by main thread:
+    #0 tb_engine_view firmware/rfm/engine/tb_engine.c:2009 (rfm_tsan+0x4e798) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 build_view firmware/rfm/engine/tb_app.c:3888 (rfm_tsan+0x3e4ce) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 tb_app_tick firmware/rfm/engine/tb_app.c:4109 (rfm_tsan+0x3e4ce)
+    #3 run tools/host/rfm_shot.c:150 (rfm_tsan+0xc732) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #4 main tools/host/rfm_shot.c:223 (rfm_tsan+0xd3c7) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Previous write of size 1 at 0x5566444fb31c by thread T1:
+    #0 tb_engine_render firmware/rfm/engine/tb_engine.c:1887 (rfm_tsan+0x5456f) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 au_loop tools/host/rfm_shot.c:124 (rfm_tsan+0xc845) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Location is global 'level' of size 6 at 0x5566444fb318 (rfm_tsan+0x16131c)
+
+  Thread T1 (tid=673, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 run tools/host/rfm_shot.c:146 (rfm_tsan+0xc728) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+SUMMARY: ThreadSanitizer: data race firmware/rfm/engine/tb_engine.c:2009 in tb_engine_view
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=671)
+  Read of size 2 at 0x5566444fb320 by main thread:
+    #0 tb_engine_view firmware/rfm/engine/tb_engine.c:2007 (rfm_tsan+0x4e74a) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 build_view firmware/rfm/engine/tb_app.c:3888 (rfm_tsan+0x3e4ce) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 tb_app_tick firmware/rfm/engine/tb_app.c:4109 (rfm_tsan+0x3e4ce)
+    #3 run tools/host/rfm_shot.c:150 (rfm_tsan+0xc732) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #4 main tools/host/rfm_shot.c:223 (rfm_tsan+0xd3f2) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Previous write of size 2 at 0x5566444fb320 by thread T1:
+    #0 tb_engine_render firmware/rfm/engine/tb_engine.c:1883 (rfm_tsan+0x54509) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 au_loop tools/host/rfm_shot.c:124 (rfm_tsan+0xc845) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Location is global 'wpos' of size 12 at 0x5566444fb320 (rfm_tsan+0x161320)
+
+  Thread T1 (tid=673, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 run tools/host/rfm_shot.c:146 (rfm_tsan+0xc728) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+SUMMARY: ThreadSanitizer: data race firmware/rfm/engine/tb_engine.c:2007 in tb_engine_view
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=671)
+  Read of size 1 at 0x5566444fb318 by main thread:
+    #0 tb_engine_view firmware/rfm/engine/tb_engine.c:2009 (rfm_tsan+0x4e798) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 build_view firmware/rfm/engine/tb_app.c:3888 (rfm_tsan+0x3e4ce) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 tb_app_tick firmware/rfm/engine/tb_app.c:4109 (rfm_tsan+0x3e4ce)
+    #3 run tools/host/rfm_shot.c:150 (rfm_tsan+0xc732) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #4 main tools/host/rfm_shot.c:223 (rfm_tsan+0xd3f2) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Previous write of size 1 at 0x5566444fb318 by thread T1:
+    #0 tb_engine_render firmware/rfm/engine/tb_engine.c:1887 (rfm_tsan+0x5456f) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 au_loop tools/host/rfm_shot.c:124 (rfm_tsan+0xc845) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Location is global 'level' of size 6 at 0x5566444fb318 (rfm_tsan+0x161318)
+
+  Thread T1 (tid=673, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 run tools/host/rfm_shot.c:146 (rfm_tsan+0xc728) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+SUMMARY: ThreadSanitizer: data race firmware/rfm/engine/tb_engine.c:2009 in tb_engine_view
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=671)
+  Read of size 2 at 0x5566444fb30a by main thread:
+    #0 tb_engine_view firmware/rfm/engine/tb_engine.c:2011 (rfm_tsan+0x4e7f4) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 build_view firmware/rfm/engine/tb_app.c:3888 (rfm_tsan+0x3e4ce) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 tb_app_tick firmware/rfm/engine/tb_app.c:4109 (rfm_tsan+0x3e4ce)
+    #3 run tools/host/rfm_shot.c:150 (rfm_tsan+0xc732) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #4 main tools/host/rfm_shot.c:223 (rfm_tsan+0xd3f2) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Previous write of size 2 at 0x5566444fb30a by thread T1:
+    #0 voice firmware/rfm/engine/tb_engine.c:534 (rfm_tsan+0x48d7f) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 note firmware/rfm/engine/tb_engine.c:792 (rfm_tsan+0x4c4e4) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 fire_due firmware/rfm/engine/tb_engine.c:807 (rfm_tsan+0x516b4) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #3 tb_engine_render firmware/rfm/engine/tb_engine.c:1630 (rfm_tsan+0x516b4)
+    #4 au_loop tools/host/rfm_shot.c:124 (rfm_tsan+0xc845) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Location is global 'hit_count' of size 12 at 0x5566444fb300 (rfm_tsan+0x16130a)
+
+  Thread T1 (tid=673, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 run tools/host/rfm_shot.c:146 (rfm_tsan+0xc728) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+SUMMARY: ThreadSanitizer: data race firmware/rfm/engine/tb_engine.c:2011 in tb_engine_view
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=671)
+  Read of size 2 at 0x5566444fb320 by main thread:
+    #0 tb_engine_view firmware/rfm/engine/tb_engine.c:2007 (rfm_tsan+0x4e74a) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 build_view firmware/rfm/engine/tb_app.c:3888 (rfm_tsan+0x3e4ce) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 tb_app_tick firmware/rfm/engine/tb_app.c:4109 (rfm_tsan+0x3e4ce)
+    #3 run tools/host/rfm_shot.c:150 (rfm_tsan+0xc732) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #4 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Previous write of size 2 at 0x5566444fb320 by thread T1:
+    #0 tb_engine_render firmware/rfm/engine/tb_engine.c:1883 (rfm_tsan+0x54509) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 au_loop tools/host/rfm_shot.c:124 (rfm_tsan+0xc845) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Location is global 'wpos' of size 12 at 0x5566444fb320 (rfm_tsan+0x161320)
+
+  Thread T1 (tid=673, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 run tools/host/rfm_shot.c:146 (rfm_tsan+0xc728) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+SUMMARY: ThreadSanitizer: data race firmware/rfm/engine/tb_engine.c:2007 in tb_engine_view
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=671)
+  Read of size 1 at 0x5566444fb319 by main thread:
+    #0 tb_engine_view firmware/rfm/engine/tb_engine.c:2009 (rfm_tsan+0x4e798) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 build_view firmware/rfm/engine/tb_app.c:3888 (rfm_tsan+0x3e4ce) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 tb_app_tick firmware/rfm/engine/tb_app.c:4109 (rfm_tsan+0x3e4ce)
+    #3 run tools/host/rfm_shot.c:150 (rfm_tsan+0xc732) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #4 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Previous write of size 1 at 0x5566444fb319 by thread T1:
+    #0 tb_engine_render firmware/rfm/engine/tb_engine.c:1887 (rfm_tsan+0x5456f) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 au_loop tools/host/rfm_shot.c:124 (rfm_tsan+0xc845) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Location is global 'level' of size 6 at 0x5566444fb318 (rfm_tsan+0x161319)
+
+  Thread T1 (tid=673, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 run tools/host/rfm_shot.c:146 (rfm_tsan+0xc728) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+SUMMARY: ThreadSanitizer: data race firmware/rfm/engine/tb_engine.c:2009 in tb_engine_view
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=671)
+  Read of size 1 at 0x5566444fb315 by main thread:
+    #0 tb_engine_view firmware/rfm/engine/tb_engine.c:2010 (rfm_tsan+0x4e7c9) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 build_view firmware/rfm/engine/tb_app.c:3888 (rfm_tsan+0x3e4ce) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 tb_app_tick firmware/rfm/engine/tb_app.c:4109 (rfm_tsan+0x3e4ce)
+    #3 run tools/host/rfm_shot.c:150 (rfm_tsan+0xc732) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #4 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Previous write of size 1 at 0x5566444fb315 by thread T1:
+    #0 tb_engine_render firmware/rfm/engine/tb_engine.c:1975 (rfm_tsan+0x552d3) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 au_loop tools/host/rfm_shot.c:124 (rfm_tsan+0xc845) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Location is global 'active' of size 6 at 0x5566444fb312 (rfm_tsan+0x161315)
+
+  Thread T1 (tid=673, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 run tools/host/rfm_shot.c:146 (rfm_tsan+0xc728) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+SUMMARY: ThreadSanitizer: data race firmware/rfm/engine/tb_engine.c:2010 in tb_engine_view
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=671)
+  Read of size 1 at 0x5566444ff92c by main thread:
+    #0 tb_engine_step firmware/rfm/engine/tb_engine.c:1987 (rfm_tsan+0x4e412) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 build_seq_view firmware/rfm/engine/tb_app.c:3577 (rfm_tsan+0x38772) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 build_view firmware/rfm/engine/tb_app.c:4016 (rfm_tsan+0x415f1) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #3 tb_app_tick firmware/rfm/engine/tb_app.c:4109 (rfm_tsan+0x415f1)
+    #4 run tools/host/rfm_shot.c:150 (rfm_tsan+0xc732) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #5 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Previous write of size 1 at 0x5566444ff92c by thread T1:
+    #0 do_tick firmware/rfm/engine/tb_engine.c:1127 (rfm_tsan+0x4d868) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 tb_engine_render firmware/rfm/engine/tb_engine.c:1900 (rfm_tsan+0x54996) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 au_loop tools/host/rfm_shot.c:124 (rfm_tsan+0xc845) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Location is global 'tstep' of size 6 at 0x5566444ff92c (rfm_tsan+0x16592c)
+
+  Thread T1 (tid=673, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 run tools/host/rfm_shot.c:146 (rfm_tsan+0xc728) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+SUMMARY: ThreadSanitizer: data race firmware/rfm/engine/tb_engine.c:1987 in tb_engine_step
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=671)
+  Read of size 2 at 0x5566444fb308 by main thread:
+    #0 tb_engine_view firmware/rfm/engine/tb_engine.c:2011 (rfm_tsan+0x4e7f4) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 build_view firmware/rfm/engine/tb_app.c:3888 (rfm_tsan+0x3e4ce) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 tb_app_tick firmware/rfm/engine/tb_app.c:4109 (rfm_tsan+0x3e4ce)
+    #3 run tools/host/rfm_shot.c:150 (rfm_tsan+0xc732) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #4 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Previous write of size 2 at 0x5566444fb308 by thread T1:
+    #0 voice firmware/rfm/engine/tb_engine.c:534 (rfm_tsan+0x48d7f) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 note firmware/rfm/engine/tb_engine.c:792 (rfm_tsan+0x4c4e4) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 fire_due firmware/rfm/engine/tb_engine.c:807 (rfm_tsan+0x516b4) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #3 tb_engine_render firmware/rfm/engine/tb_engine.c:1630 (rfm_tsan+0x516b4)
+    #4 au_loop tools/host/rfm_shot.c:124 (rfm_tsan+0xc845) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Location is global 'hit_count' of size 12 at 0x5566444fb300 (rfm_tsan+0x161308)
+
+  Thread T1 (tid=673, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 run tools/host/rfm_shot.c:146 (rfm_tsan+0xc728) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+SUMMARY: ThreadSanitizer: data race firmware/rfm/engine/tb_engine.c:2011 in tb_engine_view
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=671)
+  Read of size 1 at 0x5566444fb312 by main thread:
+    #0 tb_engine_view firmware/rfm/engine/tb_engine.c:2010 (rfm_tsan+0x4e7c9) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 build_view firmware/rfm/engine/tb_app.c:3888 (rfm_tsan+0x3e4ce) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 tb_app_tick firmware/rfm/engine/tb_app.c:4109 (rfm_tsan+0x3e4ce)
+    #3 run tools/host/rfm_shot.c:150 (rfm_tsan+0xc732) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #4 main tools/host/rfm_shot.c:223 (rfm_tsan+0xd3c7) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Previous write of size 1 at 0x5566444fb312 by thread T1:
+    #0 tb_engine_render firmware/rfm/engine/tb_engine.c:1975 (rfm_tsan+0x552d3) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 au_loop tools/host/rfm_shot.c:124 (rfm_tsan+0xc845) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Location is global 'active' of size 6 at 0x5566444fb312 (rfm_tsan+0x161312)
+
+  Thread T1 (tid=673, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 run tools/host/rfm_shot.c:146 (rfm_tsan+0xc728) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+SUMMARY: ThreadSanitizer: data race firmware/rfm/engine/tb_engine.c:2010 in tb_engine_view
+==================
+CUT VALUE:CHROMA+18px (SCALE)
+==================
+WARNING: ThreadSanitizer: data race (pid=671)
+  Read of size 2 at 0x5566444fb320 by main thread:
+    #0 tb_engine_view firmware/rfm/engine/tb_engine.c:2007 (rfm_tsan+0x4e74a) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 build_view firmware/rfm/engine/tb_app.c:3888 (rfm_tsan+0x3e4ce) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 tb_app_tick firmware/rfm/engine/tb_app.c:4109 (rfm_tsan+0x3e4ce)
+    #3 run tools/host/rfm_shot.c:150 (rfm_tsan+0xc732) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #4 main tools/host/rfm_shot.c:229 (rfm_tsan+0xd60c) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Previous write of size 2 at 0x5566444fb320 by thread T1:
+    #0 tb_engine_render firmware/rfm/engine/tb_engine.c:1883 (rfm_tsan+0x54509) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 au_loop tools/host/rfm_shot.c:124 (rfm_tsan+0xc845) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Location is global 'wpos' of size 12 at 0x5566444fb320 (rfm_tsan+0x161320)
+
+  Thread T1 (tid=673, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 run tools/host/rfm_shot.c:146 (rfm_tsan+0xc728) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+SUMMARY: ThreadSanitizer: data race firmware/rfm/engine/tb_engine.c:2007 in tb_engine_view
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=671)
+  Read of size 2 at 0x5566444fb320 by main thread:
+    #0 tb_engine_view firmware/rfm/engine/tb_engine.c:2007 (rfm_tsan+0x4e74a) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 build_view firmware/rfm/engine/tb_app.c:3888 (rfm_tsan+0x3e4ce) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 tb_app_tick firmware/rfm/engine/tb_app.c:4109 (rfm_tsan+0x3e4ce)
+    #3 run tools/host/rfm_shot.c:150 (rfm_tsan+0xc732) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #4 main tools/host/rfm_shot.c:226 (rfm_tsan+0xd504) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Previous write of size 2 at 0x5566444fb320 by thread T1:
+    #0 tb_engine_render firmware/rfm/engine/tb_engine.c:1883 (rfm_tsan+0x54509) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 au_loop tools/host/rfm_shot.c:124 (rfm_tsan+0xc845) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Location is global 'wpos' of size 12 at 0x5566444fb320 (rfm_tsan+0x161320)
+
+  Thread T1 (tid=673, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 run tools/host/rfm_shot.c:146 (rfm_tsan+0xc728) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+SUMMARY: ThreadSanitizer: data race firmware/rfm/engine/tb_engine.c:2007 in tb_engine_view
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=671)
+  Read of size 2 at 0x5566444fb320 by main thread:
+    #0 tb_engine_view firmware/rfm/engine/tb_engine.c:2007 (rfm_tsan+0x4e74a) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 build_view firmware/rfm/engine/tb_app.c:3888 (rfm_tsan+0x3e4ce) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 tb_app_tick firmware/rfm/engine/tb_app.c:4109 (rfm_tsan+0x3e4ce)
+    #3 run tools/host/rfm_shot.c:150 (rfm_tsan+0xc732) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #4 main tools/host/rfm_shot.c:226 (rfm_tsan+0xd52f) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Previous write of size 2 at 0x5566444fb320 by thread T1:
+    #0 tb_engine_render firmware/rfm/engine/tb_engine.c:1883 (rfm_tsan+0x54509) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 au_loop tools/host/rfm_shot.c:124 (rfm_tsan+0xc845) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Location is global 'wpos' of size 12 at 0x5566444fb320 (rfm_tsan+0x161320)
+
+  Thread T1 (tid=673, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 run tools/host/rfm_shot.c:146 (rfm_tsan+0xc728) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+SUMMARY: ThreadSanitizer: data race firmware/rfm/engine/tb_engine.c:2007 in tb_engine_view
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=671)
+  Read of size 1 at 0x5566444ff92c by main thread:
+    #0 tb_engine_step firmware/rfm/engine/tb_engine.c:1987 (rfm_tsan+0x4e412) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 build_seq_view firmware/rfm/engine/tb_app.c:3577 (rfm_tsan+0x38772) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 build_view firmware/rfm/engine/tb_app.c:4016 (rfm_tsan+0x415f1) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #3 tb_app_tick firmware/rfm/engine/tb_app.c:4109 (rfm_tsan+0x415f1)
+    #4 run tools/host/rfm_shot.c:150 (rfm_tsan+0xc732) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #5 main tools/host/rfm_shot.c:226 (rfm_tsan+0xd52f) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Previous write of size 1 at 0x5566444ff92c by thread T1:
+    #0 do_tick firmware/rfm/engine/tb_engine.c:1127 (rfm_tsan+0x4d868) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 tb_engine_render firmware/rfm/engine/tb_engine.c:1900 (rfm_tsan+0x54996) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 au_loop tools/host/rfm_shot.c:124 (rfm_tsan+0xc845) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Location is global 'tstep' of size 6 at 0x5566444ff92c (rfm_tsan+0x16592c)
+
+  Thread T1 (tid=673, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 run tools/host/rfm_shot.c:146 (rfm_tsan+0xc728) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+SUMMARY: ThreadSanitizer: data race firmware/rfm/engine/tb_engine.c:1987 in tb_engine_step
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=671)
+  Write of size 1 at 0x5566444ff92c by thread T1:
+    #0 do_tick firmware/rfm/engine/tb_engine.c:1127 (rfm_tsan+0x4d868) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 tb_engine_render firmware/rfm/engine/tb_engine.c:1900 (rfm_tsan+0x54996) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 au_loop tools/host/rfm_shot.c:124 (rfm_tsan+0xc845) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Previous read of size 1 at 0x5566444ff92c by main thread:
+    #0 tb_engine_step firmware/rfm/engine/tb_engine.c:1987 (rfm_tsan+0x4e412) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #1 build_seq_view firmware/rfm/engine/tb_app.c:3577 (rfm_tsan+0x38772) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 build_view firmware/rfm/engine/tb_app.c:4016 (rfm_tsan+0x415f1) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #3 tb_app_tick firmware/rfm/engine/tb_app.c:4109 (rfm_tsan+0x415f1)
+    #4 run tools/host/rfm_shot.c:150 (rfm_tsan+0xc732) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #5 main tools/host/rfm_shot.c:223 (rfm_tsan+0xd3c7) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+  Location is global 'tstep' of size 6 at 0x5566444ff92c (rfm_tsan+0x16592c)
+
+  Thread T1 (tid=673, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x5ac1a) (BuildId: 2a13a7710e361d06f7babbea53065ca2be93f738)
+    #1 run tools/host/rfm_shot.c:146 (rfm_tsan+0xc728) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+    #2 main tools/host/rfm_shot.c:230 (rfm_tsan+0xd619) (BuildId: 7d2ed82d620a8982dc949b10647cae10433fdc14)
+
+SUMMARY: ThreadSanitizer: data race firmware/rfm/engine/tb_engine.c:1127 in do_tick
+==================
+CUT VALUE:OVERDRIVE+34px (TYPE)
+peak 0.000
+ThreadSanitizer: reported 40 warnings
