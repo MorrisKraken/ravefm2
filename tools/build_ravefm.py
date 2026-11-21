@@ -37,7 +37,7 @@ SRC, FW, OUT = build.SRC, build.FW, build.SRC / "build" / "ravefm"
 APP_XIP, APP_SLOT = build.APP_XIP, build.APP_SLOT
 RAMTEXT_LO, RAMTEXT_END = 0x01C69800, build.RAMTEXT_END   # (rfm.ld: 16 KiB lower than the platform's, the sound's code)
 POOL_END = RAMTEXT_LO
-PRODUCT = "FM-1_RAVEFM2"     # (its own identity, for the Firmware Hub: FM-1_900 is the Felucca family's)
+PRODUCT = "FM-1_180"     # (its own identity, for the Firmware Hub: a number of its own; FM-1_900 is the shared loader name)
 CFLAGS = ["-Os", "-ffunction-sections", "-fno-builtin", "-Wall", "-Wno-unused-function"]
 ENGINE_FLAGS = ["-DTB_LITE=0", "-DTB_DANCE=0", "-DTB_MEL_STEPS=128", "-DTB_HAS_USER_BRK=1", "-DTB_HAS_DLY_HIFI=0",
                 "-DTB_BRK3", "-DRFM2", "-fno-common"]

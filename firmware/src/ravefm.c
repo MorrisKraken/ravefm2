@@ -23,7 +23,7 @@
 #define RFM2 1                   /* (the platform's few changes for RAVE FM: usb.c's maker name) */
 #endif
 #ifndef FELUCCA_ID
-#define FELUCCA_ID "FM-1_RAVEFM2"    /* the package's identity (build_ravefm.py passes it too) */
+#define FELUCCA_ID "FM-1_180"    /* the package's identity (build_ravefm.py passes it too) */
 #endif
 #ifndef FELUCCA_VERSION
 #define FELUCCA_VERSION "RAVE FM 2"
