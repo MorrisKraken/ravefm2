@@ -1,4 +1,4 @@
-# RAVE FM 2
+# RAVE FM
 
 An early hardcore groovebox firmware for the M-VAVE FM-1.
 
