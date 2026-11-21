@@ -7,8 +7,8 @@ Copyright (C) 2026 Maxime (RAVE FM 2: the engine in `firmware/rfm/`, its interfa
 
 ## RAVE FM 2's sounds
 
-The kicks, the 909 kit and the breaks are packed into the firmware (`firmware/rfm/gen/`). They are distributed with
-the author's permission: SOUNDS-LICENCE (to be filled in by the author before publishing).
+The kicks, the 909 kit and the breaks are packed into the firmware (`firmware/rfm/gen/`). They come from royalty-free sample
+packs found online; the author states he holds the permission to redistribute them, and answers for it.
 
 ---
 
