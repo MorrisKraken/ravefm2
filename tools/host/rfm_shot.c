@@ -345,6 +345,17 @@ int main(int argc, char **argv)
         case 'R': keys &= ~(1u << v); run(40); break;
         case 'E': { int e = v, d = atoi(strchr(a, ',') + 1); if (e >= 0 && e < (int)(sizeof enc / sizeof enc[0])) enc[e] = (int16_t)(enc[e] + d); run(40); break; }   /* (a session's encoder past the 7: none) */
         case 'W': run((unsigned)v); break;
+        case 'p': {                                     /* (p: every preset, for the manual) */
+            extern const tb_kick_preset_t TB_KICK_PRESETS[]; extern const unsigned TB_KICK_NPRESETS;
+            extern const tb_syn_sound_t TBS_SOUND[]; extern const unsigned TBS_NSOUND;
+            extern const tb_acid_sound_t TBA_SOUND[]; extern const unsigned TBA_NSOUND;
+            unsigned i;
+            for (i = 0; i < TB_KICK_NPRESETS; i++) fprintf(stderr, "KICK|%s\n", TB_KICK_PRESETS[i].name);
+            for (i = 0; i < TBS_NSOUND; i++) fprintf(stderr, "SYN|%s|%s\n", TBS_SOUND[i].family, TBS_SOUND[i].name);
+            for (i = 0; i < TBA_NSOUND; i++) fprintf(stderr, "ACID|%s\n", TBA_SOUND[i].name);
+            for (i = 0; i < tb_brk_count(); i++) fprintf(stderr, "BRK|%s\n", tb_brk_name(i));
+            break;
+        }
         case 'V': {                                     /* (V<t>: track t's steps, as written) */
             unsigned st, t = (unsigned)v;
             fprintf(stderr, "TRACK %u len %u speed %u:", t, TB_LEN(t), tb_proj.trk[t].speed);

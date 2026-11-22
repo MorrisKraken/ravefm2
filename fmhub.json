@@ -1,8 +1,9 @@
 {
-  "what": "Early hardcore groovebox: 6 tracks (kick, break, 909, bass, lead, stab), 75 hardcore kicks, sliced breaks, rave leads and hoovers, 8 patterns, song mode and live FX on the keys: risers, drops, rolls, filters, mutes, tape stop.",
+  "what": "Early hardcore groovebox: 6 tracks (kick, break, 909, bass, lead, stab), 108 hardcore kicks, sliced breaks, rave leads and hoovers, 4 patterns, song mode and live FX on the keys: risers, drops, rolls, filters, mutes, tape stop.",
   "author": "Maxime",
   "kinds": "groove",
   "image": "assets/ravefm2-icon.png",
   "color": "#B05CFF",
-  "sounds": "licensed: royalty-free sample packs found online (breaks, 909 kit, three kicks), redistribution permitted per the author"
+  "sounds": "licensed: royalty-free sample packs found online (breaks, 909 kit, three kicks), redistribution permitted per the author",
+  "cheat": "https://github.com/MorrisKraken/ravefm2/blob/main/docs/MANUAL.md"
 }

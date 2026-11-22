@@ -3,13 +3,19 @@
 An early hardcore groovebox firmware for the M-VAVE FM-1.
 
 - 6 tracks: kick, break, 909, bass, lead, stab/hoover (any track can take any machine)
-- 75 hardcore kicks (gabber, frenchcore, uptempo, doom...) with their own pitch, shape, distortion and envelope
+- 108 hardcore kick presets (gabber, frenchcore, uptempo, doom...) with their own pitch, shape, distortion and envelope
 - Sliced breakbeats, played in time
 - A 909 kit, every piece on its own row
 - Rave leads, hoovers, screeches and stabs
-- 8 patterns, a song mode, melodies up to 128 steps, live recording (REC)
+- 4 patterns, a song mode, melodies up to 128 steps, live recording (REC)
+- Sidechain on every track, pumped by the kick
 - Live FX on the keys (hold FX): riser (six sounds to mix), drops, rolls, filters, kill bass, snare bar, mutes, tape stop
 - Projects saved with a name, colour themes, key lights, an animated character on every page
+
+## Manual
+
+Everything RAVE FM 2 does, with screenshots: **[docs/MANUAL.md](docs/MANUAL.md)** (also as a PDF:
+[docs/RAVE-FM-2-Manual.pdf](docs/RAVE-FM-2-Manual.pdf)).
 
 ## Install
 
