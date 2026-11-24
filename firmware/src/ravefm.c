@@ -10,7 +10,8 @@
 #define FELUCCA_OTA 1            /* the update entry: M-UPGRADE and the web installers install over RAVE FM */
 #define FELUCCA_OTA_DRYRUN 0
 #define FELUCCA_CDC 0            /* no serial console */
-#define FELUCCA_UAC 0            /* no USB audio: USB is MIDI */
+#define FELUCCA_UAC 1            /* USB audio input: the master, 16-bit stereo, 44.1 kHz */
+#define FELUCCA_UAC_48K 0        /* 44.1 only: the 48 kHz resampler would take core 1, which the reverb uses */
 #define FELUCCA_UAC_TONE 0
 #define FELUCCA_UART 1           /* the TRS MIDI IN jack */
 #ifndef FELUCCA_DUAL_CORE
