@@ -29,6 +29,18 @@ static uint8_t rfm_over;                            /* blocks in a row that took
 static uint16_t rfm_heavy_hold;                     /* blocks before tb_heavy may step down */
 static volatile uint32_t rfm_skipped;               /* blocks let go silent to keep the FM-1 answering */
 static volatile uint32_t rfm_blk_t0;                /* when this block's render began (TIMER4): the second core's deadline */
+#if FELUCCA_UAC
+/* The codec word is Q23 (0 dBFS at 2^23). uac_tap takes Q15, so the USB copy is the same word shifted by 8.
+ * The DMA buffer is left alone: shifting it in place would drop the codec's low 8 bits. */
+static int32_t uac_q15[HALF_WORDS];   /* RAM: the pool's spare does not hold this copy */
+static void rfm_uac_half(const int32_t *o)
+{
+    uint32_t k;
+    for (k = 0; k < HALF_WORDS; k++)
+        uac_q15[k] = o[k] >> 8;
+    uac_tap(uac_q15, HALF_FRAMES);
+}
+#endif
 
 void fm1_alnk0_irq(void)                            /* via isr_alnk0 (hal/fm1_isr.S) */
 {
@@ -44,6 +56,9 @@ void fm1_alnk0_irq(void)                            /* via isr_alnk0 (hal/fm1_is
         uint32_t half = fm1_audio_free_half(), i, used, g = rfm_gain, gt = rfm_gain_target;
         int32_t *o = &abuf[half * HALF_WORDS];
         fm1_audio_ack_half();                       /* first: a flip during a late render stays pending */
+#if FELUCCA_UAC
+        uac_render_start();                         /* before the render: TIMER5 sends from the ring while it runs */
+#endif
         if (half == rfm_last_half)
             rfm_stats.overruns++;                   /* the other half was never rendered */
         rfm_last_half = half;
@@ -68,6 +83,9 @@ void fm1_alnk0_irq(void)                            /* via isr_alnk0 (hal/fm1_is
         } else
             for (i = 0; i < HALF_WORDS; i++)
                 o[i] = 0;
+#if FELUCCA_UAC
+        rfm_uac_half(o);                            /* the same half the codec plays, as 16-bit for the host */
+#endif
         used = fm1_ticks() - t0 - t5_nested_ticks;
         if (fm1_audio_free_half() != half)
             rfm_stats.short_intervals++;            /* the DMA moved on while it rendered: late */

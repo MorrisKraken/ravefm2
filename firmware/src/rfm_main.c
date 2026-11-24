@@ -46,7 +46,9 @@ static void hang_watch(void)                        /* (in TIMER5, every tick) *
 
 /* ------------------------------------------------------------ TIMER5 --- */
 /* 10 kHz: the panel's scan and the milliseconds on every tick, nested in the audio's render too (it outranks it);
- * USB (2 kHz) and the TRS jack (2 kHz) only outside the render, on the first tick after it. */
+ * USB MIDI (2 kHz) and the TRS jack (2 kHz) only outside the render, on the first tick after it.
+ * USB audio cannot wait: one packet per 1 ms, and a render holds the core for most of its 2.9 ms. uac_service
+ * runs on every tick, inside the render too (EP4 only). The full poll stays outside. */
 void fm1_timer5_irq(void)
 {
     static uint32_t sub, owed, last, acc;
@@ -67,11 +69,20 @@ void fm1_timer5_irq(void)
     if (++sub == 10u)
         sub = 0;
     if (rfm_in_audio) {
+#if FELUCCA_UAC
+        uac_service();
+        if ((owed & 1u) && usb.up && usb.config && uin.alt)
+            uin_rx();
+#endif
         t5_nested_ticks += fm1_ticks() - t0;
         return;
     }
     if (owed & 1u)
         usb_poll();
+#if FELUCCA_UAC
+    else
+        uac_service();
+#endif
     if (owed & 2u)
         uart_midi_poll();
     owed = 0;

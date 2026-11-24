@@ -105,10 +105,12 @@ _Static_assert(UA_HI + HALF_FRAMES + UA_MAXF < UA_N, "the ring holds the band, a
                                   * (0.8.0) 5 the stems with the host's audio in (10 x 16 bit: STEMS+IN) */
 #define UA_NF10 409u             /* (0.8.0) STEMS+IN: the ring's frames, the 8-channel ring's words / 5 (the pool kept) */
 _Static_assert(UA_HI + UA_PAD_STEMS + HALF_FRAMES + UA_MAXF < UA_NF10 && UA_NF10 * 5u <= UA_N * 4u, "the 10-channel ring");
-static uint32_t ua_ring[UA_N * 4u] __attribute__((section(".pool")));   /* (8 KiB: in the pool, zeroed at boot) */
 #ifndef UAC_STEMS
 #define UAC_STEMS() 0            /* (a build without fx.c: the host tests of USB alone) */
 #endif
+/* Stereo uses UA_N words. UA_N * 4 is the 8- and 10-channel stem ring (8 KiB). This build has no
+ * stems. The ring stays in RAM: the pool's 8 KiB spare does not hold it. */
+static uint32_t ua_ring[UAC_STEMS() ? UA_N * 4u : UA_N];
 #define UA_FW (UAC_STEMS() ? 3u + UAC_STEMS() : 1u) /* this mode's words a frame (UAC_STEMS: 1 the 8, 2 the 10) */
 #define UA_NF (UA_FW == 5u ? UA_NF10 : UA_N)        /* this mode's frames in the ring */
 /* a frame's slot in the ring: a power of two masked; STEMS+IN's 409 a modulo by a constant (a multiply, no divide;
@@ -145,7 +147,7 @@ static struct {
 #define UI_TARGET 160u           /* the fill the step steers to: ~3.6 ms (a render's 128 and a packet's 45 in hand) */
 #define UI_MAXF 46u              /* frames in the largest packet a host sends at 44.1 kHz (45, one spare) */
 #define UI_STEP_MAX 650          /* the step's range: +-1 % of 65536 (a host clock far off: the ring re-primes) */
-static uint32_t ui_ring[UI_N] __attribute__((section(".pool")));   /* (2 KiB) */
+static uint32_t ui_ring[UI_N];   /* (2 KiB) duplex playback, unused here: RAM, the pool has no spare */
 static volatile uint32_t ui_w, ui_r;
 #define UI_MAXF_RX 50u           /* (V10.57) frames a packet taken at most: a 48 kHz interface on the host port sends 48 + 1 */
 static uint32_t ep4rx[UI_MAXF_RX + 2u] __attribute__((aligned(4)));
